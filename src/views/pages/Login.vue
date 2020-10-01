@@ -69,46 +69,26 @@
 </template>
 
 <script>
-import axios from "../../axios";
-import qs from "qs"
-export default{
-  name: 'Login',
-  data() {
-    return {
-      username: "",
-      password: "",
+  export default{
+    data() {
+      return {
+        username: "",
+        password: "",
+      }
+    },
+    methods: {
+      // checkLogin(){
+      //   if (this.$store.state.auth)
+      // },
+      login() {
+        const payload = {
+          "username" : this.username,
+          "password" : this.password
+        }
+
+        this.$store.dispatch('auth/login', payload)
+      }
     }
-  },
-  methods: {
-    async login(e) {
-      e.preventDefault()
-
-      let data = qs.stringify({
-        "grant_type" : "password",
-        "username" : this.username,
-        "password" : this.password
-      })
-
-      let config = {
-        method: 'post',
-        url: 'o/token/',
-        headers: {
-          'Authorization': 'Basic TnNwc05UajlrbzRpVTVYY0hBams2cEw3VjZsYXFRWEVmZ1V6aktzYjpWVzJzOElzMDQ2VDNLOElvbm94ZFYzZ0I4OFJxNzZnc3ZXT3JnOTNadVRMQVVrT2ZSRzRMMUsxVERFMFNYN1BraXdoOURTTkdQT1dSU0dmY1hRUEp3am5GcTVzMUJERHZpWmJTcVB1b2hRUGN3ZzF2Znh2WEpjeVhNWEhLbFprRg==',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data : data
-      };
-
-      axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data));
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
-    }
-  }
 }
 </script>
 

@@ -18,10 +18,15 @@ import actions from "./actions"
 
 Vue.use(Vuex)
 
+import authModule from './auth/authStore.js'
+
 export default new Vuex.Store({
     getters,
     mutations,
     state,
     actions,
+    modules: {
+      auth:authModule
+    },
     strict: process.env.NODE_ENV !== 'production'
 })
