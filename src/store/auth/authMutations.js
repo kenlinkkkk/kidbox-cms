@@ -3,6 +3,11 @@ const mutations = {
     if (response) {
       state.isAuthorization = response;
     }
+  },
+  SET_USERINFO(state, response) {
+    if (response) {
+      state.userInfo = response
+    }
   }
 }
 
