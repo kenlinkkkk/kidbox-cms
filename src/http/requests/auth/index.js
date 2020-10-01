@@ -1,4 +1,4 @@
-import axios from "../../../axios";
+import axios from "../../axios/index.js";
 import qs from 'qs'
 export default {
   login(payload) {
@@ -19,7 +19,6 @@ export default {
 
     return axios(config)
   },
-
   getUserInfo(payload) {
     let data = {
       'username' : payload.username
@@ -32,6 +31,26 @@ export default {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('accessToken')
       }, data
+    }
+
+    return axios(config)
+  },
+  refreshToken() {
+    let data = qs.stringify({
+      'grant_type' : 'refresh_token',
+      'refresh_token' : localStorage.getItem('refreshToken'),
+      'client_id' : 'NspsNTj9ko4iU5XcHAjk6pL7V6laqQXEfgUzjKsb',
+      'client_secret' : 'VW2s8Is046T3K8IonoxdV3gB88Rq76gsvWOrg93ZuTLAUkOfRG4L1K1TDE0SX7Pkiwh9DSNGPOWRSGfcXQPJwjnFq5s1BDDviZbSqPuohQPcwg1vfxvXJcyXMXHKlZkF'
+    });
+
+    let config = {
+      method: 'post',
+      url: 'o/token/',
+      headers: {
+        'Authorization': localStorage.getItem('accessToken'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data
     }
 
     return axios(config)
