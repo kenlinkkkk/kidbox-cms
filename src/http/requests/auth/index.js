@@ -16,7 +16,6 @@ export default {
         },
         data
       }
-
     return axios(config)
   },
   getUserInfo(payload) {
