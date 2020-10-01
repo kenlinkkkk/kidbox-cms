@@ -16,6 +16,7 @@ export default {
         },
         data
       }
+
     return axios(config)
   },
   getUserInfo(payload) {
@@ -25,13 +26,13 @@ export default {
 
     let config = {
       method: 'POST',
-      url: 'api/res_user/detail_by_username',
+      url: 'api/res_user/detail_by_username/',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('accessToken')
       }, data
     }
-
+    console.log(axios(config))
     return axios(config)
   },
   refreshToken() {
@@ -44,7 +45,7 @@ export default {
 
     let config = {
       method: 'post',
-      url: 'o/token/',
+      url: 'o/token',
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/x-www-form-urlencoded'
