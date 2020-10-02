@@ -15,7 +15,6 @@ import colors from "@/../themeConfig.js"
 // Helper
 // /////////////////////////////////////////////
 
-// *From Auth - Data will be received from auth provider
 const userDefaults = {
   uid         : 0,          // From Auth
   displayName : "John Doe", // From Auth

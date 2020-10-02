@@ -16,7 +16,6 @@ export default {
         },
         data: data
       }
-    console.log('Login')
     return axios(config)
   },
   getUserInfo(payload) {
@@ -33,8 +32,6 @@ export default {
       },
       data: data
     }
-    console.log('Get user info')
-
     return axios(config)
   },
   refreshToken() {
@@ -54,8 +51,6 @@ export default {
       },
       data: data
     }
-    console.log('Refresh token: ')
-    console.log(axios(config))
     return axios(config)
   }
 }
