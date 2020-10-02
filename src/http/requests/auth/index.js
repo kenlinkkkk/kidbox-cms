@@ -8,31 +8,33 @@ export default {
     });
 
     let config = {
-        method: 'post',
+        method: 'POST',
         url: 'o/token/',
         headers: {
           'Authorization': 'Basic TnNwc05UajlrbzRpVTVYY0hBams2cEw3VjZsYXFRWEVmZ1V6aktzYjpWVzJzOElzMDQ2VDNLOElvbm94ZFYzZ0I4OFJxNzZnc3ZXT3JnOTNadVRMQVVrT2ZSRzRMMUsxVERFMFNYN1BraXdoOURTTkdQT1dSU0dmY1hRUEp3am5GcTVzMUJERHZpWmJTcVB1b2hRUGN3ZzF2Znh2WEpjeVhNWEhLbFprRg==',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        data
+        data: data
       }
-
+    console.log('Login')
     return axios(config)
   },
   getUserInfo(payload) {
-    let data = {
+    let data = JSON.stringify({
       'username' : payload.username
-    }
+    })
 
     let config = {
       method: 'POST',
-      url: 'api/res_user/detail_by_username/',
+      url: 'api/res_user/detail_by_username',
       headers: {
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
         'Authorization': localStorage.getItem('accessToken')
-      }, data
+      },
+      data: data
     }
-    console.log(axios(config))
+    console.log('Get user info')
+
     return axios(config)
   },
   refreshToken() {
@@ -44,15 +46,16 @@ export default {
     });
 
     let config = {
-      method: 'post',
+      method: 'POST',
       url: 'o/token',
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      data
+      data: data
     }
-
+    console.log('Refresh token: ')
+    console.log(axios(config))
     return axios(config)
   }
 }
