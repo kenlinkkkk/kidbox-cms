@@ -52,5 +52,23 @@ export default {
       data: data
     }
     return axios(config)
+  },
+  destroyToken() {
+    let data = qs.stringify({
+      'token' : localStorage.getItem('accessToken'),
+      'client_id' : 'NspsNTj9ko4iU5XcHAjk6pL7V6laqQXEfgUzjKsb',
+      'client_secret' : 'VW2s8Is046T3K8IonoxdV3gB88Rq76gsvWOrg93ZuTLAUkOfRG4L1K1TDE0SX7Pkiwh9DSNGPOWRSGfcXQPJwjnFq5s1BDDviZbSqPuohQPcwg1vfxvXJcyXMXHKlZkF'
+    });
+
+    let config = {
+      method: 'POST',
+      url: 'o/revoke_token/',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      data: data
+    }
+
+    return axios(config)
   }
 }

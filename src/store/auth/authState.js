@@ -1,5 +1,5 @@
 const state = () => ({
-  isAuthorization: null,
-  userInfo: null,
+  isAuthorization: localStorage.getItem('isAuthorization'),
+  userInfo: localStorage.getItem('userInfo'),
 })
 export default state

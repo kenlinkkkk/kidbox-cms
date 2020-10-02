@@ -77,16 +77,16 @@
       }
     },
     methods: {
-      // checkLogin(){
-      //   if (this.$store.state.auth)
-      // },
-      login() {
+      async login() {
         const payload = {
           "username" : this.username,
           "password" : this.password
         }
 
-        this.$store.dispatch('auth/login', payload)
+        let resp = await this.$store.dispatch('auth/login', payload)
+        if (resp === 200) {
+          return this.$router.go('/admin')
+        }
       }
     }
 }

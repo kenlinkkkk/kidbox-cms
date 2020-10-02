@@ -67,8 +67,11 @@ export default {
     }
   },
   methods: {
-    logout() {
-        this.$router.push('/login').catch(() => {})
+    async logout() {
+      let resp = await this.$store.dispatch('auth/logout')
+      if (resp === 200) {
+        return this.$router.go('/login')
+      }
     },
   }
 }

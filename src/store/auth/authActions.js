@@ -7,15 +7,16 @@ const actions = {
         localStorage.setItem('accessToken', response.data.token_type +' '+ response.data.access_token)
         localStorage.setItem('refreshToken', response.data.refresh_token)
         localStorage.setItem('tokenExpires', response.data.expires_in)
+        localStorage.setItem('isAuthorization', 'true')
 
         commit('SET_AUTHORIZATION', true)
 
         dispatch('getUserInfo', payload)
+        return 200
       }
-      return response
     }catch (e) {
       console.log('LOGIN:', e)
-      return {error: true}
+      return {error: true }
     }
   },
   async getUserInfo({commit, }, payload){
@@ -23,13 +24,30 @@ const actions = {
       const userInfo = await auth.getUserInfo(payload)
 
       if(userInfo.data){
+        localStorage.setItem('userInfo', JSON.stringify(userInfo.data.data))
         commit('SET_USERINFO', userInfo.data)
       }
 
       return userInfo
     }catch (e) {
       console.log('USER_INFO:', e)
-      return {error: true}
+      return {error: true }
+    }
+  },
+  async logout() {
+    try {
+      const logout = await auth.destroyToken()
+      if (logout.status === 200) {
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('tokenExpires')
+        localStorage.setItem('isAuthorization', 'false')
+        localStorage.removeItem('userInfo')
+      }
+      return logout.status
+    } catch (e) {
+      console.error(e)
+      return { error: true }
     }
   }
 }
