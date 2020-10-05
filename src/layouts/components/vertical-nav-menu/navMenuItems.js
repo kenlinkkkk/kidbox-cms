@@ -16,9 +16,9 @@ export default [
     icon: "HomeIcon",
   },
   {
-    url: "/admin/page2",
-    name: "Page 2",
-    slug: "page2",
-    icon: "FileIcon",
+    url: "/admin/user",
+    name: "Quản lý tài khoản",
+    slug: "user",
+    icon: "UserIcon",
   },
 ]

@@ -14,12 +14,13 @@ import colors from "@/../themeConfig.js"
 // /////////////////////////////////////////////
 // Helper
 // /////////////////////////////////////////////
-
+const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 const userDefaults = {
-  uid         : 0,
-  displayName : "John Doe",
+  uid         : userInfo === null ? 0 : userInfo.uid,
+  displayName : userInfo === null ? "John Doe" : userInfo.name,
   about       : "Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.",
-  photoURL    : require("@/assets/images/portrait/small/avatar-s-11.jpg"),
+  photoURL    : userInfo !== null && userInfo.image_url !== null ? userInfo.image_url : require("@/assets/images/portrait/small/avatar-s-11.jpg"),
+  email       : userInfo === null ? 'email' : userInfo.email,
   status      : "online",
   userRole    : "admin"
 }

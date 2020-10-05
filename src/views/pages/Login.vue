@@ -82,9 +82,8 @@
           "username" : this.username,
           "password" : this.password
         }
-
         let resp = await this.$store.dispatch('auth/login', payload)
-        if (resp === 200) {
+        if (resp.code === 200) {
           return this.$router.go('/admin')
         }
       }

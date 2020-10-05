@@ -10,9 +10,8 @@ const actions = {
         localStorage.setItem('isAuthorization', 'true')
 
         commit('SET_AUTHORIZATION', true)
-
-        dispatch('getUserInfo', payload)
-        return 200
+        let resp = await dispatch('getUserInfo', payload)
+        return resp.data
       }
     }catch (e) {
       console.log('LOGIN:', e)
@@ -22,12 +21,10 @@ const actions = {
   async getUserInfo({commit, }, payload){
     try {
       const userInfo = await auth.getUserInfo(payload)
-
       if(userInfo.data){
         localStorage.setItem('userInfo', JSON.stringify(userInfo.data.data))
         commit('SET_USERINFO', userInfo.data)
       }
-
       return userInfo
     }catch (e) {
       console.log('USER_INFO:', e)

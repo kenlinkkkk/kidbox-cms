@@ -28,9 +28,19 @@ const router = new Router({
             component: () => import('./views/Home.vue'),
           },
           {
-            path: '/page2',
+            path: 'page2',
             name: 'page2',
             component: () => import('./views/Page2.vue'),
+          },
+          {
+            path: 'user',
+            name: 'user-index',
+            component: () => import('./views/userManager/userManager.vue')
+          },
+          {
+            path: 'profile',
+            name: 'profile',
+            component: () => import('./views/user/userProfile.vue'),
           }
         ],
       },
