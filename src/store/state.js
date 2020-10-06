@@ -16,7 +16,7 @@ import colors from "@/../themeConfig.js"
 // /////////////////////////////////////////////
 const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 const userDefaults = {
-  uid         : userInfo === null ? 0 : userInfo.uid,
+  uid         : userInfo === null ? 0 : userInfo.id,
   displayName : userInfo === null ? "John Doe" : userInfo.name,
   about       : "Dessert chocolate cake lemon drops jujubes. Biscuit cupcake ice cream bear claw brownie brownie marshmallow.",
   photoURL    : userInfo !== null && userInfo.image_url !== null ? userInfo.image_url : require("@/assets/images/portrait/small/avatar-s-11.jpg"),

@@ -25,8 +25,7 @@
         <div :class="isNavOpen ? 'block': 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
           <div class="text-sm sm:flex-grow">
             <ul class="sm:flex justify-around mt-8 w-full md:mt-0 md:ml-auto md:w-3/4">
-              <li class="p-2 sm:p-0"><router-link to="#">Thông tin cá nhân</router-link></li>
-              <li class="p-2 sm:p-0"><router-link to="#">About</router-link></li>
+              <li class="p-2 sm:p-0"><router-link to="/admin/profile">Thông tin cá nhân</router-link></li>
             </ul>
           </div>
         </div>
@@ -42,41 +41,35 @@
         <!-- ABOUT CARD -->
         <vx-card title="Thông tin cá nhân" class="mt-base">
           <!-- ACTION SLOT -->
-          <template slot="actions">
-            <feather-icon icon="MoreHorizontalIcon"></feather-icon>
-          </template>
-
-          <!-- USER BIO -->
-          <div class="user-bio">
-            <p>Tart I love sugar plum I love oat cake. Sweet roll caramels I love jujubes. Topping cake wafer.</p>
-          </div>
+<!--          <template slot="actions">-->
+<!--            <feather-icon icon="MoreHorizontalIcon"></feather-icon>-->
+<!--          </template>-->
 
           <!-- OTEHR DATA -->
           <div class="mt-5">
-            <h6>Joined:</h6>
-            <p>November 15, 2015</p>
+            <h6>Tên:</h6>
+            <p>{{ userInfo.displayName }}</p>
           </div>
 
           <div class="mt-5">
-            <h6>Lives:</h6>
-            <p>New York, USA</p>
+            <h6>Địa chỉ:</h6>
+            <p>{{ userInfo.address }}</p>
           </div>
 
           <div class="mt-5">
-            <h6>Email:</h6>
-            <p>bucketful@fiendhead.org</p>
+            <h6>Số điện thoại:</h6>
+            <p>{{ userInfo.phone_number }}</p>
           </div>
 
-          <div class="mt-5">
-            <h6>Website:</h6>
-            <p>www.pixinvent.com</p>
+          <div :class="userInfo.second_phone_number !== null ? 'hidden' : 'block'" class="mt-5">
+            <h6>Số phụ:</h6>
+            <p>{{ userInfo.second_phone_number }}</p>
           </div>
-
-<!--          <div class="social-links flex mt-4">-->
-<!--            <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="FacebookIcon"></feather-icon>-->
-<!--            <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="TwitterIcon"></feather-icon>-->
-<!--            <feather-icon svgClasses="h-7 w-7 cursor-pointer bg-primary p-1 text-white rounded" class="mr-2" icon="InstagramIcon"></feather-icon>-->
-<!--          </div>-->
+        </vx-card>
+      </div>
+      <div class="vx-col w-full lg:w-3/4">
+        <vx-card title="Cập nhật thông tin cá nhân" class="mt-base">
+          <user-settings />
         </vx-card>
       </div>
     </div>
@@ -84,7 +77,11 @@
 </template>
 
 <script>
+  import userSettings from "../userManager/userSettings.vue";
   export default {
+    components: {
+      userSettings
+    },
     computed: {
       userInfo() {
         return this.$store.state.AppActiveUser

@@ -18,9 +18,9 @@
 
         <!-- SM - OPEN SIDEBAR BUTTON -->
         <feather-icon class="sm:inline-flex xl:hidden cursor-pointer p-2" icon="MenuIcon" @click.stop="showSidebar" />
-
-        <bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />
-
+<!--            BOOKMARKS-->
+<!--        <bookmarks :navbarColor="navbarColor" v-if="windowWidth >= 992" />-->
+<!--            END - BOOKMARKS-->
         <vs-spacer />
 
 <!--        <search-bar />-->
@@ -34,7 +34,7 @@
 
 
 <script>
-import Bookmarks            from "./components/Bookmarks.vue"
+// import Bookmarks            from "./components/Bookmarks.vue"
 import ProfileDropDown      from "./components/ProfileDropDown.vue"
 
 export default {
@@ -46,7 +46,7 @@ export default {
     },
   },
   components: {
-    Bookmarks,
+    // Bookmarks,
     ProfileDropDown,
   },
   computed: {

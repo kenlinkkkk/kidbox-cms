@@ -2,9 +2,10 @@
 import axios from 'axios'
 import auth from '../src/http/requests/auth/index.js'
 const baseURL = "https://kidbox.vn"
+const localBase = "http://localhost:8000"
 
 const axiosApiInstance = axios.create({
-  baseURL: baseURL
+  baseURL: localBase
 })
 
 axiosApiInstance.interceptors.request.use(

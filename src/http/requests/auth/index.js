@@ -12,7 +12,8 @@ export default {
         url: 'o/token/',
         headers: {
           'Authorization': 'Basic TnNwc05UajlrbzRpVTVYY0hBams2cEw3VjZsYXFRWEVmZ1V6aktzYjpWVzJzOElzMDQ2VDNLOElvbm94ZFYzZ0I4OFJxNzZnc3ZXT3JnOTNadVRMQVVrT2ZSRzRMMUsxVERFMFNYN1BraXdoOURTTkdQT1dSU0dmY1hRUEp3am5GcTVzMUJERHZpWmJTcVB1b2hRUGN3ZzF2Znh2WEpjeVhNWEhLbFprRg==',
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Access-Control-Allow-Origin': '*'
         },
         data: data
       }
@@ -28,6 +29,7 @@ export default {
       url: 'api/res_user/detail_by_username',
       headers: {
         'content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'Authorization': localStorage.getItem('accessToken')
       },
       data: data
@@ -47,6 +49,7 @@ export default {
       url: 'o/token',
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       data: data
