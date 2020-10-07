@@ -9,7 +9,7 @@ export default {
 
     let config = {
         method: 'POST',
-        url: 'o/token',
+        url: 'o/token/',
         headers: {
           'Authorization': 'Basic TnNwc05UajlrbzRpVTVYY0hBams2cEw3VjZsYXFRWEVmZ1V6aktzYjpWVzJzOElzMDQ2VDNLOElvbm94ZFYzZ0I4OFJxNzZnc3ZXT3JnOTNadVRMQVVrT2ZSRzRMMUsxVERFMFNYN1BraXdoOURTTkdQT1dSU0dmY1hRUEp3am5GcTVzMUJERHZpWmJTcVB1b2hRUGN3ZzF2Znh2WEpjeVhNWEhLbFprRg==',
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,7 +46,8 @@ export default {
 
     let config = {
       method: 'POST',
-      url: 'o/token',
+      url: 'o/token/' +
+        '',
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Access-Control-Allow-Origin': '*',
