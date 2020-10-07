@@ -20,6 +20,9 @@ module.exports = {
         chunks: 'all'
       }
     }
+  },
+  devServer: {
+    proxy: 'http://localhost:8001/'
   }
 }
 

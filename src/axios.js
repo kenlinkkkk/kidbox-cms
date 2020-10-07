@@ -1,8 +1,8 @@
 // axios
 import axios from 'axios'
 import auth from '../src/http/requests/auth/index.js'
-const baseURL = "https://kidbox.vn"
-const localBase = "http://localhost:8000"
+const baseURL = "https://kidbox.vn/"
+const localBase = "http://localhost:8001/"
 
 const axiosApiInstance = axios.create({
   baseURL: localBase
