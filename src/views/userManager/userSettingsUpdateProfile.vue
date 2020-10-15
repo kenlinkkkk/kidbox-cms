@@ -17,8 +17,8 @@
   export default {
     data() {
       return {
-        name: '',
-        address: '',
+        name: 'hieunx',
+        address: 'a',
         email: '',
         phone_number: '',
         second_phone_number: '',
