@@ -39,8 +39,13 @@ const router = new Router({
           },
           {
             path: 'profile',
-            name: 'profile',
+            name: 'profile-index  ',
             component: () => import('./views/user/userProfile.vue'),
+          },
+          {
+            path: 'school',
+            name: 'school-index',
+            component: () => import('./views/school/School.vue')
           }
         ],
       },

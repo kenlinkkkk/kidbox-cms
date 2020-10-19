@@ -16,6 +16,12 @@ export default [
     icon: "HomeIcon",
   },
   {
+    url: "/admin/school",
+    name: "Quản lý trường học",
+    slug: "school",
+    icon: "HomeIcon",
+  },
+  {
     url: "/admin/user",
     name: "Quản lý tài khoản",
     slug: "user",
