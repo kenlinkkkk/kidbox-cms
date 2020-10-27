@@ -14,7 +14,6 @@ const actions = {
         return resp.data
       }
     }catch (e) {
-      console.log('LOGIN:', e)
       return {error: true }
     }
   },
@@ -27,7 +26,6 @@ const actions = {
       }
       return userInfo
     }catch (e) {
-      console.log('USER_INFO:', e)
       return {error: true }
     }
   },

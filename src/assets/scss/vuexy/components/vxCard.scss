@@ -60,6 +60,10 @@
         border-top-right-radius: .5rem;
     }
 
+    img.card-img-left {
+      border-radius: .5rem 0 0 .5rem;
+    }
+
     .vx-card__collapsible-content {
         transition: all .3s ease-in-out;
 

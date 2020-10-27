@@ -5,16 +5,16 @@
     <div class="profile-header">
       <div class="relative">
         <div class="cover-container rounded-t-lg">
-          <img alt="user-profile-cover" :src="coverDefault" class="responsive block">
+          <img alt="user-profile-cover" :src="coverDefault" class="responsive block" style="border-radius: .5rem .5rem 0 0">
         </div>
         <div class="profile-img-container pointer-events-none">
           <div>
             <vs-avatar class="user-profile-img" :src="userInfo.photoURL" size="85px" />
           </div>
-<!--          <div class="profile-actions pointer-events-auto flex">-->
-<!--            <vs-button icon-pack="feather" radius icon="icon-edit-2"></vs-button>-->
-<!--            <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button>-->
-<!--          </div>-->
+          <div class="profile-actions pointer-events-auto flex">
+            <vs-button icon-pack="feather" radius icon="icon-edit-2"></vs-button>
+            <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button>
+          </div>
         </div>
       </div>
       <div class="flex items-center justify-end flex-wrap profile-header-nav p-6">

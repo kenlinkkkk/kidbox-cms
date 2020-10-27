@@ -1,29 +1,34 @@
 <template>
-  <vx-card no-shadow class="vx-col md:w-1/4 w-full" title="Trường tiểu học ABC" @click="popupNotify">
-    <div class="vx-row">
-      <div class="vx-col flex-1">
-        <div class="img-container mb-4">
-          <img :src="activeUserInfo.photoURL" class="rounded w-full">
+  <div class="vx-row">
+    <div class="vx-col w-full mb-base">
+      <vx-card class="vx-col md:w-1/4 w-full flex" @contextmenu.prevent="$refs.menu.open" @click="popupNotify">
+        <div slot="no-body" class="vx-col md:w-full flex">
+          <vue-context ref="menu">
+            <li>
+              <a href="#" class="flex items-center text-sm">
+                <feather-icon icon="PlusIcon" svgClasses="w-5 h-5" />
+                <span class="ml-2">New</span>
+              </a>
+            </li>
+          </vue-context>
+          <img :src="activeUserInfo.photoURL" alt="content-img" class="w-1/3 responsive card-img-left">
+          <div class="p-2">
+            <h5 class="mb-2">Trường tiểu học ABC</h5>
+            <p class="text-grey">Email: </p>
+            <p class="text-grey">SĐT: </p>
+          </div>
         </div>
-      </div>
-      <div class="vx-col flex-2">
-        <table>
-          <tr>
-            <td class="font-semibold">Email: </td>
-            <td>tieuhocABC@gmail.com</td>
-          </tr>
-          <tr>
-            <td class="font-semibold">SĐT: </td>
-            <td>0123456789</td>
-          </tr>
-        </table>
-      </div>
+      </vx-card>
     </div>
-  </vx-card>
+  </div>
 </template>
 
 <script>
+  import { VueContext } from 'vue-context'
   export default {
+    components: {
+      VueContext
+    },
     computed: {
       activeUserInfo() {
         return this.$store.state.AppActiveUser

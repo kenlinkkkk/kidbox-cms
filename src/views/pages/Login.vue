@@ -75,6 +75,16 @@
         let resp = await this.$store.dispatch('auth/login', payload)
         if (resp.code === 200) {
           return this.$router.go('/admin')
+        } else {
+          this.$store.dispatch('auth/logout');
+          this.$vs.notify({
+            title:'Lỗi',
+            text: resp.message,
+            position: 'top-right',
+            color:'danger',
+            iconPack: 'feather',
+            icon:'icon-x'
+          });
         }
       }
     }
