@@ -13,7 +13,7 @@
           </div>
           <div class="profile-actions pointer-events-auto flex">
             <vs-button icon-pack="feather" radius icon="icon-edit-2"></vs-button>
-            <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button>
+            <!-- <vs-button icon-pack="feather" radius icon="icon-settings" class="ml-2 lg:ml-4"></vs-button> -->
           </div>
         </div>
       </div>
