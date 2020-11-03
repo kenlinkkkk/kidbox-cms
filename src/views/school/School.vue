@@ -11,15 +11,16 @@
 <!--          </template>-->
           <div class="p-2 w-2/3">
             <h5 class="mb-2">{{ school.name }}</h5>
-            <p><a :href="'mailto:' + school.email " class="text-grey">Email: {{ school.email }}</a></p>
-            <p><a :href="'tel:' + school.phone_number" class="text-grey">SĐT: {{ school.phone_number }}</a></p>
+            <p><a :href="'mailto:' + school.email " class="text-black">Email: {{ school.email }}</a></p>
+            <p><a :href="'tel:' + school.phone_number" class="text-black">SĐT: {{ school.phone_number }}</a></p>
           </div>
           <vs-dropdown class="button-height">
             <a class="flex self-start" href="#">
-              <i class="material-icons p-2"> calendar_view_day </i>
+              <i class="material-icons p-2"> more_vert </i>
             </a>
             <vs-dropdown-menu>
-              <vs-dropdown-item>Cập nhật thông tin trường học</vs-dropdown-item>
+              <vs-dropdown-item @click="popupNotify">Xem thông tin trường</vs-dropdown-item>
+              <vs-dropdown-item @click="popupNotify">Cập nhật thông tin trường học</vs-dropdown-item>
             </vs-dropdown-menu>
           </vs-dropdown>
         </div>
