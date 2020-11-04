@@ -23,14 +23,14 @@ import userModule from './user/userStore.js'
 import schoolModule from './school/schoolStore.js'
 
 export default new Vuex.Store({
-    getters,
-    mutations,
-    state,
-    actions,
-    modules: {
-      auth: authModule,
-      user: userModule,
-      shool: schoolModule
-    },
-    strict: process.env.NODE_ENV !== 'production'
+  getters,
+  mutations,
+  state,
+  actions,
+  modules: {
+    auth: authModule,
+    user: userModule,
+    school: schoolModule,
+  },
+  strict: process.env.NODE_ENV !== 'production'
 })

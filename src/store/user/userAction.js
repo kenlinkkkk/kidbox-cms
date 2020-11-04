@@ -1,7 +1,7 @@
 import axiosApiInstance from "../../axios";
 // import qs from 'qs'
 
-const actions = {
+export default {
   async changePassword(_,payload) {
     let userInfo = JSON.parse(localStorage.getItem('userInfo'));
     let data = {
@@ -24,5 +24,3 @@ const actions = {
     return response
   }
 }
-
-export default actions

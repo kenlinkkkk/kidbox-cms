@@ -1,6 +1,12 @@
-import actions from "./schoolAction";
+import actions from "./schoolAction.js";
+import state from "./schoolState.js"
+import mutations from "./schoolMutations.js"
+import getters from "./schoolGetters.js"
 
 export default {
-  namespace: true,
-  actions
+  namespaced: true,
+  state,
+  mutations,
+  actions,
+  getters
 }
