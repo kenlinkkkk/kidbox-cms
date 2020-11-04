@@ -1,7 +1,7 @@
 <template>
   <div class="vx-row">
-    <div class="vx-col w-full md:w-1/4 mb-base inline-flex" v-for="(school, index) in schools">
-      <vx-card @click="popupNotify">
+    <div class="vx-col w-full md:w-1/4 mb-base inline-flex" v-for="(school, index) in schools" :key="school.id">
+      <vx-card @@showSchoolInfoPrompt="showSchoolInfoPrompt($event)">
         <div slot="no-body" class="vx-col md:w-full flex ">
 <!--          <template v-if="school.logo_url == null">-->
             <img :src="activeUserInfo.photoURL" alt="content-img" class="md:w-1/3 card-img-left">
@@ -19,7 +19,7 @@
               <i class="material-icons p-2"> more_vert </i>
             </a>
             <vs-dropdown-menu>
-              <vs-dropdown-item :schoolId="school.id" :itemIndex="index" @click="popupNotify">Thông tin trường</vs-dropdown-item>
+              <vs-dropdown-item :schoolId="school.id" :itemIndex="index" @showSchoolInfoPrompt="showSchoolInfoPrompt($event)">Thông tin trường</vs-dropdown-item>
             </vs-dropdown-menu>
           </vs-dropdown>
         </div>
@@ -33,7 +33,7 @@
   }
 </style>
 <script>
-  // import moduleSchool from '@/store/school/schoolStore.js'
+  import moduleSchool from '@/store/school/schoolStore.js'
   import { VueContext } from 'vue-context'
   import SchoolInfo from './components/schoolInfo.vue'
   export default {
@@ -52,8 +52,9 @@
       }
     },
     methods: {
-      async popupNotify() {
-        console.log('click');
+      showSchoolInfoPrompt(schoolId) {
+        this.schoolIdToEdit = schoolId;
+        this.schoolInfoPopup = true;
       }
     },
     components: {
@@ -61,8 +62,7 @@
       SchoolInfo
     },
     created() {
-      // this.$store.registerModule('school', moduleSchool);
-      //tuwf cai dispatch nay de  get list da thay meo on roi
+      this.$store.registerModule('school', moduleSchool);
       this.$store.dispatch('school/getListSchool');
     }
   }
