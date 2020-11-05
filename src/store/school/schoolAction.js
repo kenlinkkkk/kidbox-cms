@@ -14,7 +14,6 @@ import axiosApiInstance from "../../axios";
     let response = await axiosApiInstance(config);
     if (response.status === 200) {
       commit('SET_SCHOOLS_INFO', response.data.data.data);
-      return response.data.data.data;
     }
   }
 }
