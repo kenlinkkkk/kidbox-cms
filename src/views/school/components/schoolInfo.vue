@@ -7,11 +7,15 @@
       @cancel="cancel"
       @accept="submitInfo"
       @close="init"
+      :is-valid="validateForm"
       :active.sync="activePrompt">
       <div>
         <form>
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
+              <div class="vx-col mb-6">
+                <vs-upload action="https://jsonplaceholder.typicode.com/posts/" v-on:change="cancel" fileName="logo_url" limit="1" @on-success="successUpload" />
+              </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full">
                   <vs-input class="w-full" v-validate="'required'" icon-pack="feather" icon="icon-home" icon-no-border label="Tên trường" v-model="schoolLocal.name" />
@@ -86,6 +90,7 @@
     },
     data() {
       return {
+        formData: new FormData(),
         schoolLocal: Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId)),
         configdateTimePicker: {
           enableTime: true,
@@ -105,6 +110,9 @@
         set(value) {
           this.$emit('hiddenDisplayPrompt', value)
         }
+      },
+      validateForm() {
+        return !this.errors.any()
       }
     },
     methods: {
@@ -112,7 +120,7 @@
         this.schoolLocal = Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId))
       },
       async submitInfo() {
-        this.$validator.validateAll().then(result => {
+        await this.$validator.validateAll().then(result => {
           if (result) {
             console.log(this.schoolLocal)
           }
@@ -120,6 +128,9 @@
       },
       cancel() {
         console.log('cancel')
+      },
+      successUpload() {
+        console.log('hello')
       }
     }
   }
