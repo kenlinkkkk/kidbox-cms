@@ -14,7 +14,7 @@
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
               <div class="vx-col mb-6">
-                <vs-upload action="https://jsonplaceholder.typicode.com/posts/" v-on:change="cancel" fileName="logo_url" limit="1" @on-success="successUpload" />
+                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" v-on:change="cancel" automatic fileName="file" limit="1" @on-success="successUpload" />
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full">
@@ -43,25 +43,25 @@
               <div class="vx-row mb-6">
                 <div class="vx-col w-full form-group">
                   <label>Giờ vào học</label>
-                  <flat-pickr :config="configdateTimePicker" v-model="schoolLocal.start_time" class="w-full" placeholder="Chọn giờ" />
+                  <flat-pickr :config="configDateTimePicker" v-model="schoolLocal.start_time" class="w-full" placeholder="Chọn giờ" />
                 </div>
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full form-group">
                   <label>Giờ nghỉ trưa</label>
-                  <flat-pickr :config="configdateTimePicker" v-model="schoolLocal.break_lunch" class="w-full" placeholder="Chọn giờ" />
+                  <flat-pickr :config="configDateTimePicker" v-model="schoolLocal.break_lunch" class="w-full" placeholder="Chọn giờ" />
                 </div>
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full form-group">
                   <label>Giờ vào học buổi chiều</label>
-                  <flat-pickr :config="configdateTimePicker" v-model="schoolLocal.start_afternoon" class="w-full" placeholder="Chọn giờ" />
+                  <flat-pickr :config="configDateTimePicker" v-model="schoolLocal.start_afternoon" class="w-full" placeholder="Chọn giờ" />
                 </div>
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full form-group">
                   <label>Giờ kết thúc buổi chiều</label>
-                  <flat-pickr :config="configdateTimePicker" v-model="schoolLocal.end_time" class="w-full" placeholder="Chọn giờ" />
+                  <flat-pickr :config="configDateTimePicker" v-model="schoolLocal.end_time" class="w-full" placeholder="Chọn giờ" />
                 </div>
               </div>
             </vs-tab>
@@ -71,7 +71,9 @@
   </vs-prompt>
 </template>
 <style>
-
+  .con-vs-dialog .vs-dialog {
+    max-width: 600px !important;
+  }
 </style>
 
 <script>
@@ -90,9 +92,14 @@
     },
     data() {
       return {
-        formData: new FormData(),
         schoolLocal: Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId)),
-        configdateTimePicker: {
+        files: '',
+        headersUpload: {
+          'Authorization': localStorage.getItem('accessToken'),
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true'
+        },
+        configDateTimePicker: {
           enableTime: true,
           time_24hr: true,
           noCalendar: true
@@ -120,17 +127,32 @@
         this.schoolLocal = Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId))
       },
       async submitInfo() {
-        await this.$validator.validateAll().then(result => {
+        let result = await this.$validator.validateAll();
           if (result) {
-            console.log(this.schoolLocal)
+            let data = new FormData();
+            console.log(this.files)
+            // data.append('logo_url', this.files)
+            //
+            // let config = {
+            //   method: 'POST',
+            //   url: 'cms/core_school/update/1',
+            //   headers: {
+            //     'Authorization': localStorage.getItem('accessToken'),
+            //     'Content-Type': 'multipart/form-data',
+            //     'Access-Control-Allow-Origin': '*'
+            //   },
+            //   data: data
+            // };
+            // console.log(data.get('logo_url'))
+            // let response = await axiosApiInstance(config);
+            // console.table(response);
           }
-        })
       },
-      cancel() {
-        console.log('cancel')
+      cancel(event) {
+        console.log(event)
       },
-      successUpload() {
-        console.log('hello')
+      successUpload(event) {
+        console.log(event.response)
       }
     }
   }
