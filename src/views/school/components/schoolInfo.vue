@@ -14,7 +14,7 @@
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
               <div class="vx-col mb-6">
-                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" v-on:change="cancel" automatic fileName="file" limit="1" @on-success="successUpload" />
+                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" v-on:change="selectedFile" automatic fileName="file" limit="1" @on-success="successUpload" />
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full">
@@ -93,7 +93,6 @@
     data() {
       return {
         schoolLocal: Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId)),
-        files: '',
         headersUpload: {
           'Authorization': localStorage.getItem('accessToken'),
           'Access-Control-Allow-Origin': '*',
@@ -129,30 +128,19 @@
       async submitInfo() {
         let result = await this.$validator.validateAll();
           if (result) {
-            let data = new FormData();
-            console.log(this.files)
-            // data.append('logo_url', this.files)
-            //
-            // let config = {
-            //   method: 'POST',
-            //   url: 'cms/core_school/update/1',
-            //   headers: {
-            //     'Authorization': localStorage.getItem('accessToken'),
-            //     'Content-Type': 'multipart/form-data',
-            //     'Access-Control-Allow-Origin': '*'
-            //   },
-            //   data: data
-            // };
-            // console.log(data.get('logo_url'))
-            // let response = await axiosApiInstance(config);
-            // console.table(response);
+            let schoolInfo = JSON.parse(JSON.stringify(this.schoolLocal))
+            this.$store.dispatch('school/updateSchoolInfo', schoolInfo)
           }
       },
-      cancel(event) {
+      cancel() {},
+      selectedFile(event) {
         console.log(event)
       },
       successUpload(event) {
-        console.log(event.response)
+        let response = JSON.parse(event.target.response)
+        if (response.code === 200) {
+          this.schoolLocal.logo_url = response.data
+        }
       }
     }
   }
