@@ -94,8 +94,7 @@
       return {
         schoolLocal: Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId)),
         headersUpload: {
-          'Authorization': localStorage.getItem('accessToken'),
-          'Access-Control-Allow-Credentials': 'true',
+          'Authorization': localStorage.getItem('accessToken')
         },
         configDateTimePicker: {
           enableTime: true,
