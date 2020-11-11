@@ -22,6 +22,7 @@
         </a>
         <vs-dropdown-menu>
           <vs-dropdown-item :schoolId="schoolLocal.id" @click="displayPrompt">Thông tin trường</vs-dropdown-item>
+          <vs-dropdown-item :schoolId="schoolLocal.id"><router-link :to="{ name: 'user-index'}">Xem thông tin lớp học</router-link></vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>

@@ -34,9 +34,8 @@ import axiosApiInstance from "../../axios";
       },
       data: data
     }
-    console.log(config)
     let response = await axiosApiInstance(config)
-    console.log(response)
+    return response
   }
 }
 

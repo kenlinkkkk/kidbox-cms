@@ -14,7 +14,7 @@
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
               <div class="vx-col mb-6">
-                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" v-on:change="selectedFile" automatic fileName="file" limit="1" @on-success="successUpload" />
+                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" :accept="'jpg|png'" :data="file" v-on:change="selectedFile" automatic fileName="file" limit="1" @on-success="successUpload" />
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full">
@@ -96,6 +96,7 @@
         headersUpload: {
           'Authorization': localStorage.getItem('accessToken')
         },
+        file: {},
         configDateTimePicker: {
           enableTime: true,
           time_24hr: true,
@@ -116,6 +117,17 @@
         }
       },
       validateForm() {
+        if (this.schoolLocal.name === '' || this.schoolLocal.address === '') {
+          return false
+        }
+        const regEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (regEmail.test(this.schoolLocal.email) === false) {
+          return false
+        }
+        const phoneNumber = /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
+        if (phoneNumber.test(this.schoolLocal.phone_number) === false) {
+          return false
+        }
         return !this.errors.any()
       }
     },
@@ -124,11 +136,27 @@
         this.schoolLocal = Object.assign({}, this.$store.getters['school/getSchool'](this.schoolId))
       },
       async submitInfo() {
-        let result = await this.$validator.validateAll();
-          if (result) {
-            let schoolInfo = JSON.parse(JSON.stringify(this.schoolLocal))
-            this.$store.dispatch('school/updateSchoolInfo', schoolInfo)
-          }
+        let schoolInfo = JSON.parse(JSON.stringify(this.schoolLocal))
+        this.$store.dispatch('school/updateSchoolInfo', schoolInfo).then((resp) => {
+          this.$store.dispatch('school/getListSchool');
+          this.$vs.notify({
+            title:'Cập nhật thông tin hành công',
+            text: resp.data.message,
+            position: 'top-right',
+            color:'success',
+            iconPack: 'feather',
+            icon:'icon-check'
+          });
+        }).catch((error) => {
+          this.$vs.notify({
+            title:'Lỗi',
+            text: error.message,
+            position: 'top-right',
+            color:'danger',
+            iconPack: 'feather',
+            icon:'icon-x'
+          });
+        })
       },
       cancel() {},
       selectedFile(event) {
