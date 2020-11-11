@@ -12,7 +12,6 @@ import axiosApiInstance from "../../axios";
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
       },
       data: data
     }
@@ -32,7 +31,6 @@ import axiosApiInstance from "../../axios";
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
       },
       data: data
     }
