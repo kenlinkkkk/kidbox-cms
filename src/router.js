@@ -28,11 +28,6 @@ const router = new Router({
             component: () => import('./views/Home.vue'),
           },
           {
-            path: 'page2',
-            name: 'page2',
-            component: () => import('./views/Page2.vue'),
-          },
-          {
             path: 'user',
             name: 'user-index',
             component: () => import('./views/userManager/userManager.vue')
@@ -46,6 +41,11 @@ const router = new Router({
             path: 'school',
             name: 'school-index',
             component: () => import('./views/school/School.vue')
+          },
+          {
+            path: 'class/:schoolId',
+            name: 'class-index',
+            component: () => import('./views/userManager/userManager.vue')
           }
         ],
       },

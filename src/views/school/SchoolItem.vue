@@ -1,15 +1,13 @@
 <template>
   <vx-card>
     <div slot="no-body" class="vx-col md:w-full flex">
-      <template v-if="schoolLocal.logo_url == null">
+      <template v-if="schoolLocal.logoUrl == null">
         <div class="w-1/3">
           <img src="https://kidbox.vn/media/default/no-image.png" alt="content-img" class="logo-custom responsive card-img-left">
         </div>
       </template>
       <template v-else>
-        <div class="logo-custom" :style="{ backgroundImage: 'url(' + schoolLocal.logo_url.path + ')' }">
-<!--          <img :src="schoolLocal.logo_url.path" alt="content-img" class="logo-custom responsive card-img-left">-->
-        </div>
+        <div class="logo-custom" :style="{ backgroundImage: 'url(' + schoolLocal.logoUrl.path + ')' }"></div>
       </template>
       <div class="p-2 w-2/3">
         <h5 class="mb-2">{{ schoolLocal.name }}</h5>
@@ -22,7 +20,7 @@
         </a>
         <vs-dropdown-menu>
           <vs-dropdown-item :schoolId="schoolLocal.id" @click="displayPrompt">Thông tin trường</vs-dropdown-item>
-          <vs-dropdown-item :schoolId="schoolLocal.id"><router-link :to="{ name: 'user-index'}">Xem thông tin lớp học</router-link></vs-dropdown-item>
+          <vs-dropdown-item :schoolId="schoolLocal.id"><router-link :to="{ name: 'class-index', params: {schoolId: schoolLocal.id}}">Xem danh sách lớp học</router-link></vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>
@@ -41,27 +39,27 @@
 </style>
 
 <script>
-export default {
-  props: {
-    schoolId: {
-      type: Number,
-      required: true
-    }
-  },
-  data() {
-    return {
-      schoolLocal: this.$store.getters['school/getSchool'](this.schoolId)
-    }
-  },
-  computed: {
-    activeUserInfo() {
-      return this.$store.state.AppActiveUser
+  export default {
+    props: {
+      schoolId: {
+        type: Number,
+        required: true
+      }
     },
-  },
-  methods: {
-    displayPrompt() {
-      this.$emit('showDisplayPrompt', this.schoolId)
+    data() {
+      return {
+        schoolLocal: this.$store.getters['school/getSchool'](this.schoolId)
+      }
+    },
+    computed: {
+      activeUserInfo() {
+        return this.$store.state.AppActiveUser
+      },
+    },
+    methods: {
+      displayPrompt() {
+        this.$emit('showDisplayPrompt', this.schoolId)
+      }
     }
   }
-}
 </script>

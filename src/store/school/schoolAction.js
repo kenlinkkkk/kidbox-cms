@@ -1,6 +1,6 @@
 import axiosApiInstance from "../../axios";
 
- const actions = {
+const actions = {
   async getListSchool({ commit }) {
     let data = {
       "item_per_page": 20,
@@ -36,6 +36,23 @@ import axiosApiInstance from "../../axios";
     }
     let response = await axiosApiInstance(config)
     return response
+  },
+  async createNewSchool(_, payload) {
+    let data = {
+      ...payload
+    }
+
+    let config = {
+      method: 'POST',
+      url: "/cms/core_school/add",
+      headers: {
+        'Authorization': localStorage.getItem('accessToken'),
+        'Content-Type': 'application/json',
+      },
+      data
+    }
+
+    return axiosApiInstance(config);
   }
 }
 
