@@ -45,7 +45,7 @@ const router = new Router({
           {
             path: 'class/:schoolId',
             name: 'class-index',
-            component: () => import('./views/userManager/userManager.vue')
+            component: () => import('./views/class/classIndex.vue')
           }
         ],
       },

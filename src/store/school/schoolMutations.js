@@ -4,6 +4,7 @@ const mutations = {
       item.logoUrl = item.logo_url
       delete item.logo_url
     })
+
     state.schools = schoolsInfo.filter(function (el) {
       return el !== null
     })
