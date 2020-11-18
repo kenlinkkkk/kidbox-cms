@@ -6,7 +6,11 @@
     <class-info :displayPrompt="displayPrompt" :classId="classIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>
   </div>
 </template>
-
+<style lang="scss">
+  .button-height {
+    height: 10px;
+  }
+</style>
 <script>
   import moduleClass from '@/store/class/classStore.js'
   import ClassItem from './components/classItem'

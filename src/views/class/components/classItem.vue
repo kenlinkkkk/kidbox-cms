@@ -20,6 +20,7 @@
         <vs-dropdown-menu>
           <vs-dropdown-item :classId="classLocal.id" @click="displayPrompt">Thông tin lớp</vs-dropdown-item>
           <vs-dropdown-item :classId="classLocal.id" @click="closeClassAction">Đóng lớp</vs-dropdown-item>
+          <vs-dropdown-item :classId="classLocal.id">Thêm thực đơn</vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>

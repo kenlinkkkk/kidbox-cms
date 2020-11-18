@@ -1,6 +1,6 @@
 import actions from './userAction.js'
 
 export default {
-  namespace: true,
+  namespaced: true,
   actions
 }

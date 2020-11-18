@@ -8,7 +8,7 @@ const actions = {
     }
     let config = {
       method: "POST",
-      url: "/cms/core_school/list",
+      url: "/cms/core-school/list",
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const actions = {
 
     let config = {
       method: 'POST',
-      url: "cms/core_school/update/" + data.id,
+      url: "cms/core-school/update/" + data.id,
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const actions = {
 
     let config = {
       method: 'POST',
-      url: "/cms/core_school/add",
+      url: "/cms/core-school/add",
       headers: {
         'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',

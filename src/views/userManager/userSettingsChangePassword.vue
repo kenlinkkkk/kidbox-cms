@@ -32,7 +32,7 @@
           'confirm_new_password': this.confirm_new_password
         }
 
-        let response = await this.$store.dispatch('changePassword', payload)
+        let response = await this.$store.dispatch('user/changePassword', payload)
         if (response.data.code  === 400) {
           this.$vs.notify({
             title: 'Lỗi',
