@@ -36,8 +36,7 @@ const actions = {
       data: data
     }
 
-    let response = await axiosApiInstance(config)
-    console.log(response)
+    return axiosApiInstance(config)
   },
   async getClassInfoById(_, classId) {
     let config = {

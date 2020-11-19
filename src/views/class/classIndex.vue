@@ -4,6 +4,9 @@
       <class-item :classId="item.id" :key="String(item.id) + String(index)" @showDisplayPrompt="showDisplayPrompt($event)"/>
     </div>
     <class-info :displayPrompt="displayPrompt" :classId="classIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>
+    <div class="vx-col w-full md:w-1/4 mb-base inline-flex">
+      <class-add-new :schoolId="getSchoolId()"/>
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -15,6 +18,7 @@
   import moduleClass from '@/store/class/classStore.js'
   import ClassItem from './components/classItem'
   import ClassInfo from './components/classInfo'
+  import ClassAddNew from './components/classAddNew'
   export default {
     data() {
       return {
@@ -23,7 +27,7 @@
       }
     },
     components: {
-      ClassItem, ClassInfo
+      ClassItem, ClassInfo, ClassAddNew
     },
     computed: {
       listClasses() {
@@ -37,6 +41,10 @@
       },
       hiddenPrompt() {
         this.displayPrompt = false;
+      },
+      getSchoolId() {
+        let data = this.$route.params;
+        return Number.parseInt(data.schoolId)
       }
     },
     created() {
