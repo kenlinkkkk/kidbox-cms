@@ -24,6 +24,7 @@
       return {
         displayPrompt: false,
         classIdToEdit: 0,
+        classStatus: 1,
       }
     },
     components: {

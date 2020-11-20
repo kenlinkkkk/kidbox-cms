@@ -56,6 +56,7 @@
       async closeClassAction() {
         let response = await this.$store.dispatch('class/closeClass', this.classId)
         if (response.status === 200) {
+          this.$store.dispatch('class/getClassBySchoolId', this.$route.params)
           this.$vs.notify({
             title:'Đóng lớp thành công',
             position: 'top-right',
