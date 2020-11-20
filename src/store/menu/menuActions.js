@@ -10,7 +10,6 @@ const actions = {
       method: "POST",
       url: "/cms/menu/add",
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -23,7 +22,6 @@ const actions = {
       method: "POST",
       url: "/cms/menu/delete/" + payload,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       }
     }
@@ -39,7 +37,6 @@ const actions = {
       method: "POST",
       url: "/cms/menu/get-by-date",
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -56,7 +53,6 @@ const actions = {
       method: "POST",
       url: "/cms/menu/update/" + payload.id,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data

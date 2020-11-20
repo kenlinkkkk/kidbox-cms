@@ -40,10 +40,10 @@ const router = new Router({
           {
             path: 'school',
             name: 'school-index',
-            component: () => import('./views/school/School.vue')
+            component: () => import('./views/school/School.vue'),
           },
           {
-            path: 'class/:schoolId',
+            path: 'school/:schoolId',
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue')
           }

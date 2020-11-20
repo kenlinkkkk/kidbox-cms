@@ -10,7 +10,6 @@ const actions = {
       method: "POST",
       url: "/cms/class/list/" + schoolId.schoolId,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -30,7 +29,6 @@ const actions = {
       method: "POST",
       url: "/cms/class/add",
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -43,13 +41,12 @@ const actions = {
       method: "POST",
       url: "/cms/class/" + classId,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       }
     }
 
-    let response = await axiosApiInstance(config);
-    return response
+
+    return axiosApiInstance(config);
   },
   async updateClassInfo(_, payload) {
     let data = {
@@ -59,27 +56,23 @@ const actions = {
       method: "POST",
       url: "/cms/class/update/" + payload.classId,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
     }
 
-    let response = await axiosApiInstance(config)
-    return response
+    return axiosApiInstance(config)
   },
   async closeClass(_, classId) {
     let config = {
       method: "POST",
       url: "/cms/class/close/" + classId,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       }
     }
 
-    let response = await axiosApiInstance(config)
-    return response
+    return axiosApiInstance(config)
   }
 }
 

@@ -8,6 +8,11 @@ const axiosApiInstance = axios.create({
   baseURL: baseURL
 })
 
+axiosApiInstance.interceptors.request.use(function (config) {
+  config.headers.Authorization = localStorage.getItem('accessToken')
+  return config
+})
+
 axiosApiInstance.interceptors.response.use((response) => {
   return response
 }, async function (error) {
