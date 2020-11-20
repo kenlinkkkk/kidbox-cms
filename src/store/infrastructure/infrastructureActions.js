@@ -36,8 +36,37 @@ const actions = {
 
     return axiosApiInstance(config)
   },
+  infrastructureTypeDelete(_, payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/type/delete/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
 
+    return axiosApiInstance(config)
+  },
+  infrastructureTypeUpdate(_, payload) {
+    let data = {
+      ...payload
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/type/update/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data
+    }
+
+    return axiosApiInstance(config)
+  }
   //  end type infrastructure ==========================================================================================
+
+  // infrastructure ====================================================================================================
+  // end infrastructure ================================================================================================
 }
 
 export default actions
