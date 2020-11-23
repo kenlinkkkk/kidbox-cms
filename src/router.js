@@ -46,6 +46,11 @@ const router = new Router({
             path: 'school/:schoolId',
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue')
+          },
+          {
+            path: 'class',
+            name: 'class-menu',
+            component: () => import('./views/class/menu/menuIndex.vue')
           }
         ],
       },

@@ -10,13 +10,17 @@
       classId: {
         type: Number,
         require: true
+      },
+      dateInput: {
+        type: String,
+        require: true,
       }
     },
     data() {
       return {
         class_id: this.classId,
         note: '',
-        date: '',
+        date: this.dateInput,
         inputs: [{
           name: '',
           time: '',

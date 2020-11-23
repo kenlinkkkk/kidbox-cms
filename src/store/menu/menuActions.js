@@ -35,7 +35,7 @@ const actions = {
 
     let config = {
       method: "POST",
-      url: "/cms/menu/get-by-date",
+      url: "/cms/menu/get-in-week",
       headers: {
         'Content-Type': 'application/json',
       },
