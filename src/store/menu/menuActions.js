@@ -28,9 +28,11 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  async getMenuByDate(_, payload) {
+  async getMenuInWeekByDate({ commit }, payload) {
     let data = {
-      ...payload
+      // class_id: payload.classId,
+      class_id: 1,
+      date: payload.date.toISOString().split('T')[0]
     }
 
     let config = {
@@ -41,8 +43,11 @@ const actions = {
       },
       data: data
     }
-
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      commit('SET_LIST_MENU_BY_WEEK', response.data.data)
+    }
+    return response
   },
   async updateMenu(_, payload) {
     let data = {

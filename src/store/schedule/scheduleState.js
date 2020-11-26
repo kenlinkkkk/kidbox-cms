@@ -1,5 +1,5 @@
 const state = () => ({
-  menuWeek: []
+  schedules: []
 })
 
 export default state
