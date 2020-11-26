@@ -20,7 +20,7 @@
             <h5 class="mb-4">Thực đơn</h5>
             <vs-button size="small" icon-pack="feather" icon="icon-plus">Thêm mới</vs-button>
           </div>
-          <div class="vx-row pl-3 " v-for="(item, index) in this.menuLocal.menu" :key="index">
+          <div class="vx-row pl-3 " v-for="(item, index) in menuLocal.menu" :key="index">
             <div class="flex justify-between items-center">
               <div class="vx-col">
                 <vs-avatar size="50px" :src="item.image_url.path"/>
@@ -29,14 +29,6 @@
                 <h6>Giờ: {{ item.time }}</h6>
                 <h6>Món: {{ item.name }}</h6>
               </div>
-            </div>
-          </div>
-          <div class="vx-row pl-3">
-            <div class="vx-col w-full">
-              <h6>Ghi chú</h6>
-            </div>
-            <div class="vx-col w-full">
-              <p>{{ this.menuLocal.note }}</p>
             </div>
           </div>
         </div>
@@ -72,11 +64,11 @@
         langVi: vi,
         formatDate: 'yyyy-MM-dd',
         inputQuery: {
-          classId: '',
+          classId: this.$route.params.classId,
           date: new Date()
         },
-        menuLocal: '',
-        scheduleLocal: ''
+        menuLocal: [],
+        scheduleLocal: []
       }
     },
     computed: {

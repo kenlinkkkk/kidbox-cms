@@ -48,7 +48,7 @@ const router = new Router({
             component: () => import('./views/class/classIndex.vue')
           },
           {
-            path: 'class',
+            path: 'school/class/:classId',
             name: 'class-menu',
             component: () => import('./views/class/menu/menuIndex.vue')
           }

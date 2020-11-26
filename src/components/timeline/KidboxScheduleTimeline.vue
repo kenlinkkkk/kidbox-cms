@@ -1,8 +1,8 @@
 <template>
   <ul class="vx-timeline">
-    <li v-for="item in data" :key="item.title">
+    <li v-for="item in data" :key="item.id">
       <div class="timeline-icon bg-primary">
-        <feather-icon icon="CheckIcon" svgClasses="text-white stroke-current w-4 h-4" />
+        <feather-icon icon="CheckIcon" svgClasses="text-white stroke-current w-5 h-5" />
       </div>
       <div class="timeline-info">
         <p class="font-semibold">{{ item.name }} - {{ item.start_time }} - {{ item.end_time }}</p>
@@ -20,7 +20,7 @@
     props: {
       data: {
         type: Array,
-        required: true
+        required: false
       }
     }
   }
