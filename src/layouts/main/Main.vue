@@ -150,7 +150,7 @@ export default {
       this.routeTitle = this.$route.meta.pageTitle
     },
     isThemeDark(val) {
-      const color = this.navbarColor == "#fff" && val ? "#10163a" : "#fff"
+      const color = this.navbarColor === "#fff" && val ? "#10163a" : "#fff"
       this.updateNavbarColor(color)
     },
     "$store.state.mainLayoutType"(val) {
@@ -161,8 +161,8 @@ export default {
     bodyOverlay() { return this.$store.state.bodyOverlay },
     contentAreaClass() {
       if(this.mainLayoutType === "vertical") {
-        if      (this.verticalNavMenuWidth == "default") return "content-area-reduced"
-        else if (this.verticalNavMenuWidth == "reduced") return "content-area-lg"
+        if      (this.verticalNavMenuWidth === "default") return "content-area-reduced"
+        else if (this.verticalNavMenuWidth === "reduced") return "content-area-lg"
         else return "content-area-full"
       }
       // else if(this.mainLayoutType === "boxed") return "content-area-reduced"
@@ -170,23 +170,23 @@ export default {
     },
     footerClasses() {
       return {
-        'footer-hidden': this.footerType == 'hidden',
-        'footer-sticky': this.footerType == 'sticky',
-        'footer-static': this.footerType == 'static',
+        'footer-hidden': this.footerType === 'hidden',
+        'footer-sticky': this.footerType === 'sticky',
+        'footer-static': this.footerType === 'static',
       }
     },
     isAppPage() {
       return this.$route.meta.no_scroll
     },
-    isThemeDark()     { return this.$store.state.theme == 'dark' },
+    isThemeDark()     { return this.$store.state.theme === 'dark' },
     layoutTypeClass() { return `main-${this.mainLayoutType}` },
     mainLayoutType()  { return this.$store.state.mainLayoutType  },
     navbarClasses()   {
       return {
-        'navbar-hidden'   : this.navbarType == 'hidden',
-        'navbar-sticky'   : this.navbarType == 'sticky',
-        'navbar-static'   : this.navbarType == 'static',
-        'navbar-floating' : this.navbarType == 'floating',
+        'navbar-hidden'   : this.navbarType === 'hidden',
+        'navbar-sticky'   : this.navbarType === 'sticky',
+        'navbar-static'   : this.navbarType === 'static',
+        'navbar-floating' : this.navbarType === 'floating',
       }
     },
     verticalNavMenuWidth() { return this.$store.state.verticalNavMenuWidth },
@@ -198,7 +198,7 @@ export default {
     },
     updateNavbarColor(val) {
       this.navbarColor = val
-      if (val == "#fff") this.isNavbarDark = false
+      if (val === "#fff") this.isNavbarDark = false
       else this.isNavbarDark = true
     },
     setNavMenuVisibility(layoutType) {
