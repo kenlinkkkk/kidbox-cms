@@ -3,8 +3,8 @@ import axiosApiInstance from "../../axios";
 const actions = {
   async getScheduleInWeek({ commit }, payload) {
     let data = {
-      // class_id: payload.classId,
-      class_id: 1,
+      class_id: payload.classId,
+      // class_id: 1,
       date: payload.date.toISOString().split('T')[0]
     }
 

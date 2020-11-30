@@ -19,7 +19,7 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  infrastructureTypeList(_, payload) {
+  async infrastructureTypeList({ commit }, payload) {
     let data = {
       page: payload.page,
       limit: payload.limit
@@ -33,8 +33,11 @@ const actions = {
       },
       data: data
     }
-
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      commit('SET_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+    }
+    return response
   },
   infrastructureTypeDelete(_, payload) {
     let config = {
@@ -62,10 +65,74 @@ const actions = {
     }
 
     return axiosApiInstance(config)
-  }
+  },
   //  end type infrastructure ==========================================================================================
 
   // infrastructure ====================================================================================================
+  async getListInfrastructure({ commit },  payload) {
+    let data = {
+      ...payload
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/list",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      commit('SET_LIST_INFRASTRUCTURE', response.data.data)
+    }
+
+    return response
+  },
+  getInfrastructureById(payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    return axiosApiInstance(config)
+  },
+  updateInfrastructureById(payload) {
+    let data = {
+      ...payload
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/update/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+
+    return axiosApiInstance(config)
+  },
+  addInfrastructure(payload) {
+    let data = {
+      ...payload
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/add",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+
+    return axiosApiInstance(config)
+  }
   // end infrastructure ================================================================================================
 }
 

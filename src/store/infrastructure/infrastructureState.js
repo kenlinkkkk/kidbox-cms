@@ -1,5 +1,6 @@
 const state = () => ({
-  listClasses: []
+  infrastructures: [],
+  infrastructureTypes: []
 })
 
 export default state
