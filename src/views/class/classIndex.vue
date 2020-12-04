@@ -50,7 +50,19 @@
     },
     created() {
       this.$store.registerModule('class', moduleClass);
-      this.$store.dispatch('class/getClassBySchoolId', this.$route.params);
+      let schoolId;
+      if (this.$route.query) {
+        schoolId = {
+          schoolId: this.$route.query.c
+        }
+      } else {
+        schoolId = {
+          schoolId : this.$store.state.AppActiveUser.schoolId
+        };
+      }
+      if (schoolId.schoolId) {
+        this.$store.dispatch('class/getClassBySchoolId', schoolId);
+      }
     },
     beforeDestroy() {
       this.$store.unregisterModule('class');

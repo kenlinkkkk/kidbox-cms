@@ -43,13 +43,13 @@ const router = new Router({
             component: () => import('./views/school/School.vue'),
           },
           {
-            path: 'school/:schoolId',
+            path: 'class',
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue')
           },
           {
-            path: 'school/class/:classId',
-            name: 'class-menu',
+            path: 'schedule',
+            name: 'class-menu-schedule',
             component: () => import('./views/class/menu/menuIndex.vue')
           }
         ],

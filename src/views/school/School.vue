@@ -1,6 +1,6 @@
 <template>
   <div class="vx-row">
-    <div class="vx-col w-full md:w-1/4 mb-base inline-flex" v-for="(school, index) in schools" :key="String(school.id) + String(school.name) + String(index)">
+    <div class="vx-col w-full md:w-1/4 mb-base inline-flex flex-wrap" v-for="(school, index) in schools" :key="String(school.id) + String(school.name) + String(index)">
       <school-item :schoolId="school.id" :key="String(school.id) + String(index)" @showDisplayPrompt="showDisplayPrompt($event)"/>
     </div>
     <school-info :displayPrompt="displayPrompt" :schoolId="schoolIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>

@@ -22,6 +22,18 @@ export default [
     icon: "HomeIcon",
   },
   {
+    url: "/admin/class",
+    name: "Quản lý lớp học",
+    slug: "class",
+    icon: "HomeIcon"
+  },
+  {
+    url: "/admin/schedule",
+    name: "Quản lý thực đơn",
+    slug: "class",
+    icon: "MenuIcon"
+  },
+  {
     url: "/admin/user",
     name: "Quản lý tài khoản",
     slug: "user",
