@@ -20,7 +20,7 @@
         <vs-dropdown-menu>
           <vs-dropdown-item :classId="classLocal.id" @click="displayPrompt">Thông tin lớp</vs-dropdown-item>
           <vs-dropdown-item :classId="classLocal.id" @click="closeClassAction">Đóng lớp</vs-dropdown-item>
-          <vs-dropdown-item :classId="classLocal.id"><router-link :to="{ name: 'class-menu', query: {classId: classLocal.id}}">Thực đơn và lịch học</router-link></vs-dropdown-item>
+          <vs-dropdown-item :classId="classLocal.id"><router-link :to="{ name: 'class-menu-schedule', query: {c: classLocal.id}}">Thực đơn và lịch học</router-link></vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>

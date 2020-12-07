@@ -48,7 +48,7 @@ const router = new Router({
             component: () => import('./views/class/classIndex.vue')
           },
           {
-            path: 'schedule',
+            path: 'menu',
             name: 'class-menu-schedule',
             component: () => import('./views/class/menu/menuIndex.vue')
           }

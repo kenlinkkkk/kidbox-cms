@@ -1,5 +1,5 @@
 const mutations = {
-  SET_LIST_MENU_BY_WEEK(state, menu) {
+  SET_LIST_IN_DATE(state, menu) {
     state.menuWeek = menu
   }
 }

@@ -28,10 +28,16 @@ export default [
     icon: "HomeIcon"
   },
   {
-    url: "/admin/schedule",
+    url: "/admin/menu",
     name: "Quản lý thực đơn",
     slug: "class",
     icon: "MenuIcon"
+  },
+  {
+    url: "/admin/schedule",
+    name: "Quản lý lịch học",
+    slug: "class",
+    icon: "CalendarIcon"
   },
   {
     url: "/admin/user",

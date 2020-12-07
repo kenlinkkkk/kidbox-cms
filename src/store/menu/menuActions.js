@@ -28,16 +28,15 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  async getMenuInWeekByDate({ commit }, payload) {
+  async getMenuByDate({ commit }, payload) {
     let data = {
       class_id: payload.classId,
-      // class_id: 1,
       date: payload.date.toISOString().split('T')[0]
     }
 
     let config = {
       method: "POST",
-      url: "/cms/menu/get-in-week",
+      url: "/cms/menu/get-by-date",
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,7 +44,7 @@ const actions = {
     }
     let response = await axiosApiInstance(config)
     if (response.status === 200) {
-      commit('SET_LIST_MENU_BY_WEEK', response.data.data)
+      commit('SET_LIST_IN_DATE', response.data.data)
     }
     return response
   },
