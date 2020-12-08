@@ -46,7 +46,45 @@ const router = new Router({
             path: 'class/:schoolId',
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue')
+          },
+          {
+            path: 'subpackage',
+            name: 'subpackage-index',
+            component: () => import('./views/subpackage/subPackageIndex.vue'),
+            // meta: {
+            //   breadcrumb: [
+            //     { title: 'Trang chủ', url: '/' },
+            //     { title: 'Gói cước'},
+            //     { title: 'Danh sách', active: true }
+            //   ],
+            //   pageTitle: 'Danh sách gói cước',
+            //   rule: 'editor'
+            // }
+          },
+          {
+            path: 'promotion',
+            name: 'promotion-index',
+            component: () => import('./views/promotion/promotionIndex.vue'),
+          },
+          {
+            path: 'chargelog',
+            name: 'chargelog-index',
+            component: () => import('./views/chargelog/chargeLogIndex.vue'),
+          },
+          {
+            path: 'rate',
+            name: 'rate-index',
+            redirect: 'rate/all',
+          },
+          {
+          path: 'rate/:ruleId',
+          component: () => import('./views/rate/rateIndex.vue'),
+          meta: {
+            rule: 'editor',
+            parent: 'rate-index',
+            no_scroll: true
           }
+        },
         ],
       },
       {

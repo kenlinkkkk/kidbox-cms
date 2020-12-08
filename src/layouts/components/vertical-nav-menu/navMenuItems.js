@@ -27,4 +27,28 @@ export default [
     slug: "user",
     icon: "UserIcon",
   },
+  {
+    url: "/admin/rate",
+    name: "Quản lý đánh giá",
+    slug: "rate",
+    icon: "HomeIcon",
+  },
+  {
+    url: "/admin/subpackage",
+    name: "Quản lý gói cước",
+    slug: "subpackage",
+    icon: "HomeIcon",
+  },
+  {
+    url: "/admin/promotion",
+    name: "Quản lý khuyến mãi",
+    slug: "promotion",
+    icon: "HomeIcon",
+  },
+  {
+    url: "/admin/chargelog",
+    name: "Quản lý thanh toán",
+    slug: "chargelog",
+    icon: "HomeIcon",
+  },
 ]
