@@ -3,7 +3,7 @@
     <vs-button @click="activePrompt = true" class="w-full">Tạo mới lớp học</vs-button>
     <vs-prompt
       title="Tạo mới trường học"
-      accept-text="Cập nhật"
+      accept-text="Thêm mới"
       cancel-text="Hủy"
       button-cancel="border"
       @cancel="clearFields"
@@ -20,7 +20,7 @@
               </div>
               <div class="vx-row mb-6">
                 <div class="vx-col w-full">
-                  <vs-input class="w-full" icon-pack="feather" icon="icon-home" icon-no-border label="Tên lớp" v-model="clasInfo.name"/>
+                  <vs-input class="w-full" icon-pack="feather" icon="icon-home" icon-no-border label="Tên lớp" v-model="classInfo.name"/>
                 </div>
               </div>
               <div class="vx-row mb-6">
@@ -62,7 +62,8 @@
           name: '',
           room: '',
           note: '',
-          logo_url: ''
+          logo_url: '',
+          school_id: this.schoolId
         },
         headersUpload: {
           'Authorization': localStorage.getItem('accessToken')
@@ -80,7 +81,6 @@
     methods: {
       async addClass() {
         this.$store.dispatch('class/addNewClass', Object.assign({}, this.classInfo)).then((resp) => {
-          this.clearFields();
           this.$store.dispatch('class/getClassBySchoolId', this.$route.params);
           this.$vs.notify({
             title:'Cập nhật thông tin hành công',
@@ -90,6 +90,7 @@
             iconPack: 'feather',
             icon:'icon-check'
           });
+          this.clearFields();
         }).catch((error) => {
           this.$vs.notify({
             title:'Lỗi',
@@ -102,7 +103,7 @@
         })
       },
       clearFields() {
-        Object.assign(this.schoolInfo, {
+        Object.assign(this.classInfo, {
           name: '',
           room: '',
           note: '',

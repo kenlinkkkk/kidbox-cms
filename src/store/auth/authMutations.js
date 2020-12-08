@@ -8,6 +8,11 @@ const mutations = {
     if (response) {
       state.userInfo = response
     }
+  },
+  SET_SCHOOL_ID(state, response) {
+    if (response) {
+      state.AppActiveUser.schoolId = response
+    }
   }
 }
 

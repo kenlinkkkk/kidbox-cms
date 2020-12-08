@@ -20,7 +20,7 @@
         <vs-dropdown-menu>
           <vs-dropdown-item :classId="classLocal.id" @click="displayPrompt">Thông tin lớp</vs-dropdown-item>
           <vs-dropdown-item :classId="classLocal.id" @click="closeClassAction">Đóng lớp</vs-dropdown-item>
-          <vs-dropdown-item :classId="classLocal.id">Thêm thực đơn</vs-dropdown-item>
+          <vs-dropdown-item :classId="classLocal.id"><router-link :to="{ name: 'class-menu-schedule', query: {c: classLocal.id}}">Thực đơn và lịch học</router-link></vs-dropdown-item>
         </vs-dropdown-menu>
       </vs-dropdown>
     </div>
@@ -56,6 +56,7 @@
       async closeClassAction() {
         let response = await this.$store.dispatch('class/closeClass', this.classId)
         if (response.status === 200) {
+          this.$store.dispatch('class/getClassBySchoolId', this.$route.params)
           this.$vs.notify({
             title:'Đóng lớp thành công',
             position: 'top-right',

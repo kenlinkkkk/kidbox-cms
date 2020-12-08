@@ -10,7 +10,6 @@ const actions = {
       method: "POST",
       url: "/cms/core-school/list",
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -29,7 +28,6 @@ const actions = {
       method: 'POST',
       url: "cms/core-school/update/" + data.id,
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data: data
@@ -46,7 +44,6 @@ const actions = {
       method: 'POST',
       url: "/cms/core-school/add",
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json',
       },
       data

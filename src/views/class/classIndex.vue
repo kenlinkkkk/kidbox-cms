@@ -4,6 +4,9 @@
       <class-item :classId="item.id" :key="String(item.id) + String(index)" @showDisplayPrompt="showDisplayPrompt($event)"/>
     </div>
     <class-info :displayPrompt="displayPrompt" :classId="classIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>
+    <div class="vx-col w-full md:w-1/4 mb-base inline-flex">
+      <class-add-new :schoolId="getSchoolId()"/>
+    </div>
   </div>
 </template>
 <style lang="scss">
@@ -15,15 +18,17 @@
   import moduleClass from '@/store/class/classStore.js'
   import ClassItem from './components/classItem'
   import ClassInfo from './components/classInfo'
+  import ClassAddNew from './components/classAddNew'
   export default {
     data() {
       return {
         displayPrompt: false,
         classIdToEdit: 0,
+        classStatus: 1,
       }
     },
     components: {
-      ClassItem, ClassInfo
+      ClassItem, ClassInfo, ClassAddNew
     },
     computed: {
       listClasses() {
@@ -37,11 +42,27 @@
       },
       hiddenPrompt() {
         this.displayPrompt = false;
+      },
+      getSchoolId() {
+        let data = this.$route.params;
+        return Number.parseInt(data.schoolId)
       }
     },
     created() {
       this.$store.registerModule('class', moduleClass);
-      this.$store.dispatch('class/getClassBySchoolId', this.$route.params);
+      let schoolId;
+      if (this.$route.query) {
+        schoolId = {
+          schoolId: this.$route.query.c
+        }
+      } else {
+        schoolId = {
+          schoolId : this.$store.state.AppActiveUser.schoolId
+        };
+      }
+      if (schoolId.schoolId) {
+        this.$store.dispatch('class/getClassBySchoolId', schoolId);
+      }
     },
     beforeDestroy() {
       this.$store.unregisterModule('class');

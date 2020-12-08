@@ -47,7 +47,6 @@ export default {
       url: 'o/token/' +
         '',
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       data: data

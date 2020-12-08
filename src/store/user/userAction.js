@@ -13,7 +13,6 @@ export default {
       method: 'POST',
       url: '/api/res_user/change_password',
       headers: {
-        'Authorization': localStorage.getItem('accessToken'),
         'Content-Type': 'application/json'
       },
       data
