@@ -90,6 +90,7 @@
     data () {
       return {
         currentx: 1,
+        limit : 10,
         selected: [],
         // products: [],
         isMounted: false,
@@ -113,7 +114,7 @@
     },
     methods: {
       changePage(){
-        this.$store.dispatch('subpackage/getListSubPackages', this.currentx);
+        this.$store.dispatch('subpackage/getListSubPackages', {"limit": this.limit, "page": this.currentx});
       },
       addNewData () {
         this.sidebarData = {}
@@ -122,7 +123,7 @@
       deleteData (id) {
         this.$store.dispatch('subpackage/deactiveSubPackage', id).then((resp) => {
 
-          this.$store.dispatch('subpackage/getListSubPackages', this.currentx);
+          this.$store.dispatch('subpackage/getListSubPackages', {"limit": this.limit, "page": this.currentx});
 
           this.$vs.notify({
             title:'Xóa thành công',

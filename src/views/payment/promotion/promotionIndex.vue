@@ -96,6 +96,7 @@
     data () {
       return {
         currentx: 1,
+        limit: 10,
         selected: [],
         // products: [],
         isMounted: false,
@@ -118,7 +119,7 @@
     },
     methods: {
       changePage(){
-        this.$store.dispatch('promotion/getPromotions', this.currentx);
+        this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx});
       },
       addNewData () {
         this.sidebarData = {}
@@ -127,7 +128,7 @@
       deleteData (id) {
         this.$store.dispatch('promotion/deactivePromotion', id).then((resp) => {
 
-          this.$store.dispatch('promotion/getPromotions', this.currentx);
+          this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx});
 
           this.$vs.notify({
             title:'Xóa thành công',

@@ -172,7 +172,7 @@
             if (this.dataId !== null && this.dataId >= 0) {
               this.$store.dispatch('chargelog/updateChargeLog', obj).then((resp) => {
 
-                this.$store.dispatch('chargelog/getListChargeLogs', this.page);
+                this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
 
                 this.$vs.notify({
                   title:'Cập nhật thông tin thành công',
@@ -196,7 +196,7 @@
               delete obj.id
               this.$store.dispatch('chargelog/createNewChargeLog', obj).then((resp) => {
                 this.page = 1
-                this.$store.dispatch('chargelog/getListChargeLogs', this.page);
+                this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
 
                 this.$vs.notify({
                   title:'Thêm mới thành công',

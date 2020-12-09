@@ -53,21 +53,40 @@ export default [
     icon: "HomeIcon",
   },
   {
-    url: "/admin/subpackage",
-    name: "Quản lý gói cước",
-    slug: "subpackage",
-    icon: "HomeIcon",
-  },
-  {
-    url: "/admin/promotion",
-    name: "Quản lý khuyến mãi",
-    slug: "promotion",
-    icon: "HomeIcon",
-  },
-  {
-    url: "/admin/chargelog",
+    url: null,
     name: "Quản lý thanh toán",
-    slug: "chargelog",
-    icon: "HomeIcon",
+    icon: 'DollarSignIcon',
+    i18n: 'Dashboard',
+    submenu: [
+      {
+        url: "/admin/subpackage",
+        name: "Gói cước",
+        slug: "subpackage",
+      },
+      {
+        url: "/admin/promotion",
+        name: "Khuyến mãi",
+        slug: "promotion",
+      },
+      {
+        url: "/admin/chargelog",
+        name: "Lịch sử thanh toán",
+        slug: "chargelog",
+      },
+    ]
+  },
+
+  {
+    url: null,
+    name: "Quản lý thông báo",
+    slug: "notification",
+    icon: "BellIcon",
+    submenu: [
+      {
+        url: "/admin/notification",
+        name: "Lịch sử thông báo",
+        slug: "subpackage",
+      }
+    ]
   },
 ]

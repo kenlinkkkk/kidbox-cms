@@ -11,7 +11,7 @@
 <template>
   <vs-sidebar click-not-close position-right parent="body" default-index="1" color="primary" class="add-new-data-sidebar items-no-padding" spacer v-model="isSidebarActiveLocal">
     <div class="mt-6 flex items-center justify-between px-6">
-      <h4>{{ Object.entries(this.data).length === 0 ? "Thêm mới" : "Cập nhật" }} khuyến mãi</h4>
+      <h4>{{ Object.entries(this.data).length === 0 ? "Thêm mới" : "Cập nhật" }} gói cước</h4>
       <feather-icon icon="XIcon" @click.stop="isSidebarActiveLocal = false" class="cursor-pointer"></feather-icon>
     </div>
     <vs-divider class="mb-0"></vs-divider>
@@ -25,27 +25,28 @@
         <vs-input label="Tên" v-model="dataName" class="mt-5 w-full" name="item-name" v-validate="'required'" />
         <span class="text-danger text-sm" v-show="errors.has('item-name')">{{ errors.first('item-name') }}</span>
 
-        <!-- start-time -->
-        <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
-        <label class="vs-input--label">Thời gian bắt đầu</label>
-        <flat-pickr :config="configFromdateTimePicker" v-model="dataStartTime" @on-change="onFromChange" v-validate="'required'"  name="item-start-time" class="vs-inputx vs-input--input normal hasValue"/>
-        <span class="text-danger text-sm" v-show="errors.has('item-start-time')">{{ errors.first('item-start-time') }}</span>
-        </div>
+        <!-- Description -->
+        <vs-input label="Mô tả" v-model="dataDescription" class="mt-5 w-full" name="item-description"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-description')">{{ errors.first('item-description') }}</span>
 
-        <!-- end-time -->
-        <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
-        <label class="vs-input--label">Thời gian kết thúc</label>
-        <flat-pickr :config="configTodateTimePicker" v-model="dataEndTime" @on-change="onToChange" v-validate="'required'"  name="item-end-time" class="vs-inputx vs-input--input normal hasValue"/>
-        <span class="text-danger text-sm" v-show="errors.has('item-end-time')">{{ errors.first('item-end-time') }}</span>
-        </div>
+        <!-- PRICE -->
+        <vs-input
+          icon-pack="feather"
+          icon="icon-dollar-sign"
+          label="Giá cước"
+          v-model="dataPrice"
+          class="mt-5 w-full"
+          v-validate="{ required: true, regex: /\d+(\.\d+)?$/ }"
+          name="item-price" />
+        <span class="text-danger text-sm" v-show="errors.has('item-price')">{{ errors.first('item-price') }}</span>
 
-        <!-- cycle -->
-        <vs-input label="Chu kỳ" v-model="dataCycle" class="mt-5 w-full" name="item-cycle" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
-        <span class="text-danger text-sm" v-show="errors.has('item-cycle')">{{ errors.first('item-cycle') }}</span>
+        <!-- DURATION -->
+        <vs-input label="Thời hạn" v-model="dataDuration" class="mt-5 w-full" name="item-duration" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-duration')">{{ errors.first('item-duration') }}</span>
 
-        <!-- discount -->
-        <vs-input label="Chiết khấu" v-model="dataDiscount" class="mt-5 w-full" name="item-discount" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
-        <span class="text-danger text-sm" v-show="errors.has('item-discount')">{{ errors.first('item-discount') }}</span>
+        <!-- Number  of user -->
+        <vs-input label="Số lượng người dùng" v-model="dataNumberOfUser" class="mt-5 w-full" name="item-numberofuser" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-numberofuser')">{{ errors.first('item-numberofuser') }}</span>
 
         <!-- Note -->
         <vs-input label="Ghi chú" v-model="dataNote" class="mt-5 w-full" name="item-note"/>
@@ -69,8 +70,6 @@
 
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
-  import flatPickr from 'vue-flatpickr-component';
-  import 'flatpickr/dist/flatpickr.css';
 
   export default {
     props: {
@@ -84,20 +83,19 @@
       }
     },
     components: {
-      VuePerfectScrollbar,
-      flatPickr
+      VuePerfectScrollbar
     },
     data () {
       return {
         page: 1,
         dataId: null,
         dataName: '',
-        dataStartTime: '',
-        dataEndTime: '',
-        dataCycle: 0,
+        dataDescription: '',
+        dataDuration: 0,
+        dataNumberOfUser: 0,
         dataStatus: 1,
         dataNote: '',
-        dataDiscount: 0,
+        dataPrice: 0,
 
         status_choices: [
           {text:'Kích hoạt', value:1},
@@ -107,17 +105,6 @@
         settings: { // perfectscrollbar settings
           maxScrollbarLength: 60,
           wheelSpeed: .60
-        },
-        configFromdateTimePicker: {
-          minDate: null,
-          maxDate: null,
-          enableTime: true,
-          dateFormat: 'Y-m-d H:i:S'
-        },
-        configTodateTimePicker: {
-          minDate: null,
-          enableTime: true,
-          dateFormat: 'Y-m-d H:i:S'
         }
       }
     },
@@ -128,13 +115,13 @@
           this.initValues()
           this.$validator.reset()
         } else {
-          const { id, name, start_time, end_time, cycle, discount, status, note } = JSON.parse(JSON.stringify(this.data))
+          const { id, name, description, duration, number_of_user, price, status, note } = JSON.parse(JSON.stringify(this.data))
           this.dataId = id
           this.dataName = name
-          this.dataStartTime = start_time
-          this.dataEndTime = end_time
-          this.dataCycle = cycle
-          this.dataDiscount = discount
+          this.dataDescription = description
+          this.dataDuration = duration
+          this.dataNumberOfUser = number_of_user
+          this.dataPrice = price
           this.dataStatus = status
           this.dataNote = note
           this.initValues()
@@ -156,26 +143,20 @@
         }
       },
       isFormValid () {
-        return !this.errors.any() && this.dataName && this.dataStartTime  && this.dataCycle > 0  && this.dataDiscount > 0 && this.dataEndTime
+        return !this.errors.any() && this.dataName && this.dataDuration > 0 && this.dataPrice > 0  && this.dataNumberOfUser > 0
       },
       scrollbarTag () { return this.$store.getters.scrollbarTag }
     },
     methods: {
-      onFromChange(selectedDates, dateStr) {
-        this.$set(this.configTodateTimePicker, 'minDate', dateStr);
-      },
-      onToChange(selectedDates, dateStr) {
-        this.$set(this.configFromdateTimePicker, 'maxDate', dateStr);
-      },
       initValues () {
         if (this.data.id) return
           this.dataId= null
           this.dataName= ''
-          this.dataStartTime= ''
-          this.dataEndTime= ''
-          this.dataCycle= 0
+          this.dataDescription= ''
+          this.dataDuration= 0
+          this.dataNumberOfUser= 0
           this.dataStatus= 1
-          this.dataDiscount= 0
+          this.dataPrice= 0
           this.dataNote = ''
       },
       submitData () {
@@ -184,18 +165,18 @@
             const obj = {
               id: this.dataId,
               name: this.dataName,
-              startTime: this.dataStartTime,
-              endTime: this.dataEndTime,
-              cycle: this.dataCycle,
-              discount: this.dataDiscount,
-              note: this.dataNote,
-              status: this.dataStatus
+              description: this.dataDescription,
+              duration: this.dataDuration,
+              numberOfUser: this.dataNumberOfUser,
+              price: this.dataPrice,
+              status: this.dataStatus,
+              note: this.dataNote
             }
 
             if (this.dataId !== null && this.dataId >= 0) {
-              this.$store.dispatch('promotion/updatePromotion', obj).then((resp) => {
+              this.$store.dispatch('subpackage/updateSubPackage', obj).then((resp) => {
 
-                this.$store.dispatch('promotion/getPromotions', this.page);
+                this.$store.dispatch('subpackage/getListSubPackages', {"limit": this.limit, "page": this.currentx});
 
                 this.$vs.notify({
                   title:'Cập nhật thông tin thành công',
@@ -217,9 +198,9 @@
               })
             } else {
               delete obj.id
-              this.$store.dispatch('promotion/createNewPromotion', obj).then((resp) => {
+              this.$store.dispatch('subpackage/createNewSubPackage', obj).then((resp) => {
                 this.page = 1
-                this.$store.dispatch('promotion/getPromotions', this.page);
+                this.$store.dispatch('subpackage/getListSubPackages', {"limit": this.limit, "page": this.currentx});
 
                 this.$vs.notify({
                   title:'Thêm mới thành công',

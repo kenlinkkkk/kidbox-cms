@@ -37,7 +37,7 @@
           </vs-td>
 
           <vs-td>
-            <p class="product-package">{{ tr.package_name }} vnđ</p>
+            <p class="product-package">{{ tr.package_name }}</p>
           </vs-td>
 
           <vs-td>
@@ -88,6 +88,7 @@
     data () {
       return {
         currentx: 1,
+        limit: 10,
         selected: [],
         // products: [],
         isMounted: false,
@@ -110,7 +111,7 @@
     },
     methods: {
       changePage(){
-        this.$store.dispatch('chargelog/getListChargeLogs', this.currentx);
+        this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
       },
       addNewData () {
         this.sidebarData = {}
@@ -119,7 +120,7 @@
       deleteData (id) {
         this.$store.dispatch('chargelog/deactiveChargeLog', id).then((resp) => {
 
-          this.$store.dispatch('chargelog/getListChargeLogs', this.currentx);
+          this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
 
           this.$vs.notify({
             title:'Xóa thành công',

@@ -51,17 +51,23 @@ const router = new Router({
 
             path: 'subpackage',
             name: 'subpackage-index',
-            component: () => import('./views/subpackage/subPackageIndex.vue'),
+            component: () => import('./views/payment/subpackage/subPackageIndex.vue'),
+          },
+          {
+
+            path: 'notification',
+            name: 'notification-index',
+            component: () => import('./views/notification/pushhistory/notificationIndex.vue'),
           },
           {
             path: 'promotion',
             name: 'promotion-index',
-            component: () => import('./views/promotion/promotionIndex.vue'),
+            component: () => import('./views/payment/promotion/promotionIndex.vue'),
           },
           {
             path: 'chargelog',
             name: 'chargelog-index',
-            component: () => import('./views/chargelog/chargeLogIndex.vue'),
+            component: () => import('./views/payment/chargelog/chargeLogIndex.vue'),
           },
           {
             path: 'rate',

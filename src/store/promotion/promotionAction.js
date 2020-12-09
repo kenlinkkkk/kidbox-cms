@@ -3,8 +3,8 @@ import axiosApiInstance from "../../axios";
 const actions = {
   async getPromotions({ commit }, payload){
     let data = {
-      "limit": 2,
-      "page": payload
+      "limit": payload.limit,
+      "page": payload.page
     }
     let config = {
       method: "POST",

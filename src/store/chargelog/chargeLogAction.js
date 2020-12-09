@@ -3,8 +3,8 @@ import axiosApiInstance from "../../axios";
 const actions = {
   async getListChargeLogs({ commit }, payload){
     let data = {
-      "limit": 10,
-      "page": payload
+      "limit": payload.limit,
+      "page": payload.page
     }
     let config = {
       method: "POST",
