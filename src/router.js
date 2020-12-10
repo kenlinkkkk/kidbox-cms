@@ -63,6 +63,60 @@ const router = new Router({
             },
           },
           {
+
+            path: 'subpackage',
+            name: 'subpackage-index',
+            component: () => import('./views/payment/subpackage/subPackageIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+
+            path: 'notification',
+            name: 'notification-index',
+            component: () => import('./views/notification/pushhistory/notificationIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          // {
+          //
+          //   path: 'notificationType',
+          //   name: 'notification-index',
+          //   component: () => import('./views/notification/type/notificationTypeIndex.vue'),
+          // },
+          {
+            path: 'promotion',
+            name: 'promotion-index',
+            component: () => import('./views/payment/promotion/promotionIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+            path: 'chargelog',
+            name: 'chargelog-index',
+            component: () => import('./views/payment/chargelog/chargeLogIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+            path: 'rate',
+            name: 'rate-index',
+            redirect: 'rate/all',
+          },
+          {
+          path: 'rate/:ruleId',
+          component: () => import('./views/rate/rateIndex.vue'),
+            meta: {
+              rule: 'systemAdmin',
+              parent: 'rate-index',
+              no_scroll: true
+            }
+          },
+          {
             path: 'menu',
             name: 'class-menu',
             component: () => import('./views/class/menu/menuIndex.vue'),

@@ -21,6 +21,7 @@ export default [
     slug: "school",
     icon: "HomeIcon",
   },
+
   {
     url: "/admin/class",
     name: "Quản lý lớp học",
@@ -50,5 +51,52 @@ export default [
     name: "Quản lý tài khoản",
     slug: "user",
     icon: "UserIcon",
+  },
+  {
+    url: "/admin/rate",
+    name: "Quản lý đánh giá",
+    slug: "rate",
+    icon: "HomeIcon",
+  },
+  {
+    url: null,
+    name: "Quản lý thanh toán",
+    icon: 'DollarSignIcon',
+    i18n: 'Dashboard',
+    submenu: [
+      {
+        url: "/admin/subpackage",
+        name: "Gói cước",
+        slug: "subpackage",
+      },
+      {
+        url: "/admin/promotion",
+        name: "Khuyến mãi",
+        slug: "promotion",
+      },
+      {
+        url: "/admin/chargelog",
+        name: "Lịch sử thanh toán",
+        slug: "chargelog",
+      },
+    ]
+  },
+
+  {
+    url: null,
+    name: "Quản lý thông báo",
+    icon: "BellIcon",
+    submenu: [
+      {
+        url: "/admin/notification",
+        name: "Lịch sử thông báo",
+        slug: "notification",
+      },
+      // {
+      //   url: "/admin/notificationType",
+      //   name: "Loại thông báo",
+      //   slug: "notificationType",
+      // }
+    ]
   },
 ]
