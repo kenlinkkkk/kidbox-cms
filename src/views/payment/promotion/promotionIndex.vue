@@ -186,10 +186,6 @@
     mounted () {
       this.isMounted = true
     },
-    beforeDestroy() {
-      this.$store.unregisterModule("promotion");
-
-    },
   }
 </script>
 

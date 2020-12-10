@@ -181,10 +181,6 @@
     mounted () {
       this.isMounted = true
     },
-    beforeDestroy() {
-      this.$store.unregisterModule("subpackage");
-
-    },
   }
 </script>
 
