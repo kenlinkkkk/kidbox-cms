@@ -159,7 +159,6 @@
         return path.slice(0, path.lastIndexOf('/'))
       },
       statistical() {
-        let resp = this.$store.getters["rate/getStatistical"]
         return this.$store.getters["rate/getStatistical"]
       }
     },

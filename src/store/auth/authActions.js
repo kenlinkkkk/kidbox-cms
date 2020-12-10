@@ -43,7 +43,6 @@ const actions = {
       }
       return logout.status
     } catch (e) {
-      console.error(e)
       return { error: true }
     }
   }

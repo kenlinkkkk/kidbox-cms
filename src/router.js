@@ -150,6 +150,9 @@ const router = new Router({
             path: 'login',
             name: 'page-login',
             component: () => import('@/views/pages/Login.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
             beforeEnter: (to, from, next) => {
               if (store.getters['auth/Authentication'] === true) {
                 return next({
