@@ -79,14 +79,18 @@ export default [
   {
     url: null,
     name: "Quản lý thông báo",
-    slug: "notification",
     icon: "BellIcon",
     submenu: [
       {
         url: "/admin/notification",
         name: "Lịch sử thông báo",
-        slug: "subpackage",
-      }
+        slug: "notification",
+      },
+      // {
+      //   url: "/admin/notificationType",
+      //   name: "Loại thông báo",
+      //   slug: "notificationType",
+      // }
     ]
   },
 ]

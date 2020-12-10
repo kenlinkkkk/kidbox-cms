@@ -11,7 +11,7 @@
 <template>
   <vs-sidebar click-not-close position-right parent="body" default-index="1" color="primary" class="add-new-data-sidebar items-no-padding" spacer v-model="isSidebarActiveLocal">
     <div class="mt-6 flex items-center justify-between px-6">
-      <h4>{{ Object.entries(this.data).length === 0 ? "Thêm mới" : "Cập nhật" }} thanh toán cước phí</h4>
+      <h4>{{ Object.entries(this.data).length === 0 ? "Thêm mới" : "Cập nhật" }} thông báo</h4>
       <feather-icon icon="XIcon" @click.stop="isSidebarActiveLocal = false" class="cursor-pointer"></feather-icon>
     </div>
     <vs-divider class="mb-0"></vs-divider>
@@ -20,35 +20,36 @@
 
       <div class="p-6">
 
-        <vs-select v-model="dataSchool" label="Trường" class="mt-5 w-full" name="item-school" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.schools" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-school')">{{ errors.first('item-school') }}</span>
 
-        <vs-select v-model="dataPackage" label="Gói cước" class="mt-5 w-full" name="item-package" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.packages" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-package')">{{ errors.first('item-package') }}</span>
+        <!-- NAME -->
+        <vs-input label="Tên" v-model="dataName" class="mt-5 w-full" name="item-name" v-validate="'required'" />
+        <span class="text-danger text-sm" v-show="errors.has('item-name')">{{ errors.first('item-name') }}</span>
 
         <!-- Description -->
-        <vs-input label="Mục đích" v-model="dataAction" class="mt-5 w-full" name="item-action"/>
-        <span class="text-danger text-sm" v-show="errors.has('item-action')">{{ errors.first('item-action') }}</span>
+        <vs-input label="Mô tả" v-model="dataDescription" class="mt-5 w-full" name="item-description"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-description')">{{ errors.first('item-description') }}</span>
 
         <!-- PRICE -->
         <vs-input
           icon-pack="feather"
           icon="icon-dollar-sign"
-          label="Số tiền"
+          label="Giá cước"
           v-model="dataPrice"
           class="mt-5 w-full"
           v-validate="{ required: true, regex: /\d+(\.\d+)?$/ }"
           name="item-price" />
         <span class="text-danger text-sm" v-show="errors.has('item-price')">{{ errors.first('item-price') }}</span>
 
-        <vs-select v-model="dataPromotion" label="Khuyến mãi" class="mt-5 w-full" name="item-promotion" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.promotions" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-promotion')">{{ errors.first('item-promotion') }}</span>
+        <!-- DURATION -->
+        <vs-input label="Thời hạn" v-model="dataDuration" class="mt-5 w-full" name="item-duration" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-duration')">{{ errors.first('item-duration') }}</span>
+
+        <!-- Number  of user -->
+        <vs-input label="Số lượng người dùng" v-model="dataNumberOfUser" class="mt-5 w-full" name="item-numberofuser" v-validate="{ required: true, regex: /^[1-9]\d*$/ }"/>
+        <span class="text-danger text-sm" v-show="errors.has('item-numberofuser')">{{ errors.first('item-numberofuser') }}</span>
+
+        <!-- Note -->
+        <vs-input label="Ghi chú" v-model="dataNote" class="mt-5 w-full" name="item-note"/>
 
         <!-- ORDER STATUS -->
         <vs-select v-model="dataStatus" label="Trạng thái" class="mt-5 w-full">
@@ -69,10 +70,6 @@
 
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
-  import moduleSchool from '@/store/school/schoolStore.js'
-  import moduleSubPackage from '@/store/subpackage/subPackageStore.js'
-  import modulePromotionPackage from '@/store/promotion/promotionStore.js'
-  import { mapGetters } from 'vuex'
 
   export default {
     props: {
@@ -92,11 +89,12 @@
       return {
         page: 1,
         dataId: null,
-        dataSchool: null,
-        dataPackage: null,
-        dataAction: '',
-        dataPromotion: null,
+        dataName: '',
+        dataDescription: '',
+        dataDuration: 0,
+        dataNumberOfUser: 0,
         dataStatus: 1,
+        dataNote: '',
         dataPrice: 0,
 
         status_choices: [
@@ -117,25 +115,21 @@
           this.initValues()
           this.$validator.reset()
         } else {
-          const { id, school_id, package_id, action, promotion_id, amount, status } = JSON.parse(JSON.stringify(this.data))
+          const { id, name, description, duration, number_of_user, price, status, note } = JSON.parse(JSON.stringify(this.data))
           this.dataId = id
-          this.dataSchool = school_id
-          this.dataPackage = package_id
-          this.dataAction = action
-          this.dataPromotion = promotion_id
-          this.dataPrice = amount
+          this.dataName = name
+          this.dataDescription = description
+          this.dataDuration = duration
+          this.dataNumberOfUser = number_of_user
+          this.dataPrice = price
           this.dataStatus = status
+          this.dataNote = note
           this.initValues()
         }
         // Object.entries(this.data).length === 0 ? this.initValues() : { this.dataId, this.dataName, this.dataCategory, this.dataOrder_status, this.dataPrice } = JSON.parse(JSON.stringify(this.data))
       }
     },
     computed: {
-      ...mapGetters([
-        'schools',
-        'promotions',
-        'packages'
-      ]),
       isSidebarActiveLocal: {
         get () {
           return this.isSidebarActive
@@ -149,39 +143,40 @@
         }
       },
       isFormValid () {
-        return !this.errors.any() && this.dataSchool && this.dataPackage && this.dataAction   && this.dataPromotion && this.dataPrice > 0
+        return !this.errors.any() && this.dataName && this.dataDuration > 0 && this.dataPrice > 0  && this.dataNumberOfUser > 0
       },
-      scrollbarTag () { return this.$store.getters.scrollbarTag },
-
+      scrollbarTag () { return this.$store.getters.scrollbarTag }
     },
     methods: {
       initValues () {
         if (this.data.id) return
           this.dataId= null
-          this.dataSchool= null
-          this.dataPackage= null
-          this.dataAction= ''
-          this.dataPromotion= null
+          this.dataName= ''
+          this.dataDescription= ''
+          this.dataDuration= 0
+          this.dataNumberOfUser= 0
           this.dataStatus= 1
           this.dataPrice= 0
+          this.dataNote = ''
       },
       submitData () {
         this.$validator.validateAll().then(result => {
           if (result) {
             const obj = {
               id: this.dataId,
-              school_id: this.dataSchool,
-              package_id: this.dataPackage,
-              action: this.dataAction,
-              numberOfUser: this.dataPromotion,
-              amount: this.dataPrice,
-              status: this.dataStatus
+              name: this.dataName,
+              description: this.dataDescription,
+              duration: this.dataDuration,
+              numberOfUser: this.dataNumberOfUser,
+              price: this.dataPrice,
+              status: this.dataStatus,
+              note: this.dataNote
             }
 
             if (this.dataId !== null && this.dataId >= 0) {
-              this.$store.dispatch('chargelog/updateChargeLog', obj).then((resp) => {
+              this.$store.dispatch('subpackage/updateSubPackage', obj).then((resp) => {
 
-                this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
+                this.$store.dispatch('subpackage/getListSubPackages', this.page);
 
                 this.$vs.notify({
                   title:'Cập nhật thông tin thành công',
@@ -203,9 +198,9 @@
               })
             } else {
               delete obj.id
-              this.$store.dispatch('chargelog/createNewChargeLog', obj).then((resp) => {
+              this.$store.dispatch('subpackage/createNewSubPackage', obj).then((resp) => {
                 this.page = 1
-                this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
+                this.$store.dispatch('subpackage/getListSubPackages', this.page);
 
                 this.$vs.notify({
                   title:'Thêm mới thành công',
@@ -232,27 +227,7 @@
           }
         })
       },
-    },
-    created () {
-      if (!modulePromotionPackage.isRegistered) {
-        this.$store.registerModule('promotion', modulePromotionPackage)
-        modulePromotionPackage.isRegistered = true
-      }
-      this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx})
-
-      if (!moduleSubPackage.isRegistered) {
-        this.$store.registerModule('subpackage', moduleSubPackage)
-        moduleSubPackage.isRegistered = true
-      }
-      this.$store.dispatch('subpackage/getListSubPackages', {"limit": this.limit, "page": this.currentx})
-
-      if (!moduleSchool.isRegistered) {
-        this.$store.registerModule('school', moduleSchool)
-        moduleSchool.isRegistered = true
-      }
-      this.$store.dispatch('school/getListSchool')
-    },
-
+    }
   }
 </script>
 

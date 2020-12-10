@@ -27,7 +27,11 @@ const getters = {
 
   scrollbarTag: state => {
     return state.is_touch_device ? 'div' : 'VuePerfectScrollbar'
-  }
+  },
+
+  schools: state => state.school.schools,
+  promotions: state => state.promotion.promotions,
+  packages: state => state.subpackage.packages,
 }
 
 export default getters
