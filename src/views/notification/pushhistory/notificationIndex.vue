@@ -1,9 +1,9 @@
 <template>
   <div id="data-list-list-view" class="data-list-container">
 
-    <charge-log-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
+    <notification-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
-    <vs-table ref="table" multiple v-model="selected" search :data="packages">
+    <vs-table ref="table" multiple v-model="selected"  search :data="packages">
 
       <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">
 
@@ -18,13 +18,12 @@
       </div>
 
       <template slot="thead">
-        <vs-th sort-key="school_id">Trường</vs-th>
-        <vs-th sort-key="package_id">Gói cước</vs-th>
-        <vs-th sort-key="action">Mục đích</vs-th>
-        <vs-th sort-key="amout">Số tiền</vs-th>
-        <vs-th sort-key="promotion_id">Khuyến mãi</vs-th>
-        <vs-th sort-key="create_date">Ngày thanh toán</vs-th>
-        <vs-th sort-key="order_status">Trạng thái</vs-th>
+        <vs-th sort-key="id">ID</vs-th>
+        <vs-th sort-key="type">Loại thông báo</vs-th>
+        <vs-th sort-key="content">Nội dung</vs-th>
+        <vs-th sort-key="user_push">Tài khoản</vs-th>
+        <vs-th sort-key="push_time">Thời gian push</vs-th>
+        <vs-th sort-key="is_push">Trạng thái push</vs-th>
         <vs-th>Action</vs-th>
       </template>
 
@@ -33,34 +32,28 @@
         <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
 
           <vs-td>
-            <p class="product-school">{{ tr.school_name  }}</p>
+            <p class="product-id font-medium truncate">{{ tr.id }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-package">{{ tr.package_name }}</p>
+            <p class="product-type">{{ tr.type.name  }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-action">{{ tr.action  }}</p>
+            <p class="product-content">{{ tr.content  }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-amout">{{ tr.amount  }} vnđ</p>
+            <p class="product-user_push">{{ tr.user_push.name }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-promotion">{{ tr.promotion_name  }}</p>
+            <p class="product-push_time">{{ tr.push_time  }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-promotion">{{ tr.create_date | formatDate  }}</p>
+            <vs-chip :color="getOrderStatusColor(tr.is_push)" class="product-order-status" >{{getStatus(tr.is_push)}}</vs-chip>
           </vs-td>
-
-          <vs-td>
-            <vs-chip :color="getOrderStatusColor(tr.status)" class="product-order-status" >{{getStatus(tr.status)}}</vs-chip>
-          </vs-td>
-
-
 
           <vs-td class="whitespace-no-wrap">
             <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
@@ -69,26 +62,28 @@
 
         </vs-tr>
         </tbody>
+
+
       </template>
     </vs-table>
     <div class="mt-5">
-      <vs-pagination :total=totalPages v-model=currentx @change="changePage" :max="7" ></vs-pagination>
+      <vs-pagination :total=totalPages v-model=currentx @change="changePage" :max="7"></vs-pagination>
     </div>
   </div>
 </template>
 
 <script>
-  import ChargeLogSidebar from './chargeLogSidebar'
-  import moduleChargeLog from '@/store/chargelog/chargeLogStore.js'
+  import NotificationSidebar from './notificationSidebar'
+  import moduleNotification from '@/store/notification/notificationStore.js'
 
   export default {
     components: {
-      ChargeLogSidebar
+      NotificationSidebar
     },
     data () {
       return {
         currentx: 1,
-        limit: 10,
+        limit : 10,
         selected: [],
         // products: [],
         isMounted: false,
@@ -99,11 +94,13 @@
       }
     },
     computed: {
+
       totalPages(){
-        return this.$store.getters["chargelog/getTotalPages"]
+        return this.$store.getters["notification/getTotalPages"]
       },
       packages () {
-        return this.$store.getters["chargelog/getChargeLogs"]
+        console.log(this.$store.getters["notification/getNotifications"])
+        return this.$store.getters["notification/getNotifications"]
       },
       // queriedItems () {
       //   return this.$refs.table ? this.$refs.table.queriedResults.length : this.products.length
@@ -111,16 +108,16 @@
     },
     methods: {
       changePage(){
-        this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
+        this.$store.dispatch('notification/getNotifications', {"limit": this.limit, "page": this.currentx});
       },
       addNewData () {
         this.sidebarData = {}
         this.toggleDataSidebar(true)
       },
       deleteData (id) {
-        this.$store.dispatch('chargelog/deactiveChargeLog', id).then((resp) => {
+        this.$store.dispatch('notification/deactiveNotification', id).then((resp) => {
 
-          this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx});
+          this.$store.dispatch('notification/getNotifications', {"limit": this.limit, "page": this.currentx});
 
           this.$vs.notify({
             title:'Xóa thành công',
@@ -149,13 +146,13 @@
       getOrderStatusColor (status) {
         if (status === 0)   return 'warning'
         if (status === 1) return 'success'
-        if (status === null)  return 'danger'
+        if (status === -1)  return 'danger'
         return 'primary'
       },
       getStatus(status){
-        if (status === 0)   return 'Deactivate'
-        if (status === 1) return 'Activate'
-        if (status === null)  return 'Deactivate'
+        if (status === 0)   return 'Chưa push'
+        if (status === 1) return 'Thành công'
+        if (status === -1)  return 'Thất bại'
       },
       getPopularityColor (num) {
         if (num > 90)  return 'success'
@@ -169,19 +166,15 @@
       }
     },
     created () {
-      if (!moduleChargeLog.isRegistered) {
-        this.$store.registerModule('chargelog', moduleChargeLog)
-        moduleChargeLog.isRegistered = true
+      if (!moduleNotification.isRegistered) {
+        this.$store.registerModule('notification', moduleNotification)
+        moduleNotification.isRegistered = true
       }
-      this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx})
+      this.$store.dispatch('notification/getNotifications', {"limit": this.limit, "page": this.currentx})
     },
     mounted () {
       this.isMounted = true
-    },
-    beforeDestroy() {
-      this.$store.unregisterModule("chargelog");
-
-    },
+    }
   }
 </script>
 

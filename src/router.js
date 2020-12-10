@@ -59,6 +59,12 @@ const router = new Router({
             name: 'notification-index',
             component: () => import('./views/notification/pushhistory/notificationIndex.vue'),
           },
+          // {
+          //
+          //   path: 'notificationType',
+          //   name: 'notification-index',
+          //   component: () => import('./views/notification/type/notificationTypeIndex.vue'),
+          // },
           {
             path: 'promotion',
             name: 'promotion-index',

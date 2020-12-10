@@ -72,7 +72,7 @@
       </template>
     </vs-table>
     <div class="mt-5">
-      <vs-pagination :total=totalPages v-model=currentx @change="changePage" ></vs-pagination>
+      <vs-pagination :total=totalPages v-model=currentx @change="changePage" :max="7"></vs-pagination>
     </div>
   </div>
 </template>
@@ -181,11 +181,15 @@
         this.$store.registerModule('promotion', modulePromotionPackage)
         modulePromotionPackage.isRegistered = true
       }
-      this.$store.dispatch('promotion/getPromotions')
+      this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx})
     },
     mounted () {
       this.isMounted = true
-    }
+    },
+    beforeDestroy() {
+      this.$store.unregisterModule("promotion");
+
+    },
   }
 </script>
 
