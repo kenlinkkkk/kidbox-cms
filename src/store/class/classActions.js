@@ -19,6 +19,8 @@ const actions = {
     if (response.status === 200) {
       commit('SET_LIST_CLASSES', response.data.data.data);
     }
+
+    return response.data.data.data
   },
   async addNewClass(_, payload) {
     let data = {

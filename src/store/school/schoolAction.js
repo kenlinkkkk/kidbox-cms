@@ -4,7 +4,7 @@ const actions = {
   async getListSchool({ commit }) {
     let data = {
       "item_per_page": 20,
-      "page": 0
+      "page": 1
     }
     let config = {
       method: "POST",
@@ -50,7 +50,22 @@ const actions = {
     }
 
     return axiosApiInstance(config);
+  },
+  async getSchoolById({ commit }, payload) {
+    let config = {
+      method: 'POST',
+      url: "/cms/core-school/" + payload.schoolId,
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+    let response = await axiosApiInstance(config);
+    if (response.status === 200) {
+      commit('SET_SCHOOLS_INFO', [response.data.data]);
+    }
+    return response.data.data
   }
+
 }
 
 export default actions

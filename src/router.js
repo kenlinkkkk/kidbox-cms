@@ -26,31 +26,65 @@ const router = new Router({
             path: '',
             name: 'home',
             component: () => import('./views/Home.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'user',
             name: 'user-index',
-            component: () => import('./views/userManager/userManager.vue')
+            component: () => import('./views/userManager/userManager.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'profile',
             name: 'profile-index  ',
             component: () => import('./views/user/userProfile.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'school',
             name: 'school-index',
             component: () => import('./views/school/School.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'class',
             name: 'class-index',
-            component: () => import('./views/class/classIndex.vue')
+            component: () => import('./views/class/classIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'menu',
-            name: 'class-menu-schedule',
-            component: () => import('./views/class/menu/menuIndex.vue')
+            name: 'class-menu',
+            component: () => import('./views/class/menu/menuIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+            path: 'schedule',
+            name: 'class-schedule',
+            component: () => import('./views/class/schedules/scheduleIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+            path: 'post',
+            name: 'school-post',
+            component: () => import('./views/post/postIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
           }
         ],
       },
@@ -74,7 +108,10 @@ const router = new Router({
           {
             path: 'error-404',
             name: 'page-error-404',
-            component: () => import('@/views/pages/Error404.vue')
+            component: () => import('@/views/pages/Error404.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
           },
         ]
       },

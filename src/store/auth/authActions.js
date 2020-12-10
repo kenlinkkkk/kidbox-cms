@@ -17,7 +17,7 @@ const actions = {
       return {error: true }
     }
   },
-  async getUserInfo({commit, }, payload){
+  async getUserInfo({ commit }, payload){
     try {
       const userInfo = await auth.getUserInfo(payload)
       if(userInfo.data){

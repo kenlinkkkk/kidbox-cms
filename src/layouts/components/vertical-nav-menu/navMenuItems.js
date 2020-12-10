@@ -40,6 +40,12 @@ export default [
     icon: "CalendarIcon"
   },
   {
+    url: "/admin/post",
+    name: "Quản lý bài viết",
+    slug: "post",
+    icon: "ListIcon"
+  },
+  {
     url: "/admin/user",
     name: "Quản lý tài khoản",
     slug: "user",
