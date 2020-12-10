@@ -99,7 +99,6 @@
         return this.$store.getters["notification/getTotalPages"]
       },
       packages () {
-        console.log(this.$store.getters["notification/getNotifications"])
         return this.$store.getters["notification/getNotifications"]
       },
       // queriedItems () {
