@@ -3,7 +3,7 @@
 
     <promotion-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
-    <vs-table ref="table" multiple v-model="selected" search :data="packages">
+    <vs-table ref="table" multiple v-model="selected" search :data="promotions">
 
       <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">
 
@@ -79,7 +79,7 @@
 
 <script>
   import PromotionSidebar from './promotionSidebar'
-  import modulePromotionPackage from '@/store/promotion/promotionStore.js'
+  import modulePromotion from '@/store/promotion/promotionStore.js'
   import moment from 'moment';
 
 
@@ -110,7 +110,7 @@
       totalPages(){
         return this.$store.getters["promotion/getTotalPages"]
       },
-      packages () {
+      promotions () {
         return this.$store.getters["promotion/getPromotions"]
       },
       // queriedItems () {
@@ -177,15 +177,22 @@
       }
     },
     created () {
-      if (!modulePromotionPackage.isRegistered) {
-        this.$store.registerModule('promotion', modulePromotionPackage)
-        modulePromotionPackage.isRegistered = true
+      if (!modulePromotion.isRegistered) {
+        this.$store.registerModule('promotion', modulePromotion)
+        modulePromotion.isRegistered = true
       }
+
       this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx})
+
+
     },
     mounted () {
       this.isMounted = true
     },
+    // beforeDestroy() {
+    //   this.$store.unregisterModule('promotion')
+    // }
+
   }
 </script>
 

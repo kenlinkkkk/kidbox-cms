@@ -19,16 +19,17 @@
     <component :is="scrollbarTag" class="scroll-area--data-list-add-new" :settings="settings" :key="$vs.rtl">
 
       <div class="p-6">
+        <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
+          <label class="vs-input--label">Trường</label>
+          <v-select v-model="dataSchool" label="name" :options=this.schools class="mt-5 w-full" name="item-school" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
+          <span class="text-danger text-sm" v-show="errors.has('item-school')">{{ errors.first('item-school') }}</span>
+        </div>
 
-        <vs-select v-model="dataSchool" label="Trường" class="mt-5 w-full" name="item-school" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.schools" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-school')">{{ errors.first('item-school') }}</span>
-
-        <vs-select v-model="dataPackage" label="Gói cước" class="mt-5 w-full" name="item-package" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.packages" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-package')">{{ errors.first('item-package') }}</span>
+        <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
+          <label class="vs-input--label">Gói cước</label>
+          <v-select v-model="dataPackage" label="name" :options=this.packages class="mt-5 w-full" name="item-package" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
+          <span class="text-danger text-sm" v-show="errors.has('item-package')">{{ errors.first('item-package') }}</span>
+        </div>
 
         <!-- Description -->
         <vs-input label="Mục đích" v-model="dataAction" class="mt-5 w-full" name="item-action"/>
@@ -45,10 +46,11 @@
           name="item-price" />
         <span class="text-danger text-sm" v-show="errors.has('item-price')">{{ errors.first('item-price') }}</span>
 
-        <vs-select v-model="dataPromotion" label="Khuyến mãi" class="mt-5 w-full" name="item-promotion" v-validate="'required'">
-          <vs-select-item :key="item.id+item.name" :value="item.id" :text="item.name" v-for="item in this.promotions" />
-        </vs-select>
-        <span class="text-danger text-sm" v-show="errors.has('item-promotion')">{{ errors.first('item-promotion') }}</span>
+        <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
+          <label class="vs-input--label">Khuyến mãi</label>
+          <v-select v-model="dataPromotion" label="name" :options=this.promotions class="mt-5 w-full" name="item-promotion" v-validate="'required'"></v-select>
+          <span class="text-danger text-sm" v-show="errors.has('item-promotion')">{{ errors.first('item-promotion') }}</span>
+        </div>
 
         <!-- ORDER STATUS -->
         <vs-select v-model="dataStatus" label="Trạng thái" class="mt-5 w-full">
@@ -71,8 +73,9 @@
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
   import moduleSchool from '@/store/school/schoolStore.js'
   import moduleSubPackage from '@/store/subpackage/subPackageStore.js'
-  import modulePromotionPackage from '@/store/promotion/promotionStore.js'
-  import { mapGetters } from 'vuex'
+  import modulePromotion from '@/store/promotion/promotionStore.js'
+  // import { mapGetters } from 'vuex'
+  import vSelect from 'vue-select'
 
   export default {
     props: {
@@ -86,7 +89,8 @@
       }
     },
     components: {
-      VuePerfectScrollbar
+      VuePerfectScrollbar,
+      'v-select': vSelect,
     },
     data () {
       return {
@@ -117,12 +121,12 @@
           this.initValues()
           this.$validator.reset()
         } else {
-          const { id, school_id, package_id, action, promotion_id, amount, status } = JSON.parse(JSON.stringify(this.data))
+          const { id, school, subpackage, action, promotion, amount, status } = JSON.parse(JSON.stringify(this.data))
           this.dataId = id
-          this.dataSchool = school_id
-          this.dataPackage = package_id
+          this.dataSchool = school
+          this.dataPackage = subpackage
           this.dataAction = action
-          this.dataPromotion = promotion_id
+          this.dataPromotion = promotion
           this.dataPrice = amount
           this.dataStatus = status
           this.initValues()
@@ -131,11 +135,11 @@
       }
     },
     computed: {
-      ...mapGetters([
-        'schools',
-        'promotions',
-        'packages'
-      ]),
+      // ...mapGetters([
+      //   'schools',
+      //   'promotions',
+      //   'packages'
+      // ]),
       isSidebarActiveLocal: {
         get () {
           return this.isSidebarActive
@@ -152,6 +156,15 @@
         return !this.errors.any() && this.dataSchool && this.dataPackage && this.dataAction   && this.dataPromotion && this.dataPrice > 0
       },
       scrollbarTag () { return this.$store.getters.scrollbarTag },
+      schools(){
+        return this.$store.getters['school/getSchools'];
+      },
+      promotions(){
+        return this.$store.getters["promotion/getPromotions"]
+      },
+      packages(){
+        return this.$store.getters["subpackage/getPackages"]
+      }
 
     },
     methods: {
@@ -170,10 +183,10 @@
           if (result) {
             const obj = {
               id: this.dataId,
-              school_id: this.dataSchool,
-              package_id: this.dataPackage,
+              school_id: this.dataSchool.id,
+              package_id: this.dataPackage.id,
               action: this.dataAction,
-              numberOfUser: this.dataPromotion,
+              promotion_id: this.dataPromotion.id,
               amount: this.dataPrice,
               status: this.dataStatus
             }
@@ -234,11 +247,13 @@
       },
     },
     created () {
-      if (!modulePromotionPackage.isRegistered) {
-        this.$store.registerModule('promotion', modulePromotionPackage)
-        modulePromotionPackage.isRegistered = true
+      if (!modulePromotion.isRegistered) {
+        this.$store.registerModule('promotion', modulePromotion)
+        modulePromotion.isRegistered = true
       }
-      this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx})
+
+      this.$store.dispatch('promotion/getPromotions', {"limit": this.limit, "page": this.currentx, "is_active": 1})
+
 
       if (!moduleSubPackage.isRegistered) {
         this.$store.registerModule('subpackage', moduleSubPackage)
@@ -252,6 +267,8 @@
       }
       this.$store.dispatch('school/getListSchool')
     },
+
+
 
   }
 </script>

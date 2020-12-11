@@ -2,9 +2,18 @@ import axiosApiInstance from "../../axios";
 
 const actions = {
   async getPromotions({ commit }, payload){
-    let data = {
-      "limit": payload.limit,
-      "page": payload.page
+    let data
+    if(payload.is_active){
+      data = {
+        "is_active": payload.is_active,
+        "limit": payload.limit,
+        "page": payload.page
+      }
+    }else {
+      data = {
+        "limit": payload.limit,
+        "page": payload.page
+      }
     }
     let config = {
       method: "POST",
