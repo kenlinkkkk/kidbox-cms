@@ -22,10 +22,10 @@ Vue.use(Vuesax)
 import axios from "./axios.js"
 Vue.prototype.$http = axios
 
-
+// Access controll
+import acl from './acl/acl.js'
 // Theme Configurations
 import '../themeConfig.js'
-
 // Globally Registered Components
 import './globalComponents.js'
 // Styles: SCSS
@@ -62,9 +62,10 @@ require('./assets/css/iconfont.css')
 Vue.config.productionTip = false
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
+  router,
+  store,
+  acl,
+  render: h => h(App)
 }).$mount('#app')
 
 

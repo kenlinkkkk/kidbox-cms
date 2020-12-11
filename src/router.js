@@ -26,38 +26,59 @@ const router = new Router({
             path: '',
             name: 'home',
             component: () => import('./views/Home.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'user',
             name: 'user-index',
-            component: () => import('./views/userManager/userManager.vue')
+            component: () => import('./views/userManager/userManager.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'profile',
             name: 'profile-index  ',
             component: () => import('./views/user/userProfile.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'school',
             name: 'school-index',
             component: () => import('./views/school/School.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'class',
             name: 'class-index',
-            component: () => import('./views/class/classIndex.vue')
+            component: () => import('./views/class/classIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
 
             path: 'subpackage',
             name: 'subpackage-index',
             component: () => import('./views/payment/subpackage/subPackageIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
 
             path: 'notification',
             name: 'notification-index',
             component: () => import('./views/notification/pushhistory/notificationIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           // {
           //
@@ -69,11 +90,17 @@ const router = new Router({
             path: 'promotion',
             name: 'promotion-index',
             component: () => import('./views/payment/promotion/promotionIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'chargelog',
             name: 'chargelog-index',
             component: () => import('./views/payment/chargelog/chargeLogIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
           {
             path: 'rate',
@@ -84,17 +111,35 @@ const router = new Router({
           path: 'rate/:ruleId',
           component: () => import('./views/rate/rateIndex.vue'),
             meta: {
-              rule: 'editor',
+              rule: 'systemAdmin',
               parent: 'rate-index',
               no_scroll: true
             }
           },
           {
             path: 'menu',
-            name: 'class-menu-schedule',
-            component: () => import('./views/class/menu/menuIndex.vue')
-
+            name: 'class-menu',
+            component: () => import('./views/class/menu/menuIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
           },
+          {
+            path: 'schedule',
+            name: 'class-schedule',
+            component: () => import('./views/class/schedules/scheduleIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
+          },
+          {
+            path: 'post',
+            name: 'school-post',
+            component: () => import('./views/post/postIndex.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
+          }
         ],
       },
       {
@@ -105,6 +150,9 @@ const router = new Router({
             path: 'login',
             name: 'page-login',
             component: () => import('@/views/pages/Login.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            },
             beforeEnter: (to, from, next) => {
               if (store.getters['auth/Authentication'] === true) {
                 return next({
@@ -117,7 +165,10 @@ const router = new Router({
           {
             path: 'error-404',
             name: 'page-error-404',
-            component: () => import('@/views/pages/Error404.vue')
+            component: () => import('@/views/pages/Error404.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
           },
         ]
       },

@@ -69,7 +69,6 @@ const actions = {
         data: data
     }
     let response = await axiosApiInstance(config)
-    console.log(response)
 
     if(response.status === 200){
       if(response.data.code === 200) {

@@ -17,7 +17,7 @@ const actions = {
       return {error: true }
     }
   },
-  async getUserInfo({commit, }, payload){
+  async getUserInfo({ commit }, payload){
     try {
       const userInfo = await auth.getUserInfo(payload)
       if(userInfo.data){
@@ -43,7 +43,6 @@ const actions = {
       }
       return logout.status
     } catch (e) {
-      console.error(e)
       return { error: true }
     }
   }
