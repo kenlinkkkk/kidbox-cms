@@ -33,11 +33,11 @@
         <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
 
           <vs-td>
-            <p class="product-school">{{ tr.school_name  }}</p>
+            <p class="product-school">{{ tr.school.name  }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-package">{{ tr.package_name }}</p>
+            <p class="product-package">{{ tr.subpackage.name }}</p>
           </vs-td>
 
           <vs-td>
@@ -49,7 +49,7 @@
           </vs-td>
 
           <vs-td>
-            <p class="product-promotion">{{ tr.promotion_name  }}</p>
+            <p class="product-promotion">{{ tr.promotion.name  }}</p>
           </vs-td>
 
           <vs-td>
@@ -174,10 +174,12 @@
         moduleChargeLog.isRegistered = true
       }
       this.$store.dispatch('chargelog/getListChargeLogs', {"limit": this.limit, "page": this.currentx})
+
+
     },
     mounted () {
       this.isMounted = true
-    }
+    },
   }
 </script>
 
