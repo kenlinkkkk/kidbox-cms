@@ -10,7 +10,7 @@
         class="w-full"
         inputClassses="w-full vs-input-no-border vs-input-no-shdow-focus"
         icon="SearchIcon"
-        placeholder="Explore Vuexy..."
+        placeholder="Tìm kiếm..."
         @input="hnd_search_query_update"
         @selected="selected"
         @closeSearchbar="showFullSearch = false">
@@ -31,7 +31,7 @@
         <template v-slot:noResult="{ group_name }">
           <div class="flex items-center">
             <feather-icon icon="InfoIcon" svgClasses="h-5 w-5" class="mr-4" />
-            <span>No results found.</span>
+            <span>Không tìm thấy kết quả.</span>
           </div>
         </template>
 

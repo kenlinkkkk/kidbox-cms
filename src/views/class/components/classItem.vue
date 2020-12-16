@@ -1,39 +1,41 @@
 <template>
   <vx-card>
-    <div slot="no-body" class="vx-col md:w-full flex">
+    <div slot="no-body" class="vx-col md:w-full m-auto">
+      <feather-icon icon="EditIcon" svgClasses="h-6 w-6 text-primary" @click="displayPrompt" class="edit-icon"/>
       <template v-if="classLocal.logoUrl == null">
-        <div class="w-1/3">
-          <img src="https://kidbox.vn/media/default/no-image.png" alt="content-img" class="logo-custom responsive card-img-left">
+        <div class="w-full flex">
+          <vs-avatar size="120px" src="https://kidbox.vn/media/default/no-image.png" class="logo-custom"/>
         </div>
       </template>
       <template v-else>
-        <div class="logo-custom" :style="{ backgroundImage: 'url(' + classLocal.logoUrl.path + ')' }"></div>
+        <div class="w-full flex">
+          <vs-avatar size="120px" :src="classLocal.logoUrl.path" class="logo-custom"/>
+        </div>
       </template>
-      <div class="p-2 w-2/3">
-        <h5 class="mb-2">{{ classLocal.name }}</h5>
-        <h5 class="mb-2">{{ classLocal.room }}</h5>
+      <div class="p-2 w-full text-center">
+        <h5 class="mb-2">Lớp: {{ classLocal.name }}</h5>
+        <div class="flex justify-center">
+          <feather-icon icon="MapPinIcon" svgClasses="h-5 w-5 text-grey" class="block" />
+          <p class="ml-2">Phòng học: {{ classLocal.room }}</p>
+        </div>
       </div>
-      <vs-dropdown class="button-height">
-        <a class="flex self-start" href="#">
-          <i class="material-icons p-2"> more_vert </i>
-        </a>
-        <vs-dropdown-menu>
-          <vs-dropdown-item :classId="classLocal.id" @click="displayPrompt">Thông tin lớp</vs-dropdown-item>
-          <vs-dropdown-item :classId="classLocal.id" @click="closeClassAction">Đóng lớp</vs-dropdown-item>
-          <vs-dropdown-item :classId="classLocal.id"><router-link :to="{ name: 'class-menu-schedule', query: {c: classLocal.id}}">Thực đơn và lịch học</router-link></vs-dropdown-item>
-        </vs-dropdown-menu>
-      </vs-dropdown>
     </div>
   </vx-card>
 </template>
 <style lang="scss">
   .logo-custom {
-    max-width: 125px;
-    max-height: 125px;
-    min-width: 100px;
-    min-height: 100px;
-    border-radius: .5rem 0 0 .5rem;
-    background-size: cover;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(255, 255, 255, 0) !important;
+  }
+  .edit-icon {
+    top: 10px;
+    left: 90%;
+    position: absolute;
+    cursor: pointer;
+    &:hover {
+
+    }
   }
 </style>
 <script>

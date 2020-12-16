@@ -3,14 +3,15 @@
     <div slot="no-body" class="vx-col md:w-full flex">
       <template v-if="schoolLocal.logoUrl == null">
         <div class="w-1/3">
-          <img src="https://kidbox.vn/media/default/no-image.png" alt="content-img" class="logo-custom responsive card-img-left">
+          <vs-avatar size="large" src="https://kidbox.vn/media/default/no-image.png" />
         </div>
       </template>
       <template v-else>
-        <div class="logo-custom" :style="{ backgroundImage: 'url(' + schoolLocal.logoUrl.path + ')' }"></div>
+        <vs-avatar size="100px" :src="schoolLocal.logoUrl.path" />
       </template>
       <div class="p-2 w-2/3">
-        <h5 class="mb-2">{{ schoolLocal.name }}</h5>
+        <h4 class="mb-2">{{ schoolLocal.name }}</h4>
+        <p>Địa chỉ: {{ schoolLocal.address }}</p>
         <p><a :href="'mailto:' + schoolLocal.email" class="text-black">Email: {{ schoolLocal.email }}</a></p>
         <p><a :href="'tel:' + schoolLocal.phone_number" class="text-black">SĐT: {{ schoolLocal.phone_number }}</a></p>
       </div>

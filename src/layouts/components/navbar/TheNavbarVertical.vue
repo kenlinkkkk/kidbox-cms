@@ -23,8 +23,8 @@
 <!--            END - BOOKMARKS-->
         <vs-spacer />
 
-<!--        <search-bar />-->
-
+        <search-bar />
+        <notification-drop-down />
         <profile-drop-down />
 
       </vs-navbar>
@@ -36,6 +36,8 @@
 <script>
 // import Bookmarks            from "./components/Bookmarks.vue"
 import ProfileDropDown      from "./components/ProfileDropDown.vue"
+import NotificationDropDown from "./components/NotificationDropDown.vue"
+import SearchBar from "./components/SearchBar.vue"
 
 export default {
   name: "the-navbar-vertical",
@@ -48,6 +50,8 @@ export default {
   components: {
     // Bookmarks,
     ProfileDropDown,
+    NotificationDropDown,
+    SearchBar
   },
   computed: {
     navbarColorLocal() {

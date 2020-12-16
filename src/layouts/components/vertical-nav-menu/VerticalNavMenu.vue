@@ -71,7 +71,6 @@
             <!-- /Group Header -->
 
             <template v-else-if="!item.header">
-
               <!-- Nav-Item -->
               <v-nav-menu-item
                 v-if="!item.submenu"
@@ -82,8 +81,8 @@
                 :icon="item.icon" :target="item.target"
                 :isDisabled="item.isDisabled"
                 :slug="item.slug">
-                  <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ item.name }}</span>
-                  <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
+                <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ item.name }}</span>
+                <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
               </v-nav-menu-item>
 
               <!-- Nav-Group -->
@@ -96,6 +95,7 @@
                   :open="isGroupActive(item)" />
               </template>
               <!-- /Nav-Group -->
+              <vs-divider class="m-auto p-1" style="width: 90%" :key="`header-${index}`"/>
             </template>
           </template>
         </component>

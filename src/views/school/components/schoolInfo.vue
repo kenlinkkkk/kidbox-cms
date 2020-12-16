@@ -9,7 +9,7 @@
       @close="init"
       :is-valid="validateForm"
       :active.sync="activePrompt">
-      <div>
+      <perfect-scrollbar>
         <form>
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
@@ -67,17 +67,21 @@
             </vs-tab>
           </vs-tabs>
         </form>
-      </div>
+      </perfect-scrollbar>
   </vs-prompt>
 </template>
-<style>
+<style lang="scss">
   .con-vs-dialog .vs-dialog {
     max-width: 600px !important;
+  }
+  .ps {
+    height: 70vh;
   }
 </style>
 
 <script>
   import flatPickr from 'vue-flatpickr-component';
+  import PerfectScrollbar from 'vue-perfect-scrollbar'
   import 'flatpickr/dist/flatpickr.css';
   export default {
     props: {
@@ -105,7 +109,8 @@
       }
     },
     components:{
-      flatPickr
+      flatPickr,
+      PerfectScrollbar
     },
     computed: {
       activePrompt: {
