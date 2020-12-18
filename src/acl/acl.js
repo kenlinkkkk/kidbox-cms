@@ -4,7 +4,7 @@ import router from '@/router'
 
 Vue.use(AclInstaller)
 
-let initialRole = 'systemAdmin'
+let initialRole = 'teacher'
 
 // const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 // const userListRole = userInfo.role
@@ -16,8 +16,8 @@ export default new AclCreate({
   router,
   acceptLocalRules : true,
   globalRules: {
-    systemAdmin  : new AclRule('systemAdmin').generate(),
-    Admin : new AclRule('admin').or('systemAdmin').generate(),
-    Teacher: new AclRule('teacher').or('admin').or('systemAdmin').generate(),
+    systemAdmin :   new AclRule('systemAdmin').generate(),
+    admin :         new AclRule('admin').or('systemAdmin').generate(),
+    teacher:        new AclRule('teacher').or('admin').or('systemAdmin').generate(),
   }
 })

@@ -62,7 +62,6 @@ export default [
     url: null,
     name: "Quản lý thanh toán",
     icon: 'DollarSignIcon',
-    i18n: 'Dashboard',
     submenu: [
       {
         url: "/admin/subpackage",
@@ -81,7 +80,6 @@ export default [
       },
     ]
   },
-
   {
     url: null,
     name: "Quản lý thông báo",
