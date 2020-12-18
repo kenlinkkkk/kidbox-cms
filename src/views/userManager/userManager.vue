@@ -1,12 +1,15 @@
 <template>
-    <div class="userManager">
-        <p>User manager</p>
-    </div>
+  <div class="userManager">
+    <p>{{ logInfo }}</p>
+  </div>
 </template>
 
 <script>
-    export default {
-        props: {
-        },
-    };
+  export default {
+    computed: {
+      logInfo() {
+        return this.$acl.get[0]
+      }
+    }
+  };
 </script>

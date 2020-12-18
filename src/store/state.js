@@ -22,7 +22,7 @@ const userDefaults = {
   photoURL    : userInfo !== null && userInfo.image_url !== null ? userInfo.image_url.path : require("@/assets/images/portrait/small/avatar-s-11.jpg"),
   email       : userInfo === null ? 'email' : userInfo.email,
   status      : "online",
-  userRole    : "admin",
+  userRole    : "systemAdmin",
   schoolId    : userInfo === null ? null : userInfo.school_id
 }
 

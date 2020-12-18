@@ -24,18 +24,27 @@ Vue.prototype.$http = axios
 
 // Access controll
 import acl from './acl/acl.js'
+
 // Theme Configurations
 import '../themeConfig.js'
+
 // Globally Registered Components
 import './globalComponents.js'
+
 // Styles: SCSS
 import './assets/scss/main.scss'
+
 // Tailwind
 import '@/assets/css/main.css'
+
 // Vue Router
 import router from './router'
+
 // Vuex Store
 import store from './store/store'
+
+//Custom filter
+import './filters/filters'
 // validate
 import VeeValidate from 'vee-validate'
 Vue.use(VeeValidate)
