@@ -1,6 +1,16 @@
 const getters = {
   getRoles: state => {
-    return state.userListRoles
+    let response = [{
+      label: 'Lựa chọn',
+      value: 'Lựa chọn'
+    }]
+    state.userListRoles.forEach(item => {
+      response.push({
+        label: item.name,
+        value: item.id
+      })
+    })
+    return response
   }
 }
 

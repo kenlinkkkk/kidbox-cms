@@ -31,14 +31,6 @@ const router = new Router({
             },
           },
           {
-            path: 'user',
-            name: 'user-index',
-            component: () => import('./views/userManager/userManager.vue'),
-            meta: {
-              rule: 'systemAdmin'
-            },
-          },
-          {
             path: 'profile',
             name: 'profile-index  ',
             component: () => import('./views/user/userProfile.vue'),
@@ -136,6 +128,14 @@ const router = new Router({
             path: 'post',
             name: 'school-post',
             component: () => import('./views/post/postIndex.vue'),
+            meta: {
+              rule: 'teacher'
+            }
+          },
+          {
+            path: 'user',
+            name: 'user-list',
+            component: () => import('./views/user/user-list/UserList.vue'),
             meta: {
               rule: 'teacher'
             }
