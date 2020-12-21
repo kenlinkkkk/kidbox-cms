@@ -76,8 +76,7 @@ export default {
       },
       data: data
     }
-    let response = axiosApiInstance(config)
-
+    let response = await axiosApiInstance(config)
     commit('SET_LIST_USER_ROLE', response.data.data.data)
     return axiosApiInstance(config)
   },
