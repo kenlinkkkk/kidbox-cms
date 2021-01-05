@@ -3,12 +3,12 @@
   <div id="page-user-list">
 
     <vx-card ref="filterCard" title="Bộ lọc" class="user-list-filters mb-8" actionButtons @refresh="resetColFilters" @remove="resetColFilters">
-      <div class="vx-row">
-        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">
+      <div class="vx-row flex flex-wrap justify-between">
+        <div class="vx-col flex-1">
           <label class="text-sm opacity-75">Phân quyền</label>
           <v-select :options="roleOptions" label="label" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="roleFilter" class="mb-4 md:mb-0" />
         </div>
-        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">
+        <div class="vx-col flex-1">
           <label class="text-sm opacity-75">Status</label>
           <v-select :options="statusOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="statusFilter" class="mb-4 md:mb-0" />
         </div>
@@ -60,14 +60,14 @@
           <!-- ACTION - DROPDOWN -->
           <vs-dropdown vs-trigger-click class="cursor-pointer">
 
-            <div class="p-3 shadow-drop rounded-lg d-theme-dark-light-bg cursor-pointer flex items-end justify-center text-lg font-medium w-56">
+            <div class="p-3 shadow-drop rounded-lg d-theme-dark-light-bg cursor-pointer flex items-end justify-center text-lg font-medium w-48">
               <span class="mr-2 leading-none">Hành động</span>
               <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
             </div>
 
             <vs-dropdown-menu>
               <vs-dropdown-item>
-                <span class="flex items-center">
+                <span class="flex items-center w-40">
                   <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" class="mr-2" />
                   <span>Thêm mới</span>
                 </span>
@@ -116,7 +116,6 @@ import moduleUserManagement from '@/store/user/userStore.js'
 // Cell Renderer
 import CellRendererLink from './cell-renderer/CellRendererLink.vue'
 import CellRendererStatus from './cell-renderer/CellRendererStatus.vue'
-import CellRendererVerified from './cell-renderer/CellRendererVerified.vue'
 import CellRendererActions from './cell-renderer/CellRendererActions.vue'
 
 
@@ -128,7 +127,6 @@ export default {
     // Cell Renderer
     CellRendererLink,
     CellRendererStatus,
-    CellRendererVerified,
     CellRendererActions
   },
   data () {
@@ -232,7 +230,6 @@ export default {
       components: {
         CellRendererLink,
         CellRendererStatus,
-        CellRendererVerified,
         CellRendererActions
       }
     }
@@ -243,10 +240,6 @@ export default {
     },
     statusFilter (obj) {
       this.setColumnFilter('status', obj.value)
-    },
-    isVerifiedFilter (obj) {
-      const val = obj.value === 'all' ? 'all' : obj.value === 'yes' ? 'true' : 'false'
-      this.setColumnFilter('is_verified', val)
     },
     departmentFilter (obj) {
       this.setColumnFilter('department', obj.value)
