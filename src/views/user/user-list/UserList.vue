@@ -9,7 +9,7 @@
           <v-select :options="roleOptions" label="label" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="roleFilter" class="mb-4 md:mb-0" />
         </div>
         <div class="vx-col flex-1">
-          <label class="text-sm opacity-75">Status</label>
+          <label class="text-sm opacity-75">Trạng thái</label>
           <v-select :options="statusOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="statusFilter" class="mb-4 md:mb-0" />
         </div>
 <!--        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">-->
@@ -145,21 +145,6 @@ export default {
         { label: 'Blocked', value: 'blocked' }
       ],
 
-      isVerifiedFilter: { label: 'All', value: 'all' },
-      isVerifiedOptions: [
-        { label: 'All', value: 'all' },
-        { label: 'Yes', value: 'yes' },
-        { label: 'No', value: 'no' }
-      ],
-
-      departmentFilter: { label: 'All', value: 'all' },
-      departmentOptions: [
-        { label: 'All', value: 'all' },
-        { label: 'Sales', value: 'sales' },
-        { label: 'Development', value: 'development' },
-        { label: 'Management', value: 'management' }
-      ],
-
       searchQuery: '',
 
       // AgGrid
@@ -247,38 +232,9 @@ export default {
   },
   computed: {
     usersData () {
-      return [
-        {
-          avatar: '/img/avatar-s-6.0c96c10d.jpg',
-          department: 'sales',
-          email: 'abc@gmail.com',
-          id: 123,
-          name: "What's up, dude?",
-          role: 'Admin',
-          status: 'active',
-          username: 'zoman'
-        },
-        {
-          avatar: '/img/avatar-s-6.0c96c10d.jpg',
-          department: 'sales',
-          email: 'abc@gmail.com',
-          id: 123,
-          name: "What's up, dude?",
-          role: 'Hiệu trưởng',
-          status: 'deactivated',
-          username: 'zoman'
-        },
-        {
-          avatar: '/img/avatar-s-6.0c96c10d.jpg',
-          department: 'sales',
-          email: 'abc@gmail.com',
-          id: 123,
-          name: "What's up, dude?",
-          role: 'Phụ huynh',
-          status: 'deactivated',
-          username: 'zoman'
-        }
-      ]
+      let r = this.$store.getters['userManagement/getListUser'];
+      console.log(r)
+      return this.$store.getters['userManagement/getListUser'];
     },
     roleOptions() {
       return this.$store.getters['userManagement/getRoles'];
@@ -344,6 +300,18 @@ export default {
       moduleUserManagement.isRegistered = true
     }
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
+
+    if (this.$acl.check('issystemAdmin')) {
+      Object.assign(this.configLoadPage, {
+        role_id: [60, 61 ,62, 63, 64]
+      })
+    } else {
+      Object.assign(this.configLoadPage, {
+        role_id: [60, 61, 62, 63]
+      })
+    }
+
+    this.$store.dispatch('userManagement/getListUserByRole', this.configLoadPage).catch(err => { console.error(err) })
   }
 }
 

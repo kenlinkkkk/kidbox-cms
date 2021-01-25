@@ -65,7 +65,8 @@ export default {
   },
   async getRoleList({ commit }, payload) {
     let data = {
-      ...payload
+      limit: payload.limit,
+      page: payload.page
     }
 
     let config = {
@@ -96,9 +97,11 @@ export default {
 
     return axiosApiInstance(config)
   },
-  async getListUserByRole(_, payload) {
+  async getListUserByRole({ commit }, payload) {
     let data = {
-      ...payload
+      limit: payload.limit,
+      page: payload.page,
+      role_id: payload.role_id
     }
 
     let config = {
@@ -110,6 +113,11 @@ export default {
       data: data
     }
 
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit('SET_LIST_USER', response.data.data.results)
+      }
+    }
   }
 }
