@@ -117,6 +117,7 @@ export default {
     if (response.status === 200) {
       if (response.data.code === 200) {
         commit('SET_LIST_USER', response.data.data.results)
+
       }
     }
   }

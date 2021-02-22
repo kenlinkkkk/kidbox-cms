@@ -132,7 +132,7 @@ export default {
   data () {
     return {
       configLoadPage: {
-        limit: 10,
+        limit: 20,
         page: 1
       },
       // Filter Options
@@ -301,7 +301,7 @@ export default {
     }
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
 
-    if (this.$acl.check('issystemAdmin')) {
+    if (this.$acl.check('systemAdmin')) {
       Object.assign(this.configLoadPage, {
         role_id: [60, 61 ,62, 63, 64]
       })
