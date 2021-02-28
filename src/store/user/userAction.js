@@ -114,10 +114,13 @@ export default {
     }
 
     let response = await axiosApiInstance(config)
+
     if (response.status === 200) {
       if (response.data.code === 200) {
         commit('SET_LIST_USER', response.data.data.results)
-
+        commit('SET_PAGINATE', {
+          totalPages: response.data.data.total_pages
+        })
       }
     }
   }

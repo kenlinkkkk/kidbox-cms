@@ -180,7 +180,7 @@
 </template>
 
 <script>
-import moduleUserManagement from '@/store/user-management/moduleUserManagement.js'
+// import moduleUserManagement from '@/store/user/userStore.js'
 
 export default {
   data () {
@@ -229,21 +229,14 @@ export default {
   },
   created () {
     // Register Module UserManagement Module
-    if (!moduleUserManagement.isRegistered) {
-      this.$store.registerModule('userManagement', moduleUserManagement)
-      moduleUserManagement.isRegistered = true
-    }
+    // if (!moduleUserManagement.isRegistered) {
+    //   this.$store.registerModule('userManagement', moduleUserManagement)
+    //   moduleUserManagement.isRegistered = true
+    // }
 
     const userId = this.$route.params.userId
-    this.$store.dispatch('userManagement/fetchUser', userId)
-      .then(res => { this.user_data = res.data })
-      .catch(err => {
-        if (err.response.status === 404) {
-          this.user_not_found = true
-          return
-        }
-        console.error(err) 
-      })
+    this.user_data = this.$store.getters['userManagement/getUserById'](userId)
+    console.log(this.user_data)
   }
 }
 

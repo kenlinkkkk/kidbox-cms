@@ -109,6 +109,15 @@ const router = new Router({
             }
           },
           {
+            path: 'infrastructure',
+            name: 'infrastructure-index',
+            component: () => import('./views/infrastructure/InfrastructureIndex.vue'),
+            meta: {
+              rule: 'admin',
+              no_scroll: true
+            }
+          },
+          {
             path: 'menu',
             name: 'class-menu',
             component: () => import('./views/class/menu/menuIndex.vue'),
@@ -137,7 +146,23 @@ const router = new Router({
             name: 'user-list',
             component: () => import('./views/user/user-list/UserList.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'systemAdmin'
+            }
+          },
+          {
+            path: 'user/view/:userId',
+            name: 'user-view',
+            component: () => import('./views/user/UserView.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
+          },
+          {
+            path: 'user/edit/:userId',
+            name: 'user-edit',
+            component: () => import('./views/user/user-edit/UserEdit.vue'),
+            meta: {
+              rule: 'systemAdmin'
             }
           }
         ],

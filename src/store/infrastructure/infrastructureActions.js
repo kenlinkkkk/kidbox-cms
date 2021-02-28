@@ -22,7 +22,8 @@ const actions = {
   async infrastructureTypeList({ commit }, payload) {
     let data = {
       page: payload.page,
-      limit: payload.limit
+      limit: payload.limit,
+      school_id: payload.schoolId
     }
 
     let config = {
@@ -34,8 +35,12 @@ const actions = {
       data: data
     }
     let response = await axiosApiInstance(config)
-    if (response.status === 200) {
-      commit('SET_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+    if (response.status === 200 && response.data.code === 200) {
+      if (data.page === 1) {
+        commit('SET_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+      } else {
+        commit('APPEND_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+      }
     }
     return response
   },
@@ -85,7 +90,11 @@ const actions = {
 
     let response = await axiosApiInstance(config)
     if (response.status === 200) {
-      commit('SET_LIST_INFRASTRUCTURE', response.data.data)
+      if (data.page === 1) {
+        commit('SET_LIST_INFRASTRUCTURE', response.data.data)
+      } else {
+        commit('APPEND_LIST_INFRASTRUCTURE', response.data.data)
+      }
     }
 
     return response

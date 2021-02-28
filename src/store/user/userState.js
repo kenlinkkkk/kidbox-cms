@@ -1,7 +1,9 @@
 const state = () => ({
   userListRoles: [],
   userList: [],
-  paginate: []
+  paginate: {
+    page : 1
+  }
 })
 
 export default state

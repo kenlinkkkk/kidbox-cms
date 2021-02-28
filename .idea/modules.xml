@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../vuexy-admin-v5.2/vuexy-vuejs-admin/full-version/.idea/full-version.iml" filepath="$PROJECT_DIR$/../vuexy-admin-v5.2/vuexy-vuejs-admin/full-version/.idea/full-version.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/starter-kit.iml" filepath="$PROJECT_DIR$/.idea/starter-kit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kidbox-cms.iml" filepath="$PROJECT_DIR$/.idea/kidbox-cms.iml" />
     </modules>
   </component>
 </project>

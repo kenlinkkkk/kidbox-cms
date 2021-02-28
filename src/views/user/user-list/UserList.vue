@@ -111,7 +111,7 @@ import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
 import vSelect from 'vue-select'
 
 // Store Module
-import moduleUserManagement from '@/store/user/userStore.js'
+// import moduleUserManagement from '@/store/user/userStore.js'
 
 // Cell Renderer
 import CellRendererLink from './cell-renderer/CellRendererLink.vue'
@@ -132,7 +132,7 @@ export default {
   data () {
     return {
       configLoadPage: {
-        limit: 20,
+        limit: 10,
         page: 1
       },
       // Filter Options
@@ -232,8 +232,6 @@ export default {
   },
   computed: {
     usersData () {
-      let r = this.$store.getters['userManagement/getListUser'];
-      console.log(r)
       return this.$store.getters['userManagement/getListUser'];
     },
     roleOptions() {
@@ -244,7 +242,8 @@ export default {
       else return 10
     },
     totalPages () {
-      if (this.gridApi) return this.gridApi.paginationGetTotalPages()
+      let paginate = this.$store.getters['userManagement/getPaginate']
+      if (paginate.totalPages) return paginate.totalPages
       else return 0
     },
     currentPage: {
@@ -295,10 +294,10 @@ export default {
     }
   },
   created () {
-    if (!moduleUserManagement.isRegistered) {
-      this.$store.registerModule('userManagement', moduleUserManagement)
-      moduleUserManagement.isRegistered = true
-    }
+    // if (!moduleUserManagement.isRegistered) {
+    //   this.$store.registerModule('userManagement', moduleUserManagement)
+    //   moduleUserManagement.isRegistered = true
+    // }
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
 
     if (this.$acl.check('systemAdmin')) {
@@ -310,7 +309,6 @@ export default {
         role_id: [60, 61, 62, 63]
       })
     }
-
     this.$store.dispatch('userManagement/getListUserByRole', this.configLoadPage).catch(err => { console.error(err) })
   }
 }

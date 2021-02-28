@@ -28,7 +28,11 @@ const getters = {
     })
 
     return response
-  }
+  },
+  getPaginate: state => {
+    return state.paginate
+  },
+  getUserById: state => userId => state.userList.find((user) => user.user.id === userId)
 }
 
 export default getters

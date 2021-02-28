@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/kidbox-cms.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/starter-kit.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/UserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererLink.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererLink.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1p3DYBVF9wWpiyNpZ827LxWP0tT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="" />
+      <created>1614402924920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614402924920</updated>
+      <workItem from="1614402926065" duration="9633000" />
+      <workItem from="1614482762574" duration="11571000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614498407385">
+      <screen x="0" y="30" width="2560" height="1410" />
+    </state>
+    <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1614498407385" />
+    <state x="943" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1614485900322">
+      <screen x="0" y="30" width="2560" height="1410" />
+    </state>
+    <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1614405493253" />
+    <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1614485900322" />
+  </component>
+</project>

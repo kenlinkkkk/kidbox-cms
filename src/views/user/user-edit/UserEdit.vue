@@ -51,7 +51,7 @@ import UserEditTabInformation from './UserEditTabInformation.vue'
 import UserEditTabSocial      from './UserEditTabSocial.vue'
 
 // Store Module
-import moduleUserManagement from '@/store/user-management/moduleUserManagement.js'
+import moduleUserManagement from '@/store/user/userStore.js'
 
 export default {
   components: {
@@ -86,7 +86,7 @@ export default {
             this.user_not_found = true
             return
           }
-          console.error(err) 
+          console.error(err)
         })
     }
   },
