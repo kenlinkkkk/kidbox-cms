@@ -164,7 +164,8 @@
     },
     created() {
       this.$store.dispatch("rate/getListRules");
-    }, components: {
+    },
+    components: {
       VuePerfectScrollbar,
       ruleDetail,
       StarRating

@@ -3,10 +3,14 @@ const mutations = {
     state.userListRoles = listRole
   },
   SET_LIST_USER(state, listUser) {
-    listUser.forEach((item) => {
-      state.userList.push(item)
-    })
-  }
+      state.userList = listUser
+  },
+  SET_PAGINATE(state, data) {
+    state.paginate = {
+      page: state.paginate.page + 1,
+      totalPages: data.totalPages
+    }
+  },
 }
 
 export default mutations

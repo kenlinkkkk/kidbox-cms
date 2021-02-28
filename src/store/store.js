@@ -28,7 +28,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     auth: authModule,
-    user: userModule
+    userManagement: userModule
   },
   strict: process.env.NODE_ENV !== 'production'
 })

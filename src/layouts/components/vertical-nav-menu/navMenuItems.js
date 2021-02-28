@@ -21,7 +21,6 @@ export default [
     slug: "school",
     icon: "HomeIcon",
   },
-
   {
     url: "/admin/class",
     name: "Quản lý lớp học",
@@ -29,15 +28,21 @@ export default [
     icon: "HomeIcon"
   },
   {
+    url: "/admin/infrastructure",
+    name: "Cơ sở vật chất",
+    slug: "infrastructure",
+    icon: "HomeIcon"
+  },
+  {
     url: "/admin/menu",
     name: "Quản lý thực đơn",
-    slug: "class",
+    slug: "menu",
     icon: "MenuIcon"
   },
   {
     url: "/admin/schedule",
     name: "Quản lý lịch học",
-    slug: "class",
+    slug: "schedule",
     icon: "CalendarIcon"
   },
   {
