@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -52,6 +53,13 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\reactjs\kidbox-cms\src\views\infrastructure\components\infrastructure" />
+      <recent name="D:\reactjs\kidbox-cms\src\views\infrastructure\components\type" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -92,6 +100,10 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1614498407385" />
+    <state x="461" y="200" key="SettingsEditor" timestamp="1614587932512">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1614587932512" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1614485900322">
       <screen x="0" y="30" width="2560" height="1410" />
     </state>

@@ -32,8 +32,8 @@
 </template>
 
 <script>
-  import TypePrompt from "./TypePrompt";
-  import InfrastructurePrompt from "./InfrastructurePrompt";
+  import TypePrompt from "./TypeAddPrompt";
+  import InfrastructurePrompt from "../infrastructure/InfrastructurePrompt";
 
   export default {
     data() {
