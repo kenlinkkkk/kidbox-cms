@@ -3,16 +3,16 @@
     title="Cơ sở vật chất"
     accept-text= "Thêm mới"
     button-cancel = "border"
-    @cancel="clearTypeFields"
-    @accept="addNewType"
-    @close="clearTypeFields"
+    @cancel="clearInfrastructureFields"
+    @accept="addNewInfrastructure"
+    @close="clearInfrastructureFields"
     :is-valid="validateForm"
     :active.sync="activePrompt">
     <div>
       <form>
         <div class="vx-row">
           <div class="vx-col w-full">
-            <vs-input rows="5" class="w-full mb-4 mt-5" label="Tên loại cơ sở vật chất" v-model="typeLocal.name" />
+            <vs-input rows="5" class="w-full mb-4 mt-5" label="Tên cơ sở vật chất" v-model="typeLocal.name" />
           </div>
         </div>
       </form>
@@ -23,19 +23,19 @@
 <script>
   export default {
     props: {
-      activeInfrastructureTypeDetailPrompt: {
-        type : Boolean,
-        require : true
+      activeInfrastructureAddPrompt: {
+        type: Boolean,
+        require: true
       },
       typeId: {
         type: Number,
-        require: true
+        require: false
       }
     },
     data() {
       return {
         typeLocal: {
-          name: ''
+          name: '',
         }
       }
     },
@@ -45,23 +45,24 @@
       },
       activePrompt: {
         get() {
-          return this.activeInfrastructureTypeDetailPrompt
+          return this.activeInfrastructureAddPrompt
         },
         set(value) {
-          this.$emit('hiddenTypePrompt', value)
+          this.$emit('hiddenInfrastructureAddPrompt', value)
         }
       }
     },
     methods: {
-      clearTypeFields() {
+      clearInfrastructureFields() {
         Object.assign(this.typeLocal, {
           name: ''
         });
       },
-      addNewType() {
+      addNewInfrastructure() {
         this.$validator.validateAll().then((result) => {
           if (result) {
             this.$store.dispatch("infrastructure/infrastructureTypeAdd", this.typeLocal).then((response) => {
+              this.clearFields();
               this.$store.dispatch("infrastructure/infrastructureTypeList", {page: 1, limit: 10});
 
               this.$vs.notify({
@@ -88,7 +89,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-</style>

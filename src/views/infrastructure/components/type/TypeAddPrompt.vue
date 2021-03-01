@@ -7,7 +7,7 @@
     @accept="addNewType"
     @close="clearTypeFields"
     :is-valid="validateForm"
-    :active.sync="activeInfrastructureTypePrompt">
+    :active.sync="activePrompt">
     <div>
       <form>
         <div class="vx-row">
@@ -23,7 +23,7 @@
 <script>
   export default {
     props: {
-      activeInfrastructureTypePrompt: {
+      activeInfrastructureTypeAddPrompt: {
         type: Boolean,
         require: true
       }
@@ -41,10 +41,10 @@
       },
       activePrompt: {
         get() {
-          return this.activeInfrastructureTypePrompt
+          return this.activeInfrastructureTypeAddPrompt
         },
         set(value) {
-          this.$emit('hiddenTypePrompt', value)
+          this.$emit('hiddenTypeAddPrompt', value)
         }
       }
     },
