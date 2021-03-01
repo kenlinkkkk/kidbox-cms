@@ -19,10 +19,10 @@
               </vs-dropdown-menu>
             </vs-dropdown>
           </router-link>
-          <type-prompt
+          <type-detail-prompt
             :activeInfrastructureTypePrompt="displayInfrastructurePrompt"
             :typeId="item.id" :key="item.id + '-' + item.id"
-            @hiddenTypePrompt="hiddenTypePrompt"></type-prompt>
+            @hiddenTypePrompt="hiddenTypePrompt"></type-detail-prompt>
         </template>
       </vue-perfect-scrollbar>
     </div>
@@ -33,7 +33,7 @@
 </template>
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
-  import TypePrompt from "./TypeAddPrompt";
+  import TypeDetailPrompt from "./TypeDetailPrompt";
 
   export default {
     props: {
@@ -117,7 +117,7 @@
     },
     components: {
       VuePerfectScrollbar,
-      TypePrompt
+      TypeDetailPrompt
     }
   }
 </script>

@@ -21,19 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/auth/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/authActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childMutation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childMutation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/InfrastructureList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/InfrastructurePrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructurePrompt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/InfrastructureTypeAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeAddNew.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/InfrastructureTypeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/TypePrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/TypeAddPrompt.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
