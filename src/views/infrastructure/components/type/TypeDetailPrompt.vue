@@ -33,10 +33,9 @@
       }
     },
     data() {
+      console.log(this.typeId)
       return {
-        typeLocal: {
-          name: ''
-        }
+        typeLocal: Object.assign({}, this.$store.getters["infrastructure/getDetailInfrastructureType"](this.typeId))
       }
     },
     computed: {
