@@ -35,9 +35,9 @@
 <script>
   import infrastructureModule from "@/store/infrastructure/infrastructureStore";
   import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-  import InfrastructureTypeList from "./components/InfrastructureTypeList";
-  import InfrastructureTypeAddNew from "./components/InfrastructureTypeAddNew";
-  import InfrastructureList from "./components/InfrastructureList";
+  import InfrastructureTypeList from "./components/type/InfrastructureTypeList";
+  import InfrastructureTypeAddNew from "./components/type/InfrastructureTypeAddNew";
+  import InfrastructureList from "./components/infrastructure/InfrastructureList";
 
   export default {
     data() {

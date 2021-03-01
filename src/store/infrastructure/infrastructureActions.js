@@ -4,8 +4,9 @@ const actions = {
   // type infrastructure ===============================================================================================
   infrastructureTypeAdd(_, payload) {
     let data = {
-      status: 1,
-      ...payload
+      status : 1,
+      schoolId : parseInt(localStorage.getItem('schoolId')),
+      name: payload.name
     }
 
     let config = {
@@ -23,7 +24,7 @@ const actions = {
     let data = {
       page: payload.page,
       limit: payload.limit,
-      school_id: payload.schoolId
+      schoolId: parseInt(localStorage.getItem('schoolId'))
     }
 
     let config = {
@@ -37,9 +38,9 @@ const actions = {
     let response = await axiosApiInstance(config)
     if (response.status === 200 && response.data.code === 200) {
       if (data.page === 1) {
-        commit('SET_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+        commit('SET_LIST_INFRASTRUCTURE_TYPE', response.data.data.data)
       } else {
-        commit('APPEND_LIST_INFRASTRUCTURE_TYPE', response.data.data)
+        commit('APPEND_LIST_INFRASTRUCTURE_TYPE', response.data.data.data)
       }
     }
     return response
@@ -57,7 +58,7 @@ const actions = {
   },
   infrastructureTypeUpdate(_, payload) {
     let data = {
-      ...payload
+      name: payload.name
     }
 
     let config = {
