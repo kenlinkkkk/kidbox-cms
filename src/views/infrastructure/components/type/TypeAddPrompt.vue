@@ -1,6 +1,6 @@
 <template>
   <vs-prompt
-    title="Cơ sở vật chất"
+    title="Loại cơ sở vật chất"
     accept-text= "Thêm mới"
     button-cancel = "border"
     @cancel="clearTypeFields"

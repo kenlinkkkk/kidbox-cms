@@ -77,7 +77,10 @@ const actions = {
   // infrastructure ====================================================================================================
   async getListInfrastructure({ commit },  payload) {
     let data = {
-      ...payload
+      page: payload.page_number,
+      limit: payload.item_per_page,
+      typeId: parseInt(payload.typeId),
+      schoolId: parseInt(localStorage.getItem('schoolId'))
     }
 
     let config = {
@@ -92,9 +95,9 @@ const actions = {
     let response = await axiosApiInstance(config)
     if (response.status === 200) {
       if (data.page === 1) {
-        commit('SET_LIST_INFRASTRUCTURE', response.data.data)
+        commit('SET_LIST_INFRASTRUCTURE', response.data.data.data)
       } else {
-        commit('APPEND_LIST_INFRASTRUCTURE', response.data.data)
+        commit('APPEND_LIST_INFRASTRUCTURE', response.data.data.data)
       }
     }
 
@@ -111,11 +114,11 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  updateInfrastructureById(payload) {
+  updateInfrastructureById(_, payload) {
     let data = {
       ...payload
     }
-
+    console.log(data)
     let config = {
       method: "POST",
       url: "/cms/infrastructure/update/" + payload.id,
@@ -127,9 +130,14 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  addInfrastructure(payload) {
+  addInfrastructure(_, payload) {
     let data = {
-      ...payload
+      name: payload.name,
+      typeId: payload.typeId,
+      quantity: payload.quantity,
+      unit: payload.unit,
+      note: payload.note,
+      status: 1
     }
 
     let config = {
@@ -139,6 +147,17 @@ const actions = {
         'Content-Type': 'application/json'
       },
       data: data
+    }
+
+    return axiosApiInstance(config)
+  },
+  deleteInfrastructureById(_, payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/infrastructure/delete/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json'
+      }
     }
 
     return axiosApiInstance(config)

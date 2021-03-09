@@ -22,13 +22,18 @@
             v-for="(item, index) in infrastructures"
             :key="String(currFilter) + 'r' + String(item.id)"
             :style="[{transitionDelay: (index * 0.1) + 's'}]">
-            <infrastructure-list :rateId="item.id"  :key="String(item.id)" />
+            <infrastructure-item @showInfrastructureDetailPrompt="showInfrastructureDetailPrompt($event)"  :infrastructureId="item.id"  :key="String(item.id)" />
           </li>
         </transition-group>
         <div v-if="infrastructures === null">Chưa có thông tin cơ sở vật chất</div>
       </vue-perfect-scrollbar>
       <!-- /INFRASTRUCTURE LIST -->
     </div>
+    <infrastructure-detail-prompt
+      :activeInfrastructurePrompt="displayInfrastructurePrompt"
+      :infrastructureId="infrastructureIdToEdit"
+      @hideInfrastructureDetailPrompt="hideInfrastructureDetailPrompt"
+      v-if="displayInfrastructurePrompt" />
   </div>
 </template>
 
@@ -37,18 +42,18 @@
   import VuePerfectScrollbar from 'vue-perfect-scrollbar';
   import InfrastructureTypeList from "./components/type/InfrastructureTypeList";
   import InfrastructureTypeAddNew from "./components/type/InfrastructureTypeAddNew";
-  import InfrastructureList from "./components/infrastructure/InfrastructureList";
-
+  import InfrastructureItem from "./components/infrastructure/InfrastructureItem";
+  import InfrastructureDetailPrompt from "./components/infrastructure/InfrastructureDetailPrompt";
   export default {
     data() {
       return {
         page: 1,
         limit: 10,
-        currFilter           : '',
-        clickNotClose        : true,
-        displayPrompt        : false,
-        taskIdToEdit         : 0,
-        isSidebarActive      : true,
+        currFilter                    : '',
+        clickNotClose                 : true,
+        displayInfrastructurePrompt   : false,
+        infrastructureIdToEdit        : 0,
+        isSidebarActive               : true,
         searchQuery: '',
         settings : {
           maxScrollbarLength : 60,
@@ -65,20 +70,20 @@
       }
     },
     computed: {
-      infrastructures(){ return this.$store.getters["rate/getRates"] },
+      infrastructures(){ return this.$store.getters["infrastructure/getListInfrastructure"] },
       windowWidth ()  { return this.$store.state.windowWidth },
       scrollbarTag () { return this.$store.getters.scrollbarTag },
     },
     methods: {
       scrollHanle({ target: { scrollTop, clientHeight, scrollHeight }}) {
         if (scrollTop + clientHeight >= scrollHeight) {
-          this.page+=1
+          this.page += 1
           const payload = {
-            "ruleId": this.$route.params.ruleId,
+            "typeId": this.$route.params.typeId,
             "item_per_page": this.size,
             "page_number": this.page
           }
-          this.$store.dispatch("infrastructure/scrollRates", payload);
+          this.$store.dispatch("infrastructure/getListInfrastructure", payload);
         }
       },
       setSidebarWidth () {
@@ -92,24 +97,37 @@
         if (!value && this.clickNotClose) return
         this.isSidebarActive = value
       },
+      showInfrastructureDetailPrompt(infrastructureId) {
+        this.infrastructureIdToEdit = infrastructureId;
+        this.displayInfrastructurePrompt = true;
+      },
+      hideInfrastructureDetailPrompt() {
+        this.displayInfrastructurePrompt = false;
+      }
     },
     components: {
       VuePerfectScrollbar,
       InfrastructureTypeList,
       InfrastructureTypeAddNew,
-      InfrastructureList
+      InfrastructureItem,
+      InfrastructureDetailPrompt
     },
     created() {
       this.setSidebarWidth();
       this.$store.registerModule("infrastructure", infrastructureModule);
       this.page = 1;
-      this.$store.dispatch("infrastructure/infrastructureTypeList", {page: this.page, limit: this.limit});
+      const payload = {
+        "typeId": this.$route.params.typeId,
+        "item_per_page": this.limit,
+        "page_number": this.page
+      }
+      this.$store.dispatch("infrastructure/getListInfrastructure", payload);
     },
     beforeDestroy() {
       this.$store.unregisterModule("infrastructure");
     },
     beforeUpdate() {
-
+      this.currFilter = this.$route.params.typeId;
     }
   }
 </script>

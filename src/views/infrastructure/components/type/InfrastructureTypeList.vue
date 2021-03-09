@@ -7,11 +7,10 @@
         <template v-for="item in typeList">
           <div class="vx-row" :key="'container-' + item.id">
             <router-link :class="[{'text-primary': typeFilter === item.id}, 'ml-4']" :key=item.id
-                         :to="`${baseUrl}/${item.id}`" class="flex justify-between mt-6 cursor-pointer" tag="span">
+                         :to="`${baseUrl}/${item.id}`" class="flex justify-between cursor-pointer" tag="span">
               <span class="text-lg text-rule-overflow" v-if="item.status === 1">{{ item.name }}</span>
               <span class="line-through text-lg ml-3 text-rule-overflow" v-if="item.status === 0">{{ item.name }}</span>
             </router-link>
-
             <div class="vx-col w-full sm:w-1/6 ml-auto flex sm:justify-end">
               <feather-icon
                 icon="EditIcon"
@@ -24,13 +23,14 @@
                 svgClasses="w-5 h-5"
                 @click="deactiveInfrastructureType(item.id)" />
             </div>
-            <type-detail-prompt
-              :activeInfrastructureTypeDetailPrompt="displayInfrastructureTypeDetailPrompt"
-              :typeId="infrastructureTypeDetailId" :key="item.id + '-' + item.id"
-              @hiddenTypePrompt="hiddenTypePrompt"/>
           </div>
         </template>
       </vue-perfect-scrollbar>
+      <type-detail-prompt
+        :activeInfrastructureTypeDetailPrompt="displayInfrastructureTypeDetailPrompt"
+        :typeId="infrastructureTypeDetailId"
+        @hiddenTypePrompt="hiddenTypePrompt"
+        v-if="displayInfrastructureTypeDetailPrompt"/>
     </div>
     <div class="px-6 py-4" v-else>
       <p>Chưa có bản ghi</p>
@@ -61,7 +61,7 @@
         return this.$store.getters["infrastructure/getListInfrastructureType"];
       },
       typeFilter() {
-        return this.$route.params.infrastructureTypeId;
+        return this.$route.params.infrastructureTypeDetailId;
       },
       baseUrl() {
         const path = this.$route.path
@@ -125,7 +125,7 @@
 
 <style lang="scss">
   .rule-scroll-area {
-    height: 250px !important;
+    height: 100vh !important;
   }
 
   .text-rule-overflow {
