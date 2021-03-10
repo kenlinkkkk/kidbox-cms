@@ -2,7 +2,7 @@
   <div id="todo-app" class="border border-solid d-theme-border-grey-light rounded relative overflow-hidden">
     <vs-sidebar class="items-no-padding" parent="#todo-app" :click-not-close="clickNotClose" :hidden-background="clickNotClose" v-model="isSidebarActive">
       <infrastructure-type-add-new/>
-      <infrastructure-type-list @closeSidebar="toggleTodoSidebar"></infrastructure-type-list>
+      <infrastructure-type-list @closeSidebar="toggleTypeSidebar"></infrastructure-type-list>
 
     </vs-sidebar>
 
@@ -10,7 +10,7 @@
 
       <div class="flex d-theme-dark-bg items-center border border-l-0 border-r-0 border-t-0 border-solid d-theme-border-grey-light">
         <!-- TOGGLE SIDEBAR BUTTON -->
-        <feather-icon class="md:inline-flex lg:hidden ml-4 mr-4 cursor-pointer" icon="MenuIcon" @click.stop="toggleTodoSidebar(true)" />
+        <feather-icon class="md:inline-flex lg:hidden ml-4 mr-4 cursor-pointer" icon="MenuIcon" @click.stop="toggleTypeSidebar(true)" />
         <!-- SEARCH BAR -->
 <!--         <vs-input icon-no-border size="large" icon-pack="feather" icon="icon-search" placeholder="Search..." v-model="searchQuery" class="vs-input-no-border vs-input-no-shdow-focus w-full" />-->
       </div>
@@ -67,12 +67,26 @@
     watch: {
       windowWidth() {
         this.setSidebarWidth()
+      },
+      infrastructureTypeFilter() {
+        this.toggleTypeSidebar();
+        this.page = 1;
+        let payload = {
+          typeId: this.$route.params.typeId,
+          item_per_page: this.limit,
+          page_number: this.page
+        }
+
+        this.$store.dispatch("infrastructure/getListInfrastructure", payload)
+        const scroll_el = this.$refs.taskListPS.$el || this.$refs.taskListPS
+        scroll_el.scrollTop = 0
       }
     },
     computed: {
       infrastructures(){ return this.$store.getters["infrastructure/getListInfrastructure"] },
       windowWidth ()  { return this.$store.state.windowWidth },
       scrollbarTag () { return this.$store.getters.scrollbarTag },
+      infrastructureTypeFilter() { return this.$route.params.typeId }
     },
     methods: {
       scrollHanle({ target: { scrollTop, clientHeight, scrollHeight }}) {
@@ -93,7 +107,7 @@
           this.isSidebarActive = this.clickNotClose = true
         }
       },
-      toggleTodoSidebar (value = false) {
+      toggleTypeSidebar (value = false) {
         if (!value && this.clickNotClose) return
         this.isSidebarActive = value
       },

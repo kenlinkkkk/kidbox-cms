@@ -20,16 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureItem.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureAddPrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureAddPrompt.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureDetailPrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureDetailPrompt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureList.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/TypeAddPrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/TypeAddPrompt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/TypeDetailPrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/TypeDetailPrompt.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +76,8 @@
       <workItem from="1614402926065" duration="9633000" />
       <workItem from="1614482762574" duration="11571000" />
       <workItem from="1614599399569" duration="7365000" />
-      <workItem from="1615301669937" duration="8273000" />
+      <workItem from="1615301669937" duration="9363000" />
+      <workItem from="1615343581848" duration="3459000" />
     </task>
     <servers />
   </component>

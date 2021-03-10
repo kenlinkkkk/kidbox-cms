@@ -12,7 +12,7 @@
           <div class="vx-col w-full">
             <vs-input rows="5" class="w-full mb-4 mt-5" label="Tên cơ sở vật chất" v-model="infrastructureLocal.name"/>
             <vs-select v-model="infrastructureLocal.typeId" class="w-full select-large" label="Loại CSVC">
-              <vs-select-item :key="index" :value="item.id" :text="item.name" v-for="(item, index) in typeList" class="w-full" />
+              <vs-select-item :key="index" :value="item.id" :text="item.name" v-for="(item, index) in infrastructureList" class="w-full" />
             </vs-select>
             <vs-input rows="5" class="w-full mb-4 mt-5" label="Số lượng" v-model="infrastructureLocal.quantity" />
             <vs-input rows="5" class="w-full mb-4 mt-5" label="Đơn vị tính" v-model="infrastructureLocal.unit" />
@@ -53,7 +53,7 @@
           this.$emit('hideInfrastructureDetailPrompt', value)
         }
       },
-      typeList() {
+      infrastructureList() {
         return Object.assign({}, this.$store.getters["infrastructure/getListInfrastructureType"])
       }
     },
