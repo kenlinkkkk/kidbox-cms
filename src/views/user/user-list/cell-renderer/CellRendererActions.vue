@@ -10,7 +10,7 @@ export default {
   name: 'CellRendererActions',
   methods: {
     editRecord () {
-      this.$router.push(`/user/edit/${  268}`).catch(() => {})
+      this.$router.push("/admin/user/edit/" + this.params.data.id).catch(() => {})
 
       /*
               Below line will be for actual product
@@ -20,11 +20,12 @@ export default {
             */
     },
     confirmDeleteRecord () {
+      console.log(this.params.data)
       this.$vs.dialog({
         type: 'confirm',
         color: 'danger',
-        title: 'Confirm Delete',
-        text: `You are about to delete "${this.params.data.username}"`,
+        title: 'Vô hiệu hóa tài khoản',
+        text: `Có chắc bạn muốn vô hiệu hóa tài khoản "${this.params.data.name}" ?`,
         accept: this.deleteRecord,
         acceptText: 'Delete'
       })
@@ -41,8 +42,8 @@ export default {
     showDeleteSuccess () {
       this.$vs.notify({
         color: 'success',
-        title: 'User Deleted',
-        text: 'The selected user was successfully deleted'
+        title: 'Đã vô hiệu hóa',
+        text: 'Tài khoản đã được vô hiệu hóa'
       })
     }
   }

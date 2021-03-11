@@ -5,26 +5,32 @@
       <vue-perfect-scrollbar :is="scrollbarTag" :key="$vs.rtl" :settings="settings"
                              @ps-scroll-y="scrollHanle" class="rule-scroll-area todo-scroll-area">
         <template v-for="item in typeList">
-          <router-link :class="{'text-primary': typeFilter === item.id}" :key=item.id
-                       :to="`${baseUrl}/${item.id}`" class="flex justify-between mt-6 cursor-pointer" tag="span">
-            <span class="text-lg ml-3 text-rule-overflow" v-if="item.status === 1">{{ item.name }}</span>
-            <span class="line-through text-lg ml-3 text-rule-overflow" v-if="item.status === 0">{{ item.name }}</span>
-            <vs-dropdown class="button-height">
-              <a class="flex self-start" href="#">
-                <i class="material-icons"> more_vert </i>
-              </a>
-              <vs-dropdown-menu>
-                <vs-dropdown-item :infrastructureTypeId="item.id" @click="displayTypePrompt(item.id)">Chi tiết</vs-dropdown-item>
-                <vs-dropdown-item :infrastructureTypeId="item.id" @click="deactiveInfrastructureType(item.id)">Xóa</vs-dropdown-item>
-              </vs-dropdown-menu>
-            </vs-dropdown>
-          </router-link>
-          <type-detail-prompt
-            :activeInfrastructureTypePrompt="displayInfrastructurePrompt"
-            :typeId="item.id" :key="item.id + '-' + item.id"
-            @hiddenTypePrompt="hiddenTypePrompt"></type-detail-prompt>
+          <div class="vx-row" :key="'container-' + item.id">
+            <router-link :class="[{'text-primary': typeFilter === item.id}, 'ml-4']" :key=item.id
+                         :to="`${baseUrl}/${item.id}`" class="flex justify-between cursor-pointer" tag="span">
+              <span class="text-lg text-rule-overflow" v-if="item.status === 1">{{ item.name }}</span>
+              <span class="line-through text-lg ml-3 text-rule-overflow" v-if="item.status === 0">{{ item.name }}</span>
+            </router-link>
+            <div class="vx-col w-full sm:w-1/6 ml-auto flex sm:justify-end">
+              <feather-icon
+                icon="EditIcon"
+                class="cursor-pointer text-primary"
+                :svgClasses="['w-5', 'h-5 mr-4']"
+                @click="displayTypePrompt(item.id)" />
+              <feather-icon
+                icon="TrashIcon"
+                class="cursor-pointer text-primary"
+                svgClasses="w-5 h-5"
+                @click="deactiveInfrastructureType(item.id)" />
+            </div>
+          </div>
         </template>
       </vue-perfect-scrollbar>
+      <type-detail-prompt
+        :activeInfrastructureTypeDetailPrompt="displayInfrastructureTypeDetailPrompt"
+        :typeId="infrastructureTypeDetailId"
+        @hiddenTypePrompt="hiddenTypePrompt"
+        v-if="displayInfrastructureTypeDetailPrompt"/>
     </div>
     <div class="px-6 py-4" v-else>
       <p>Chưa có bản ghi</p>
@@ -36,15 +42,10 @@
   import TypeDetailPrompt from "./TypeDetailPrompt";
 
   export default {
-    props: {
-      infrastructureTypeId: {
-        type: Number
-      }
-    },
     data() {
       return {
-        InfrastructureTypeId: 0,
-        displayInfrastructurePrompt: false,
+        infrastructureTypeDetailId: 0,
+        displayInfrastructureTypeDetailPrompt: false,
         page: 1,
         settings: {
           maxScrollbarLength: 60,
@@ -60,7 +61,7 @@
         return this.$store.getters["infrastructure/getListInfrastructureType"];
       },
       typeFilter() {
-        return this.$route.params.infrastructureTypeId;
+        return this.$route.params.infrastructureTypeDetailId;
       },
       baseUrl() {
         const path = this.$route.path
@@ -84,11 +85,11 @@
         }
       },
       displayTypePrompt(infrastructureTypeId) {
-        this.infrastructureTypeId = infrastructureTypeId;
-        this.displayInfrastructurePrompt = true;
+        this.infrastructureTypeDetailId = infrastructureTypeId;
+        this.displayInfrastructureTypeDetailPrompt = true;
       },
       hiddenTypePrompt() {
-        this.displayInfrastructurePrompt = false;
+        this.displayInfrastructureTypeDetailPrompt = false;
       },
       deactiveInfrastructureType(infrastructureTypeId) {
         this.$store.dispatch("infrastructure/infrastructureTypeDelete", {id: infrastructureTypeId}).then((response) => {
@@ -124,7 +125,7 @@
 
 <style lang="scss">
   .rule-scroll-area {
-    height: 250px !important;
+    height: 100vh !important;
   }
 
   .text-rule-overflow {

@@ -1,13 +1,13 @@
 <template>
   <vs-prompt
-    title="Cơ sở vật chất"
+    title="Loại cơ sở vật chất"
     accept-text= "Thêm mới"
     button-cancel = "border"
     @cancel="clearTypeFields"
     @accept="addNewType"
     @close="clearTypeFields"
     :is-valid="validateForm"
-    :active.sync="activeInfrastructureTypePrompt">
+    :active.sync="activePrompt">
     <div>
       <form>
         <div class="vx-row">
@@ -23,7 +23,7 @@
 <script>
   export default {
     props: {
-      activeInfrastructureTypePrompt: {
+      activeInfrastructureTypeDetailPrompt: {
         type : Boolean,
         require : true
       },
@@ -34,9 +34,7 @@
     },
     data() {
       return {
-        typeLocal: {
-          name: '',
-        }
+        typeLocal: Object.assign({}, this.$store.getters["infrastructure/getDetailInfrastructureType"](this.typeId))
       }
     },
     computed: {
@@ -45,7 +43,7 @@
       },
       activePrompt: {
         get() {
-          return this.activeInfrastructureTypePrompt
+          return this.activeInfrastructureTypeDetailPrompt
         },
         set(value) {
           this.$emit('hiddenTypePrompt', value)
@@ -61,7 +59,7 @@
       addNewType() {
         this.$validator.validateAll().then((result) => {
           if (result) {
-            this.$store.dispatch("infrastructure/infrastructureTypeAdd", this.typeLocal).then((response) => {
+            this.$store.dispatch("infrastructure/infrastructureTypeUpdate", this.typeLocal).then((response) => {
               this.$store.dispatch("infrastructure/infrastructureTypeList", {page: 1, limit: 10});
 
               this.$vs.notify({

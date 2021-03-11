@@ -6,13 +6,13 @@
         <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
       </div>
       <vs-dropdown-menu>
-        <vs-dropdown-item @click="displayTypePrompt">
+        <vs-dropdown-item @click="displayTypeAddPrompt">
           <span class="flex items-center w-50">
             <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" class="mr-2" />
             <span>Loại csvc</span>
           </span>
         </vs-dropdown-item>
-        <vs-dropdown-item @click="displayInfrastructurePrompt">
+        <vs-dropdown-item @click="displayInfrastructureAddPrompt">
                 <span class="flex items-center w-50">
                   <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" class="mr-2" />
                   <span>CSVC</span>
@@ -21,47 +21,46 @@
       </vs-dropdown-menu>
     </vs-dropdown>
 
-    <type-prompt
-      :activeInfrastructureTypePrompt="activeInfrastructureTypePrompt"
-      @hiddenTypePrompt="hiddenTypePrompt"></type-prompt>
-    <infrastructure-prompt
-      :activeInfrastructurePrompt="activeInfrastructurePrompt"
-      @hiddenInfrastructurePrompt="hiddenInfrastructurePrompt"></infrastructure-prompt>
-
+    <type-add-prompt
+      :activeInfrastructureTypeAddPrompt="infrastructureTypePrompt"
+      @hiddenTypeAddPrompt="hiddenTypeAddPrompt"/>
+    <infrastructure-add-prompt
+      :activeInfrastructureAddPrompt="infrastructurePrompt"
+      @hiddenInfrastructureAddPrompt="hiddenInfrastructureAddPrompt"/>
   </div>
 </template>
 
 <script>
-  import TypePrompt from "./TypeAddPrompt";
-  import InfrastructurePrompt from "../infrastructure/InfrastructurePrompt";
+  import TypeAddPrompt from "./TypeAddPrompt";
+  import InfrastructureAddPrompt from "../infrastructure/InfrastructureAddPrompt";
 
   export default {
     data() {
       return {
-        activeInfrastructureTypePrompt : false,
-        activeInfrastructurePrompt : false
+        infrastructureTypePrompt : false,
+        infrastructurePrompt : false
       }
     },
     computed: {
 
     },
     methods: {
-      displayTypePrompt() {
-        this.activeInfrastructureTypePrompt = true;
+      displayTypeAddPrompt() {
+        this.infrastructureTypePrompt = true;
       },
-      hiddenTypePrompt() {
-        this.activeInfrastructureTypePrompt = false;
+      hiddenTypeAddPrompt() {
+        this.infrastructureTypePrompt = false;
       },
-      displayInfrastructurePrompt() {
-        this.activeInfrastructurePrompt = true;
+      displayInfrastructureAddPrompt() {
+        this.infrastructurePrompt = true;
       },
-      hiddenInfrastructurePrompt() {
-        this.activeInfrastructurePrompt = false;
+      hiddenInfrastructureAddPrompt() {
+        this.infrastructurePrompt = false;
       },
     },
     components: {
-      TypePrompt,
-      InfrastructurePrompt
+      TypeAddPrompt,
+      InfrastructureAddPrompt
     }
   }
 </script>

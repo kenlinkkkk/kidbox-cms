@@ -111,9 +111,19 @@ const router = new Router({
           {
             path: 'infrastructure',
             name: 'infrastructure-index',
+            redirect: 'infrastructure/all',
+            meta: {
+              rule: 'admin',
+              no_scroll: true
+            }
+          },
+          {
+            path: 'infrastructure/:typeId',
+            name: 'infrastructure-type',
             component: () => import('./views/infrastructure/InfrastructureIndex.vue'),
             meta: {
               rule: 'admin',
+              parent: 'infrastructure-index',
               no_scroll: true
             }
           },
