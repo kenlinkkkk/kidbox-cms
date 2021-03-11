@@ -14,7 +14,7 @@
     <div class="vx-row">
       <div class="vx-col w-full">
         <div class="flex items-start flex-col sm:flex-row">
-          <img :src="data.avatar" class="mr-8 rounded h-24 w-24" />
+          <img :src="data.image_url.path" class="mr-8 rounded h-24 w-24" />
           <!-- <vs-avatar :src="data.avatar" size="80px" class="mr-4" /> -->
           <div>
             <p class="text-lg font-medium mb-2 mt-4 sm:mt-0">{{ data.name  }}</p>
@@ -33,10 +33,10 @@
     <!-- Content Row -->
     <div class="vx-row">
       <div class="vx-col md:w-1/2 w-full">
-        <vs-input class="w-full mt-4" label="Username" v-model="data_local.username" v-validate="'required|alpha_num'" name="username" />
-        <span class="text-danger text-sm"  v-show="errors.has('username')">{{ errors.first('username') }}</span>
+        <vs-input class="w-full mt-4" label="Tên tài khoản" v-model="data_local.email" v-validate="'required|alpha_num'" name="username" />
+        <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
 
-        <vs-input class="w-full mt-4" label="Name" v-model="data_local.name" v-validate="'required|alpha_spaces'" name="name" />
+        <vs-input class="w-full mt-4" label="Tên" v-model="data_local.name" v-validate="'required|alpha_spaces'" name="name" />
         <span class="text-danger text-sm"  v-show="errors.has('name')">{{ errors.first('name') }}</span>
 
         <vs-input class="w-full mt-4" label="Email" v-model="data_local.email" type="email" v-validate="'required|email'" name="email" />
@@ -51,14 +51,11 @@
           <span class="text-danger text-sm"  v-show="errors.has('status')">{{ errors.first('status') }}</span>
         </div>
 
-        <div class="mt-4">
-          <label class="vs-input--label">Role</label>
-          <v-select v-model="role_local" :clearable="false" :options="roleOptions" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-          <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
-        </div>
+        <vs-input class="w-full mt-4" label="Số điện thoại" v-model="data_local.phone_number" type="text" v-validate="'required'" name="phone_number" />
+        <span class="text-danger text-sm"  v-show="errors.has('phone_number')">{{ errors.first('phone_number') }}</span>
 
-        <vs-input class="w-full mt-4" label="Company" v-model="data_local.company" v-validate="'alpha_spaces'" name="company" />
-        <span class="text-danger text-sm"  v-show="errors.has('company')">{{ errors.first('company') }}</span>
+        <vs-input class="w-full mt-4" label="Địa chỉ" v-model="data_local.address" v-validate="'alpha_spaces'" name="address" />
+        <span class="text-danger text-sm"  v-show="errors.has('address')">{{ errors.first('address') }}</span>
 
       </div>
     </div>
@@ -70,7 +67,7 @@
         <div class="vx-col w-full">
           <div class="flex items-end px-3">
             <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />
-            <span class="font-medium text-lg leading-none">Permissions</span>
+            <span class="font-medium text-lg leading-none">Phân quyền</span>
           </div>
           <vs-divider />
         </div>
@@ -102,8 +99,8 @@
     <div class="vx-row">
       <div class="vx-col w-full">
         <div class="mt-8 flex flex-wrap items-center justify-end">
-          <vs-button class="ml-auto mt-2" @click="save_changes" :disabled="!validateForm">Save Changes</vs-button>
-          <vs-button class="ml-4 mt-2" type="border" color="warning" @click="reset_data">Reset</vs-button>
+          <vs-button class="ml-auto mt-2" @click="save_changes" :disabled="!validateForm">Lưu thông tin</vs-button>
+          <vs-button class="ml-4 mt-2" type="border" color="warning" @click="reset_data">Hủy</vs-button>
         </div>
       </div>
     </div>
@@ -141,30 +138,11 @@ export default {
     }
   },
   computed: {
-    status_local: {
-      get () {
-        return { label: this.capitalize(this.data_local.status),  value: this.data_local.status  }
-      },
-      set (obj) {
-        this.data_local.status = obj.value
-      }
-    },
-    role_local: {
-      get () {
-        return { label: this.capitalize(this.data_local.role),  value: this.data_local.role  }
-      },
-      set (obj) {
-        this.data_local.role = obj.value
-      }
-    },
     validateForm () {
       return !this.errors.any()
     }
   },
   methods: {
-    capitalize (str) {
-      return str.slice(0, 1).toUpperCase() + str.slice(1, str.length)
-    },
     save_changes () {
       /* eslint-disable */
       if (!this.validateForm) return

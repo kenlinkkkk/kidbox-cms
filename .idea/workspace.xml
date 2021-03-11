@@ -21,9 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureDetailPrompt.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/infrastructure/InfrastructureDetailPrompt.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/auth/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/auth/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,10 +106,10 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1615304585982" />
-    <state x="461" y="200" key="SettingsEditor" timestamp="1614587932512">
+    <state x="461" y="200" key="SettingsEditor" timestamp="1615428162929">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1614587932512" />
+    <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1615428162929" />
     <state x="987" y="468" width="585" height="534" key="find.popup" timestamp="1615303167086">
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
