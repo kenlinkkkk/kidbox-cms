@@ -22,7 +22,7 @@ const actions = {
       const userInfo = await auth.getUserInfo(payload)
       if(userInfo.data){
         localStorage.setItem('userInfo', JSON.stringify(userInfo.data.data))
-        localStorage.setItem('schoolId', 1)
+        localStorage.setItem('schoolId', JSON.stringify(userInfo.data.data.school_id))
         commit('SET_USERINFO', userInfo.data)
         commit('SET_SCHOOL_ID', userInfo.data.school_id)
       }

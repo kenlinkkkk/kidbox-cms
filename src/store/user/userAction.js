@@ -123,5 +123,17 @@ export default {
         })
       }
     }
+  },
+  async getDetailById(_, payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/users/detail/" + payload.id,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    let response = await axiosApiInstance(config)
+    console.log(response.data.data)
+    return response.data
   }
 }
