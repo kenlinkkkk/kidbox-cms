@@ -13,13 +13,13 @@
     <vs-alert color="danger" title="User Not Found" :active.sync="user_not_found">
       <span>User record with id: {{ $route.params.userId }} not found. </span>
       <span>
-        <span>Check </span><router-link :to="{name:'page-user-list'}" class="text-inherit underline">All Users</router-link>
+        <span>Check </span><router-link :to="{name:'user-list'}" class="text-inherit underline">All Users</router-link>
       </span>
     </vs-alert>
 
     <div id="user-data" v-if="user_data">
 
-      <vx-card title="Account" class="mb-base">
+      <vx-card title="Tài khoản" class="mb-base">
 
         <!-- Avatar -->
         <div class="vx-row">
@@ -27,7 +27,7 @@
           <!-- Avatar Col -->
           <div class="vx-col" id="avatar-col">
             <div class="img-container mb-4">
-              <img :src="user_data.avatar" class="rounded w-full" />
+              <img :src="user_data.image_url.path" class="rounded w-full" />
             </div>
           </div>
 
@@ -35,11 +35,11 @@
           <div class="vx-col flex-1" id="account-info-col-1">
             <table>
               <tr>
-                <td class="font-semibold">Username</td>
-                <td>{{ user_data.username }}</td>
+                <td class="font-semibold">Tài khoản</td>
+                <td>{{ user_data.email }}</td>
               </tr>
               <tr>
-                <td class="font-semibold">Name</td>
+                <td class="font-semibold">Tên</td>
                 <td>{{ user_data.name }}</td>
               </tr>
               <tr>
@@ -54,127 +54,53 @@
           <div class="vx-col flex-1" id="account-info-col-2">
             <table>
               <tr>
-                <td class="font-semibold">Status</td>
-                <td>{{ user_data.status }}</td>
+                <td class="font-semibold">Số điện thoại</td>
+                <td>{{ user_data.phone_number }}</td>
               </tr>
               <tr>
-                <td class="font-semibold">Role</td>
-                <td>{{ user_data.role }}</td>
+                <td class="font-semibold">Quyền hạn</td>
+                <td>{{ user_data.user.role_name }}</td>
               </tr>
               <tr>
-                <td class="font-semibold">Company</td>
-                <td>{{ user_data.company }}</td>
+                <td class="font-semibold">Địa chỉ</td>
+                <td>{{ user_data.address }}</td>
               </tr>
             </table>
           </div>
           <!-- /Information - Col 2 -->
           <div class="vx-col w-full flex" id="account-manage-buttons">
-            <vs-button icon-pack="feather" icon="icon-edit" class="mr-4" :to="{name: 'app-user-edit', params: { userId: $route.params.userId }}">Edit</vs-button>
-            <vs-button type="border" color="danger" icon-pack="feather" icon="icon-trash" @click="confirmDeleteRecord">Delete</vs-button>
+            <vs-button icon-pack="feather" icon="icon-edit" class="mr-4" :to="{name: 'user-edit', params: { userId: $route.params.userId }}">Sửa</vs-button>
+            <vs-button type="border" color="danger" icon-pack="feather" icon="icon-trash" @click="confirmDeleteRecord">Xóa</vs-button>
           </div>
 
         </div>
 
       </vx-card>
 
-      <div class="vx-row">
-        <div class="vx-col lg:w-1/2 w-full">
-          <vx-card title="Information" class="mb-base">
-            <table>
-              <tr>
-                <td class="font-semibold">Birth Date</td>
-                <td>{{ user_data.dob }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Mobile</td>
-                <td>{{ user_data.mobile }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Website</td>
-                <td>{{ user_data.website }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Languages</td>
-                <td>{{ user_data.languages_known.join(", ") }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Gender</td>
-                <td>{{ user_data.gender }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Contact</td>
-                <td>{{ user_data.contact_options.join(", ") }}</td>
-              </tr>
-            </table>
-          </vx-card>
-        </div>
-
-        <div class="vx-col lg:w-1/2 w-full">
-          <vx-card title="Social Links" class="mb-base">
-            <table>
-              <tr>
-                <td class="font-semibold">Twitter</td>
-                <td>{{ user_data.social_links.twitter }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Facebook</td>
-                <td>{{ user_data.social_links.facebook }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Instagram</td>
-                <td>{{ user_data.social_links.instagram }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Github</td>
-                <td>{{ user_data.social_links.github }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">CodePen</td>
-                <td>{{ user_data.social_links.codepen }}</td>
-              </tr>
-              <tr>
-                <td class="font-semibold">Slack</td>
-                <td>{{ user_data.social_links.slack }}</td>
-              </tr>
-            </table>
-          </vx-card>
-        </div>
-      </div>
-
-      <!-- Permissions -->
-      <vx-card>
-
-        <div class="vx-row">
-          <div class="vx-col w-full">
-            <div class="flex items-end px-3">
-              <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />
-              <span class="font-medium text-lg leading-none">Permissions</span>
-            </div>
-            <vs-divider />
-          </div>
-        </div>
-
-        <div class="block overflow-x-auto">
-          <table class="w-full permissions-table">
-            <tr>
-              <!--
-                You can also use `Object.keys(Object.values(data_local.permissions)[0])` this logic if you consider,
-                our data structure. You just have to loop over above variable to get table headers.
-                Below we made it simple. So, everyone can understand.
-               -->
-              <th class="font-semibold text-base text-left px-3 py-2" v-for="heading in ['Module', 'Read', 'Write', 'Create', 'Delete']" :key="heading">{{ heading }}</th>
-            </tr>
-
-            <tr v-for="(val, name) in user_data.permissions" :key="name">
-              <td class="px-3 py-2">{{ name }}</td>
-              <td v-for="(permission, name) in val" class="px-3 py-2" :key="name+permission">
-                <vs-checkbox v-model="val[name]" class="pointer-events-none" />
-              </td>
-            </tr>
-          </table>
-        </div>
-
-      </vx-card>
+<!--      <div class="vx-row">-->
+<!--        <div class="vx-col lg:w-1/2 w-full">-->
+<!--          <vx-card title="Thông tin liên lạc" class="mb-base">-->
+<!--            <table>-->
+<!--              <tr>-->
+<!--                <td class="font-semibold">Birth Date</td>-->
+<!--                <td>{{ user_data.name }}</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="font-semibold">Mobile</td>-->
+<!--                <td>{{ user_data.name }}</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="font-semibold">Website</td>-->
+<!--                <td>{{ user_data.name }}</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td class="font-semibold">Gender</td>-->
+<!--                <td>{{ user_data.name }}</td>-->
+<!--              </tr>name-->
+<!--            </table>-->
+<!--          </vx-card>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </template>
@@ -190,23 +116,16 @@ export default {
     }
   },
   computed: {
-    userAddress () {
-      let str = ''
-      for (const field in this.user_data.location) {
-        str += `${field  } `
-      }
-      return str
-    }
   },
   methods: {
     confirmDeleteRecord () {
       this.$vs.dialog({
         type: 'confirm',
         color: 'danger',
-        title: 'Confirm Delete',
-        text: `You are about to delete "${this.user_data.username}"`,
+        title: 'Xác nhận xóa',
+        text: `Bạn muốn xóa tài khoản này "${this.user_data.username}"`,
         accept: this.deleteRecord,
-        acceptText: 'Delete'
+        acceptText: 'Xóa'
       })
     },
     deleteRecord () {
@@ -215,28 +134,26 @@ export default {
       this.showDeleteSuccess()
 
       /* UnComment below lines for enabling true flow if deleting user */
-      // this.$store.dispatch("userManagement/removeRecord", this.user_data.id)
-      //   .then(()   => { this.$router.push({name:'app-user-list'}); this.showDeleteSuccess() })
-      //   .catch(err => { console.error(err)       })
+      this.$store.dispatch("userManagement/deleteUserById", { userId: this.user_data.id })
+        .then(()   => { this.$router.push({name:'app-user-list'}); this.showDeleteSuccess() })
+        .catch(err => { console.error(err)       })
     },
     showDeleteSuccess () {
       this.$vs.notify({
         color: 'success',
-        title: 'User Deleted',
-        text: 'The selected user was successfully deleted'
+        title: 'Xóa thành công',
+        text: 'Xóa thông tin tài khoản thành công'
       })
     }
   },
-  created () {
-    // Register Module UserManagement Module
-    // if (!moduleUserManagement.isRegistered) {
-    //   this.$store.registerModule('userManagement', moduleUserManagement)
-    //   moduleUserManagement.isRegistered = true
-    // }
-
+  async created () {
     const userId = this.$route.params.userId
-    this.user_data = this.$store.getters['userManagement/getUserById'](userId)
-    console.log(this.user_data)
+    let response = await this.$store.dispatch('userManagement/getDetailById', { id: userId })
+    if (response.code !== 200) {
+      this.user_not_found = true
+    } else {
+      this.user_data = response.data
+    }
   }
 }
 

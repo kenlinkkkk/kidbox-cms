@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/UserView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
