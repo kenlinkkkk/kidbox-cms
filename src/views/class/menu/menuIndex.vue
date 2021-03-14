@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="vx-card p-3 mb-4">
-      <template v-if="menuLocal.menu">
+      <template v-if="menuLocal">
         <div class="pl-3 pr-3 ">
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Thực đơn ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>
@@ -43,10 +43,10 @@
           </div>
         </div>
       </template>
-      <template v-if="menuLocal.data === null">
+      <template v-if="menuLocal === null">
         <div class="pl-3 pr-3 flex">
           <p class="flex-grow">Chưa có thông tin thực đơn</p>
-          <div class="flex-none" v-if="action.canAction">
+          <div class="flex-none">
             <vs-button class="small">Thêm mới thực đơn</vs-button>
           </div>
         </div>
@@ -99,7 +99,7 @@
         return this.$store.getters['class/getClasses']
       },
       menuLocal() {
-        return this.$store.getters['menu/getMenu']
+        return  this.$store.getters['menu/getMenu']
       }
     },
     methods: {
