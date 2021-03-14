@@ -133,7 +133,6 @@ export default {
       }
     }
     let response = await axiosApiInstance(config)
-    console.log(response.data.data)
     return response.data
   }
 }

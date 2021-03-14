@@ -19,12 +19,8 @@
           <div>
             <p class="text-lg font-medium mb-2 mt-4 sm:mt-0">{{ data.name  }}</p>
             <input type="file" class="hidden" ref="update_avatar_input" @change="update_avatar" accept="image/*">
-
             <!-- Toggle comment of below buttons as one for actual flow & currently shown is only for demo -->
-            <vs-button class="mr-4 mb-4">Change Avatar</vs-button>
-            <!-- <vs-button type="border" class="mr-4" @click="$refs.update_avatar_input.click()">Change Avatar</vs-button> -->
-
-            <vs-button type="border" color="danger">Remove Avatar</vs-button>
+            <vs-button type="border" class="mr-4" @click="$refs.update_avatar_input.click()">Đổi ảnh đại diện</vs-button>
           </div>
         </div>
       </div>
@@ -33,7 +29,7 @@
     <!-- Content Row -->
     <div class="vx-row">
       <div class="vx-col md:w-1/2 w-full">
-        <vs-input class="w-full mt-4" label="Tên tài khoản" v-model="data_local.email" v-validate="'required|alpha_num'" name="username" />
+        <vs-input class="w-full mt-4" label="Tên tài khoản" v-model="data_local.email" v-validate="'required|alpha_num'" name="username" disabled="true"/>
         <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
 
         <vs-input class="w-full mt-4" label="Tên" v-model="data_local.name" v-validate="'required|alpha_spaces'" name="name" />
@@ -46,8 +42,8 @@
       <div class="vx-col md:w-1/2 w-full">
 
         <div class="mt-4">
-          <label class="vs-input--label">Status</label>
-          <v-select v-model="status_local" :clearable="false" :options="statusOptions" v-validate="'required'" name="status" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+          <label class="vs-input--label">Quyền</label>
+          <v-select v-model="status" :clearable="false" :options="statusOptions" v-validate="'required'" name="status" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
           <span class="text-danger text-sm"  v-show="errors.has('status')">{{ errors.first('status') }}</span>
         </div>
 
@@ -61,39 +57,34 @@
     </div>
 
     <!-- Permissions -->
-    <vx-card class="mt-base" no-shadow card-border>
+<!--    <vx-card class="mt-base" no-shadow card-border>-->
 
-      <div class="vx-row">
-        <div class="vx-col w-full">
-          <div class="flex items-end px-3">
-            <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />
-            <span class="font-medium text-lg leading-none">Phân quyền</span>
-          </div>
-          <vs-divider />
-        </div>
-      </div>
+<!--      <div class="vx-row">-->
+<!--        <div class="vx-col w-full">-->
+<!--          <div class="flex items-end px-3">-->
+<!--            <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />-->
+<!--            <span class="font-medium text-lg leading-none">Phân quyền</span>-->
+<!--          </div>-->
+<!--          <vs-divider />-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="block overflow-x-auto">
-        <table class="w-full">
-          <tr>
-            <!--
-              You can also use `Object.keys(Object.values(data_local.permissions)[0])` this logic if you consider,
-              our data structure. You just have to loop over above variable to get table headers.
-              Below we made it simple. So, everyone can understand.
-             -->
-            <th class="font-semibold text-base text-left px-3 py-2" v-for="heading in ['Module', 'Read', 'Write', 'Create', 'Delete']" :key="heading">{{ heading }}</th>
-          </tr>
+<!--      <div class="block overflow-x-auto">-->
+<!--        <table class="w-full">-->
+<!--          <tr>-->
+<!--            <th class="font-semibold text-base text-left px-3 py-2" v-for="heading in ['Module', 'Read', 'Write', 'Create', 'Delete']" :key="heading">{{ heading }}</th>-->
+<!--          </tr>-->
 
-          <tr v-for="(val, name) in data_local.permissions" :key="name">
-            <td class="px-3 py-2">{{ name }}</td>
-            <td v-for="(permission, name) in val" class="px-3 py-2" :key="name+permission">
-              <vs-checkbox v-model="val[name]" />
-            </td>
-          </tr>
-        </table>
-      </div>
+<!--          <tr v-for="(val, name) in data_local.permissions" :key="name">-->
+<!--            <td class="px-3 py-2">{{ name }}</td>-->
+<!--            <td v-for="(permission, name) in val" class="px-3 py-2" :key="name+permission">-->
+<!--              <vs-checkbox v-model="val[name]" />-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--      </div>-->
 
-    </vx-card>
+<!--    </vx-card>-->
 
     <!-- Save & Reset Button -->
     <div class="vx-row">
@@ -153,12 +144,11 @@ export default {
       /* eslint-enable */
     },
     reset_data () {
+      console.log(this.data)
       this.data_local = JSON.parse(JSON.stringify(this.data))
     },
     update_avatar () {
-      // You can update avatar Here
-      // For reference you can check dataList example
-      // We haven't integrated it here, because data isn't saved in DB
+
     }
   }
 }
