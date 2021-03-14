@@ -71,6 +71,7 @@
       return {
         datePickerConfig: {
           langVi: vi,
+          date: new Date(),
           formatDate: 'yyyy-MM-dd',
           disabledDates: {
             days: [7,0]
