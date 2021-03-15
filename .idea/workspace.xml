@@ -20,8 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +78,7 @@
       <workItem from="1614599399569" duration="7365000" />
       <workItem from="1615301669937" duration="9363000" />
       <workItem from="1615343581848" duration="3459000" />
+      <workItem from="1615773166596" duration="4759000" />
     </task>
     <servers />
   </component>

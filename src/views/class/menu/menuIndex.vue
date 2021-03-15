@@ -1,5 +1,6 @@
 <template>
   <div>
+    <action-side-bar :isSidebarActive="addNewSideBar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
     <div class="vx-card p-3 mb-4 flex">
       <div class="flex-1">
         <label>Chọn trường</label>
@@ -25,11 +26,11 @@
     </div>
     <div class="vx-card p-3 mb-4">
       <template v-if="menuLocal">
-        <div class="pl-3 pr-3 ">
+        <div class="pl-3 pr-3">
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Thực đơn ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>
             <div class="flex-none" v-if="action.canAction">
-              <vs-button class="small">Sửa thực đơn</vs-button>
+              <vs-button class="small" @click="addNewSidebarOpen">Sửa thực đơn</vs-button>
             </div>
           </div>
           <div class="pl-3 pr-3 flex flex-grow items-center" v-for="item in menuLocal.menu" :key="item.id">
@@ -43,11 +44,11 @@
           </div>
         </div>
       </template>
-      <template v-if="menuLocal === null">
+      <template v-else>
         <div class="pl-3 pr-3 flex">
           <p class="flex-grow">Chưa có thông tin thực đơn</p>
           <div class="flex-none">
-            <vs-button class="small">Thêm mới thực đơn</vs-button>
+            <vs-button class="small" @click="addNewSidebarOpen">Thêm mới thực đơn</vs-button>
           </div>
         </div>
       </template>
@@ -62,10 +63,13 @@
   import moduleSchool from '@/store/school/schoolStore.js'
   import moduleClass from '@/store/class/classStore.js'
   import { vi } from 'vuejs-datepicker/src/locale'
+  import ActionSideBar from "./ActionSideBar";
+
   export default {
     components: {
       Datepicker,
-      'v-select' : vSelect
+      'v-select' : vSelect,
+      ActionSideBar
     },
     data () {
       return {
@@ -88,7 +92,9 @@
           name: '',
           canAction: true,
           itemToEdit: 0,
-        }
+        },
+        addNewSideBar: false,
+        sidebarData: {}
       }
     },
     computed: {
@@ -99,7 +105,7 @@
         return this.$store.getters['class/getClasses']
       },
       menuLocal() {
-        return  this.$store.getters['menu/getMenu']
+        return this.$store.getters['menu/getMenu']
       }
     },
     methods: {
@@ -120,6 +126,17 @@
         }
         this.$store.dispatch('menu/getMenuByDate', this.inputQuery)
       },
+      addNewSidebarOpen() {
+        this.sidebarData = {}
+        this.toggleDataSidebar(true)
+      },
+      editSidebarOpen(id) {
+        this.sidebarData = { id: id }
+        this.toggleDataSidebar(true)
+      },
+      toggleDataSidebar(val) {
+        this.addNewSideBar = val;
+      }
     },
     created() {
       this.$store.registerModule('menu', moduleMenu);
