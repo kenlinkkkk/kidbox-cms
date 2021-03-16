@@ -30,7 +30,7 @@
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Thực đơn ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>
             <div class="flex-none" v-if="action.canAction">
-              <vs-button class="small" @click="addNewSidebarOpen">Sửa thực đơn</vs-button>
+              <vs-button class="small" @click="editSidebarOpen(menuLocal.id)">Sửa thực đơn</vs-button>
             </div>
           </div>
           <div class="pl-3 pr-3 flex flex-grow items-center" v-for="item in menuLocal.menu" :key="item.id">
@@ -62,7 +62,7 @@
   import moduleMenu from '@/store/menu/menuStore.js'
   import moduleSchool from '@/store/school/schoolStore.js'
   import moduleClass from '@/store/class/classStore.js'
-  import { vi } from 'vuejs-datepicker/src/locale'
+  import {vi} from 'vuejs-datepicker/src/locale'
   import ActionSideBar from "./ActionSideBar";
 
   export default {
@@ -127,14 +127,18 @@
         this.$store.dispatch('menu/getMenuByDate', this.inputQuery)
       },
       addNewSidebarOpen() {
-        this.sidebarData = {}
+        this.sidebarData = {
+          id: 0,
+          class_room_id: this.inputQuery.classId,
+          date: this.inputQuery.date
+        }
         this.toggleDataSidebar(true)
       },
       editSidebarOpen(id) {
         this.sidebarData = { id: id }
         this.toggleDataSidebar(true)
       },
-      toggleDataSidebar(val) {
+      toggleDataSidebar(val = false) {
         this.addNewSideBar = val;
       }
     },
