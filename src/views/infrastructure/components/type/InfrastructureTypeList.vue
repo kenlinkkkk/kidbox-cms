@@ -5,11 +5,11 @@
       <vue-perfect-scrollbar :is="scrollbarTag" :key="$vs.rtl" :settings="settings"
                              @ps-scroll-y="scrollHanle" class="rule-scroll-area todo-scroll-area">
         <template v-for="item in typeList">
-          <div class="vx-row" :key="'container-' + item.id">
+          <div class="vx-row mb-6" :key="'container-' + item.id">
             <router-link :class="[{'text-primary': typeFilter === item.id}, 'ml-4']" :key=item.id
                          :to="`${baseUrl}/${item.id}`" class="flex justify-between cursor-pointer" tag="span">
               <span class="text-lg text-rule-overflow" v-if="item.status === 1">{{ item.name }}</span>
-              <span class="line-through text-lg ml-3 text-rule-overflow" v-if="item.status === 0">{{ item.name }}</span>
+              <span class="line-through text-lg text-rule-overflow" v-if="item.status === 0">{{ item.name }}</span>
             </router-link>
             <div class="vx-col w-full sm:w-1/6 ml-auto flex sm:justify-end">
               <feather-icon

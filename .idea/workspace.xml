@@ -20,10 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Default_Changelist.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/components/type/InfrastructureTypeList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -160,6 +160,14 @@ const router = new Router({
             }
           },
           {
+            path: 'user/add',
+            name: 'add-user',
+            component: () => import('./views/user/UserAdd.vue'),
+            meta: {
+              rule: 'systemAdmin'
+            }
+          },
+          {
             path: 'user/view/:userId',
             name: 'user-view',
             component: () => import('./views/user/UserView.vue'),

@@ -69,7 +69,7 @@
               <vs-dropdown-item>
                 <span class="flex items-center w-40">
                   <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" class="mr-2" />
-                  <span>Thêm mới</span>
+                  <span @click="addUser">Thêm mới</span>
                 </span>
               </vs-dropdown-item>
             </vs-dropdown-menu>
@@ -278,6 +278,9 @@ export default {
     },
     updateSearchQuery (val) {
       this.gridApi.setQuickFilter(val)
+    },
+    addUser () {
+      this.$router.push('/admin/user/add');
     }
   },
   mounted () {
