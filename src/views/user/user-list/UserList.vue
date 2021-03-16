@@ -36,7 +36,6 @@
             </div>
             <!-- <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button> -->
             <vs-dropdown-menu>
-
               <vs-dropdown-item @click="gridApi.paginationSetPageSize(10)">
                 <span>10</span>
               </vs-dropdown-item>
@@ -98,7 +97,8 @@
 
       <vs-pagination
         :total="totalPages"
-        v-model="currentPage" />
+        v-model="currentPage"
+        @input="selectPage"/>
 
     </div>
   </div>
@@ -281,6 +281,10 @@ export default {
     },
     addUser () {
       this.$router.push('/admin/user/add');
+    },
+    selectPage (event) {
+      this.configLoadPage.page = event;
+      this.$store.dispatch('userManagement/getListUserByRole', this.configLoadPage).catch(err => { console.error(err) })
     }
   },
   mounted () {
