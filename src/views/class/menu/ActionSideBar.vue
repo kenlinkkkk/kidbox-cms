@@ -227,7 +227,7 @@
 
   .scroll-area--data-list-add-new {
     // height: calc(var(--vh, 1vh) * 100 - 4.3rem);
-    height: calc(var(--vh, 1vh) * 100 - 16px - 45px - 82px);
+    height: calc(var(--vh, 1vh) * 100 - 16px - 45px - 170px);
 
     &:not(.ps) {
       overflow-y: auto;

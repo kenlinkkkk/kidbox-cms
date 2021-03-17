@@ -5,7 +5,7 @@ const actions = {
     let list = []
     payload.data.forEach((item) => {
       if (item.name !== "" && item.time !== "") {
-        if (item.image_url.path !== undefined) {
+        if (item.image_url.path !== undefined && item.image_url.type !== "") {
           list.push({
             name: item.name,
             image_url: {
@@ -37,7 +37,6 @@ const actions = {
       },
       data: data
     }
-
     return axiosApiInstance(config)
   },
   async deleteMenu(_, payload) {

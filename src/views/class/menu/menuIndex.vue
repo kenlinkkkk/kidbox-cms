@@ -48,7 +48,7 @@
         <div class="pl-3 pr-3 flex">
           <p class="flex-grow">Chưa có thông tin thực đơn</p>
           <div class="flex-none">
-            <vs-button class="small" @click="addNewSidebarOpen">Thêm mới thực đơn</vs-button>
+            <vs-button class="small" @click="addNewSidebarOpen" v-if="action.canAction">Thêm mới thực đơn</vs-button>
           </div>
         </div>
       </template>
@@ -121,8 +121,10 @@
       },
       dateSelected(event) {
         this.inputQuery.date = event
-        if (event < new Date()) {
+        if (event.toISOString().split('T')[0] < new Date().toISOString().split('T')[0]) {
           this.action.canAction = false
+        } else {
+          this.action.canAction = true
         }
         this.$store.dispatch('menu/getMenuByDate', this.inputQuery)
       },
