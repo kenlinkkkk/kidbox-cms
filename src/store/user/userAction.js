@@ -99,9 +99,7 @@ export default {
   },
   async getListUserByRole({ commit }, payload) {
     let data = {
-      limit: payload.limit,
-      page: payload.page,
-      role_id: payload.role_id
+      ...payload
     }
 
     let config = {

@@ -22,8 +22,13 @@
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/menu/menuActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/menu/menuActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,11 +130,16 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1615428162929" />
-    <state x="740" y="356" width="549" height="520" key="find.popup" timestamp="1615955903377">
-      <screen x="0" y="30" width="1920" height="1050" />
+    <state x="987" y="468" width="732" height="699" key="find.popup" timestamp="1616005025706">
+      <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1615955903377" />
+    <state x="987" y="468" width="732" height="699" key="find.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616005025706" />
     <state x="987" y="468" width="585" height="534" key="find.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1615303167086" />
+    <state x="936" y="348" key="run.anything.popup" timestamp="1616004484526">
+      <screen x="0" y="30" width="2560" height="1410" />
+    </state>
+    <state x="936" y="348" key="run.anything.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616004484526" />
     <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1615972104619">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
