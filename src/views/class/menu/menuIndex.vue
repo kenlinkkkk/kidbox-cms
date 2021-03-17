@@ -24,7 +24,7 @@
           class="mr-3" />
       </div>
     </div>
-    <div class="vx-card p-3 mb-4">
+    <div class="vx-card p-3 mb-4" v-if="inputQuery.schoolId !== '' && inputQuery.classId !== ''">
       <template v-if="menuLocal">
         <div class="pl-3 pr-3">
           <div class="pl-3 pr-3 flex">
@@ -52,6 +52,11 @@
           </div>
         </div>
       </template>
+    </div>
+    <div class="vx-card p-3 mb-4" v-else>
+      <div class="pl-3 pr-3 flex">
+        <p class="flex-grow">Vui lòng chọn trường và lớp</p>
+      </div>
     </div>
   </div>
 </template>
@@ -137,7 +142,11 @@
         this.toggleDataSidebar(true)
       },
       editSidebarOpen(id) {
-        this.sidebarData = { id: id }
+        this.sidebarData = {
+          id: id,
+          class_room_id: this.inputQuery.classId,
+          date: this.inputQuery.date
+        }
         this.toggleDataSidebar(true)
       },
       toggleDataSidebar(val = false) {

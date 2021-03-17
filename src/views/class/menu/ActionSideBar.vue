@@ -10,7 +10,7 @@
       <div class="p-4">
         <template>
           <div>
-            <vx-card v-for="(item, index) in dataList" :key="item.id" :id="item.id" class="mt-2" title="Món ăn" remove-card-action collapse-action>
+            <vx-card v-for="(item, index) in dataList" :key="index" :id="index" class="mt-2" title="Món ăn" remove-card-action collapse-action>
               <div class="vx-row">
                 <div class="vx-col w-full">
                   <div class="flex items-start flex-col sm:flex-row">
@@ -71,7 +71,6 @@
         },
         nextItem: 2,
         dataList: [{
-          id: 1,
           name: "",
           image_url: {
             path: "",
@@ -90,18 +89,18 @@
     watch: {
       isSidebarActive (val) {
         if (!val) return
-        if (this.data.id === 0) {
+        if (this.data.id !== 0) {
           this.initValues()
           this.$validator.reset()
-        } else if(this.data.id !== 0) {
-          const { category, id, img, name, order_status, price } = JSON.parse(JSON.stringify(this.data))
-          this.dataId = id
-          this.dataCategory = category
-          this.dataImg = img
-          this.dataName = name
-          this.dataOrder_status = order_status
-          this.dataPrice = price
-          this.initValues()
+        } else if(this.data.id === 0) {
+          this.dataList = [{
+            name: "",
+            image_url: {
+              path: "",
+              type: ""
+            },
+            time: ""
+          }]
         }
       }
     },
@@ -123,9 +122,17 @@
     },
     methods: {
       initValues () {
-        // if (this.data.id !== undefined) {
-        //
-        // }
+        if (this.data.id !== undefined) {
+          let inputQuery = {
+            classId: this.data.class_room_id,
+            date: this.data.date
+          }
+          this.$store.dispatch('menu/getMenuByDate', inputQuery).then((response) => {
+            this.dataList = JSON.parse(JSON.stringify(response.data.data.menu))
+          }).catch((error) => {
+            console.log(error)
+          })
+        }
       },
       async submitData () {
         let submitData = {
@@ -134,8 +141,15 @@
           data: this.dataList,
           note: this.note
         }
+        let response;
+        if (this.data.id === 0) {
+          // eslint-disable-next-line no-const-assign
+          response = await this.$store.dispatch('menu/addMenu', submitData)
+        } else {
+          // eslint-disable-next-line no-const-assign
+          response = await this.$store.dispatch('menu/updateMenu', { id: this.data.id, submitData: submitData})
+        }
 
-        let response = await this.$store.dispatch('menu/addMenu', submitData)
         if (response.data.code === 200) {
           this.isSidebarActiveLocal = false
           this.$vs.notify({
@@ -159,7 +173,6 @@
       },
       repeatForm () {
         this.dataList.push({
-          id: this.nextItem += this.nextItem,
           name: "",
           image_url: {
             path: "",

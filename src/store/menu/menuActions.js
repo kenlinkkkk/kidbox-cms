@@ -81,7 +81,7 @@ const actions = {
       headers: {
         'Content-Type': 'application/json',
       },
-      data: data
+      data: data.submitData
     }
 
     return axiosApiInstance(config)
