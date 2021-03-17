@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/menu/menuActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/menu/menuActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/ActionSideBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +53,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vuexy-63/vuexy-63/vuexy-admin-6.3/vue-version/vuexy-vuesax-deprecated/vuesax-full-package" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -109,13 +114,22 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1615304585982" />
+    <state x="740" y="310" key="FileChooserDialogImpl" timestamp="1615950865017">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="740" y="310" key="FileChooserDialogImpl/0.30.1920.1050@0.30.1920.1050" timestamp="1615950865017" />
+    <state x="540" y="290" key="IDE.errors.dialog" timestamp="1615963862659">
+      <screen x="0" y="30" width="1920" height="1050" />
+    </state>
+    <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1615963862659" />
     <state x="461" y="200" key="SettingsEditor" timestamp="1615428162929">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1615428162929" />
-    <state x="987" y="468" width="585" height="534" key="find.popup" timestamp="1615303167086">
-      <screen x="0" y="30" width="2560" height="1410" />
+    <state x="740" y="356" width="549" height="520" key="find.popup" timestamp="1615955903377">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
+    <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1615955903377" />
     <state x="987" y="468" width="585" height="534" key="find.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1615303167086" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1614485900322">
       <screen x="0" y="30" width="2560" height="1410" />

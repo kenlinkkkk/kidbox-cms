@@ -7,13 +7,36 @@
     <vs-divider class="mb-0"></vs-divider>
 
     <component :is="scrollbarTag" class="scroll-area--data-list-add-new" :settings="settings" :key="$vs.rtl">
-      <div class="p-6">
-
+      <div class="p-4">
+        <template>
+          <div>
+            <vx-card v-for="(item, index) in dataList" :key="item.id" :id="item.id" class="mt-2" title="Món ăn" remove-card-action collapse-action>
+              <div class="vx-row">
+                <div class="vx-col w-full">
+                  <div class="flex items-start flex-col sm:flex-row">
+                    <img :src="item.image_url.path" class="mr-8 rounded w-24" />
+                    <!-- <vs-avatar :src="data.avatar" size="80px" class="mr-4" /> -->
+                    <div>
+                      <input type="file" class="hidden" :id="'file-'+ index" @change="update_avatar" accept="image/*">
+                      <!-- Toggle comment of below buttons as one for actual flow & currently shown is only for demo -->
+                      <vs-button type="border" class="mr-4" @click="uploadClick(index)">Thêm ảnh món ăn</vs-button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <vs-input class="w-full mt-4" label="Tên món ăn" v-model="item.name" name="name" />
+              <label class="mt-4">Chọn giờ</label>
+              <flat-pickr :config="configdateTimePicker" v-model="item.time" class="w-full"/>
+            </vx-card>
+            <vs-button class="mt-2" @click="repeatForm">Thêm</vs-button>
+          </div>
+        </template>
       </div>
     </component>
 
     <div class="flex flex-wrap items-center p-6" slot="footer">
-      <vs-button class="mr-6" @click="submitData" :disabled="!isFormValid">Lưu</vs-button>
+      <vs-input class="w-full mb-4" label="Ghi chú" v-model="note" name="note" />
+      <vs-button class="mr-6" @click="submitData">Lưu</vs-button>
       <vs-button type="border" color="danger" @click="isSidebarActiveLocal = false">Hủy</vs-button>
     </div>
   </vs-sidebar>
@@ -21,6 +44,9 @@
 
 <script>
   import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+  import flatPickr from 'vue-flatpickr-component';
+  import 'flatpickr/dist/flatpickr.css';
+  import axiosApiInstance from "../../../axios";
 
   export default {
     props: {
@@ -34,19 +60,30 @@
       }
     },
     components: {
-      VuePerfectScrollbar
+      VuePerfectScrollbar,
+      flatPickr
     },
     data () {
       return {
-        dataItem: {
-          name: "",
-          image_url: "",
-          time: ""
-        },
-        dataList: [],
         settings: {
           maxScrollbarLength: 60,
-          wheelSpeed: .60
+          wheelSpeed: .20
+        },
+        nextItem: 2,
+        dataList: [{
+          id: 1,
+          name: "",
+          image_url: {
+            path: "",
+            type: ""
+          },
+          time: ""
+        }],
+        note: "",
+        configdateTimePicker: {
+          enableTime: true,
+          enableSeconds: false,
+          noCalendar: true
         }
       }
     },
@@ -86,44 +123,77 @@
     },
     methods: {
       initValues () {
-        console.log(this.data)
         // if (this.data.id !== undefined) {
         //
         // }
       },
-      submitData () {
-        this.$validator.validateAll().then(result => {
-          if (result) {
-            const obj = {
-              id: this.dataId,
-              name: this.dataName,
-              img: this.dataImg,
-              category: this.dataCategory,
-              order_status: this.dataOrder_status,
-              price: this.dataPrice
-            }
+      async submitData () {
+        let submitData = {
+          class_room_id: this.data.class_room_id,
+          date: this.data.date.toISOString().split('T')[0],
+          data: this.dataList,
+          note: this.note
+        }
 
-            if (this.dataId !== null && this.dataId >= 0) {
-              this.$store.dispatch('dataList/updateItem', obj).catch(err => { console.error(err) })
-            } else {
-              delete obj.id
-              obj.popularity = 0
-              this.$store.dispatch('dataList/addItem', obj).catch(err => { console.error(err) })
-            }
-
-            this.$emit('closeSidebar')
-            this.initValues()
-          }
+        let response = await this.$store.dispatch('menu/addMenu', submitData)
+        if (response.data.code === 200) {
+          this.isSidebarActiveLocal = false
+          this.$vs.notify({
+            title:'Cập nhật thông tin hành công',
+            text: response.data.message,
+            position: 'top-right',
+            color:'success',
+            iconPack: 'feather',
+            icon:'icon-check'
+          });
+        } else {
+          this.$vs.notify({
+            title:'Lỗi',
+            text: response.data.message,
+            position: 'top-right',
+            color:'danger',
+            iconPack: 'feather',
+            icon:'icon-x'
+          });
+        }
+      },
+      repeatForm () {
+        this.dataList.push({
+          id: this.nextItem += this.nextItem,
+          name: "",
+          image_url: {
+            path: "",
+            type: ""
+          },
+          time: ""
         })
       },
-      updateCurrImg (input) {
+      update_avatar (input) {
+        let index = input.target.id.split('-')[1];
+        let formData = new FormData();
         if (input.target.files && input.target.files[0]) {
-          const reader = new FileReader()
-          reader.onload = e => {
-            this.dataImg = e.target.result
+          let file = input.target.files[0];
+          formData.append('file', file);
+
+          let config = {
+            url: "/api/upload",
+            method: "POST",
+            headers: {
+              'Content-Type' : 'multipart/form-data'
+            },
+            data: formData
           }
-          reader.readAsDataURL(input.target.files[0])
+          axiosApiInstance(config).then((response) => {
+            this.dataList[index].image_url.path = 'https://kidbox.vn/media/' + response.data.data.path;
+            this.dataList[index].image_url.type = response.data.data.type;
+          }).catch((error) => {
+            console.log(error)
+          })
         }
+      },
+      uploadClick (id) {
+        let name = 'file-' + id;
+        document.getElementById(name).click();
       }
     }
   }
