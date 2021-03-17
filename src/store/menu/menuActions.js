@@ -1,9 +1,32 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
-  async addMenu(_, payload) {
+  addMenu(_, payload) {
+    let list = []
+    payload.data.forEach((item) => {
+      if (item.name !== "" && item.time !== "") {
+        if (item.image_url.path !== undefined) {
+          list.push({
+            name: item.name,
+            image_url: {
+              path: item.image_url.path.split('https://kidbox.vn/media/')[1],
+              type: item.image_url.type
+            },
+            time: item.time
+          })
+        } else {
+          list.push({
+            name: item.name,
+            time: item.time
+          })
+        }
+      }
+    })
     let data = {
-      ...payload
+      class_room_id: payload.class_room_id,
+      date: payload.date,
+      data: list,
+      note: payload.note
     }
 
     let config = {

@@ -148,7 +148,7 @@
         }
       },
       reset_data () {
-        this.data_local = JSON.parse(JSON.stringify(this.data))
+        this.$router.go(-1);
       },
       async update_avatar (input) {
         let formData = new FormData();

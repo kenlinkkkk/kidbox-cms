@@ -34,8 +34,8 @@
 
         <div class="mt-4">
           <label class="vs-input--label">Quyền</label>
-          <v-select v-model="status" :clearable="false" :options="statusOptions" v-validate="'required'" name="status" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-          <span class="text-danger text-sm"  v-show="errors.has('status')">{{ errors.first('status') }}</span>
+          <v-select :clearable="false" :options="roles" @input="roleSelected" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+          <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
         </div>
 
         <vs-input class="w-full mt-4" label="Số điện thoại" v-model="data_local.phone_number" type="text" v-validate="'required'" name="phone_number" />
@@ -46,38 +46,6 @@
 
       </div>
     </div>
-
-    <!-- Permissions -->
-<!--    <vx-card class="mt-base" no-shadow card-border>-->
-
-<!--      <div class="vx-row">-->
-<!--        <div class="vx-col w-full">-->
-<!--          <div class="flex items-end px-3">-->
-<!--            <feather-icon svgClasses="w-6 h-6" icon="LockIcon" class="mr-2" />-->
-<!--            <span class="font-medium text-lg leading-none">Phân quyền</span>-->
-<!--          </div>-->
-<!--          <vs-divider />-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="block overflow-x-auto">-->
-<!--        <table class="w-full">-->
-<!--          <tr>-->
-<!--            <th class="font-semibold text-base text-left px-3 py-2" v-for="heading in ['Module', 'Read', 'Write', 'Create', 'Delete']" :key="heading">{{ heading }}</th>-->
-<!--          </tr>-->
-
-<!--          <tr v-for="(val, name) in data_local.permissions" :key="name">-->
-<!--            <td class="px-3 py-2">{{ name }}</td>-->
-<!--            <td v-for="(permission, name) in val" class="px-3 py-2" :key="name+permission">-->
-<!--              <vs-checkbox v-model="val[name]" />-->
-<!--            </td>-->
-<!--          </tr>-->
-<!--        </table>-->
-<!--      </div>-->
-
-<!--    </vx-card>-->
-
-    <!-- Save & Reset Button -->
     <div class="vx-row">
       <div class="vx-col w-full">
         <div class="mt-8 flex flex-wrap items-center justify-end">
@@ -91,6 +59,7 @@
 
 <script>
 import vSelect from 'vue-select'
+import axiosApiInstance from "../../../axios";
 
 export default {
   components: {
@@ -104,25 +73,22 @@ export default {
   },
   data () {
     return {
-
       data_local: JSON.parse(JSON.stringify(this.data)),
-
-      statusOptions: [
-        { label: 'Active',  value: 'active' },
-        { label: 'Blocked',  value: 'blocked' },
-        { label: 'Deactivated',  value: 'deactivated' }
-      ],
-      roleOptions: [
-        { label: 'Admin',  value: 'admin' },
-        { label: 'User',  value: 'user' },
-        { label: 'Staff',  value: 'staff' }
-      ]
+      configLoadPage: {
+        limit: 10,
+        page: 1
+      },
     }
   },
   computed: {
     validateForm () {
       return !this.errors.any()
-    }
+    },
+    roles() {
+      let roleList = this.$store.getters['userManagement/getRoles'];
+
+      return roleList
+    },
   },
   methods: {
     save_changes () {
@@ -135,12 +101,35 @@ export default {
       /* eslint-enable */
     },
     reset_data () {
-      console.log(this.data)
-      this.data_local = JSON.parse(JSON.stringify(this.data))
+      this.$router.go(-1);
     },
-    update_avatar () {
+    async update_avatar (input) {
+      let formData = new FormData();
+      if (input.target.files && input.target.files[0]) {
+        let file = input.target.files[0];
+        formData.append('file', file);
+
+        let config = {
+          url: "/api/upload",
+          method: "POST",
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          data: formData
+        }
+
+        let response = await axiosApiInstance(config)
+        let path = "https://kidbox.vn/media/";
+        this.data_local.avatar.path = path.concat(String(response.data.data.path));
+        this.data_local.avatar.type = response.data.data.type;
+      }
+    },
+    roleSelected () {
 
     }
+  },
+  created() {
+    this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
   }
 }
 </script>
