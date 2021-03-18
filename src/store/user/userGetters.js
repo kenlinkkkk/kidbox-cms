@@ -14,7 +14,6 @@ const getters = {
   },
   getListUser: state => {
     let response = []
-
     state.userList.forEach(item => {
       response.push({
         id: item.user.id,
@@ -23,7 +22,11 @@ const getters = {
         name: item.name,
         status: 'active',
         phoneNumber: item.phone_number,
-        role: item.user.role_name
+        role: item.user,
+        school: {
+          id: item.school_id,
+          name: item.school_name,
+        }
       })
     })
 

@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="p-3 mb-4" v-if="inputQuery.schoolId !== '' && inputQuery.classId !== ''">
-      <template v-if="scheduleLocal">
+      <template v-if="scheduleLocal.length > 0">
         <div class="pl-3 pr-3">
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Lịch học ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>

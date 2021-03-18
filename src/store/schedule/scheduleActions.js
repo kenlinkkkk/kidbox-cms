@@ -17,7 +17,7 @@ const actions = {
     }
 
     let response = await axiosApiInstance(config)
-    if (response.data.code === 200) {
+    if (response.status === 200) {
       commit('SET_SCHEDULE_BY_DATE', response.data.data)
     }
 

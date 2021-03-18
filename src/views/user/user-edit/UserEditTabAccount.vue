@@ -28,22 +28,35 @@
 
         <vs-input class="w-full mt-4" label="Email" v-model="data_local.email" type="email" v-validate="'required|email'" name="email" />
         <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
-      </div>
-
-      <div class="vx-col md:w-1/2 w-full">
-
-        <div class="mt-4">
-          <label class="vs-input--label">Quyền</label>
-          <v-select :clearable="false" :options="roles" @input="roleSelected" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-          <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
-        </div>
 
         <vs-input class="w-full mt-4" label="Số điện thoại" v-model="data_local.phone_number" type="text" v-validate="'required'" name="phone_number" />
         <span class="text-danger text-sm"  v-show="errors.has('phone_number')">{{ errors.first('phone_number') }}</span>
 
         <vs-input class="w-full mt-4" label="Địa chỉ" v-model="data_local.address" v-validate="'alpha_spaces'" name="address" />
         <span class="text-danger text-sm"  v-show="errors.has('address')">{{ errors.first('address') }}</span>
+      </div>
 
+      <div class="vx-col md:w-1/2 w-full">
+
+        <div class="mt-4">
+          <div>
+            <label class="vs-input--label">Trường</label>
+            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+          </div>
+
+          <div class="mt-4">
+            <label class="vs-input--label">Quyền</label>
+            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+          </div>
+
+          <div class="mt-4">
+            <label class="vs-input--label">Lớp</label>
+            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="vx-row">
@@ -123,9 +136,6 @@ export default {
         this.data_local.avatar.path = path.concat(String(response.data.data.path));
         this.data_local.avatar.type = response.data.data.type;
       }
-    },
-    roleSelected () {
-
     }
   },
   created() {
