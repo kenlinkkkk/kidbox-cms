@@ -66,13 +66,12 @@ require('./assets/css/iconfont.css')
 // Vue select css
 // Note: In latest version you have to add it separately
 // import 'vue-select/dist/vue-select.css';
-
+Vue.use(acl, { router: router, init: 'any' })
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  acl,
   render: h => h(App)
 }).$mount('#app')
