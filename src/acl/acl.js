@@ -6,9 +6,21 @@ Vue.use(AclInstaller)
 
 let initialRole = 'systemAdmin'
 
-// const userInfo = JSON.parse(localStorage.getItem('userInfo'))
-// const userListRole = userInfo.role
-// if (userInfo && userInfo.userRole) initialRole = userInfo.userRole
+const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+switch (userInfo.role) {
+  case "ADMIN": {
+    initialRole = "systemAdmin";
+    break;
+  }
+  case "SCHOOL_MASTER": {
+    initialRole = "admin";
+    break;
+  }
+  case "TEACHER": {
+    initialRole = "teacher";
+    break;
+  }
+}
 
 export default new AclCreate({
   initial  : initialRole,

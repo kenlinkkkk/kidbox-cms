@@ -21,13 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acl/acl.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/acl/acl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,10 +134,10 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="936" y="348" key="run.anything.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616004484526" />
-    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1615972104619">
+    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1616062719875">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1615972104619" />
+    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616062719875" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1614405493253" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1614485900322" />
   </component>
