@@ -1,7 +1,7 @@
 <template>
   <vs-sidebar click-not-close position-right parent="body" default-index="1" color="primary" class="add-new-data-sidebar items-no-padding" spacer v-model="isSidebarActiveLocal">
     <div class="mt-6 flex items-center justify-between px-6">
-      <h4>{{ this.data.id === undefined ? "THÊM MỚI" : "CẬP NHẬT" }} LỊCH HỌC</h4>
+      <h4>{{ this.data.id === 0 ? "THÊM MỚI" : "CẬP NHẬT" }} LỊCH HỌC</h4>
       <feather-icon icon="XIcon" @click.stop="isSidebarActiveLocal = false" class="cursor-pointer"></feather-icon>
     </div>
     <vs-divider class="mb-0"></vs-divider>
@@ -19,7 +19,7 @@
               <vs-input class="w-full mb-4" label="Ghi chú" v-model="item.note" name="note" />
               <vs-input class="w-full mb-4" label="Vị trí học" v-model="item.location" name="note" />
               <label>Giáo viên</label>
-              <v-select class="mr-3" label="name" :id="'select-' + index" :options="listTeacher" @input="teacherPicker" :v-model="item.teacher_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+              <v-select class="mr-3 w-full" label="name" :options="listTeacher" v-model="item.teacher_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
             </vx-card>
             <vs-button class="mt-2" @click="repeatForm">Thêm</vs-button>
           </div>
@@ -109,7 +109,7 @@
         }
       },
       isFormValid () {
-        return !this.errors.any() && this.dataName && this.dataCategory && this.dataPrice > 0
+        return !this.errors.any()
       },
       scrollbarTag () { return this.$store.getters.scrollbarTag },
       listTeacher () {
@@ -118,54 +118,67 @@
     },
     methods: {
       initValues () {
-        if (this.data.id !== undefined) {
+        if (this.data.id !== 0) {
           let inputQuery = {
             classId: this.data.class_room_id,
             date: this.data.date
           }
-          this.$store.dispatch('menu/getMenuByDate', inputQuery).then((response) => {
-            this.dataList = JSON.parse(JSON.stringify(response.data.data.menu))
+          this.$store.dispatch('schedule/getScheduleByDate', inputQuery)
+          this.dataList = []
+          this.$store.dispatch('schedule/scheduleByID', { id : this.data.id}).then((response) => {
+            this.dataList.push({
+              id: response.data.id,
+              start_time: response.data.start_time,
+              end_time: response.data.end_time,
+              date: response.data.date,
+              name: response.data.name,
+              note: response.data.note,
+              location: response.data.location,
+              teacher_id: response.data.teacher
+            })
           }).catch((error) => {
             console.log(error)
           })
         }
       },
       async submitData () {
-        // let submitData = {
-        //   class_room_id: this.data.class_room_id,
-        //   date: this.data.date.toISOString().split('T')[0],
-        //   data: this.dataList,
-        //   note: this.note
-        // }
-        // let response;
-        // if (this.data.id === 0) {
-        //   // eslint-disable-next-line no-const-assign
-        //   response = await this.$store.dispatch('menu/addMenu', submitData)
-        // } else {
-        //   // eslint-disable-next-line no-const-assign
-        //   response = await this.$store.dispatch('menu/updateMenu', { id: this.data.id, submitData: submitData})
-        // }
-        //
-        // if (response.data.code === 200) {
-        //   this.isSidebarActiveLocal = false
-        //   this.$vs.notify({
-        //     title:'Cập nhật thông tin hành công',
-        //     text: response.data.message,
-        //     position: 'top-right',
-        //     color:'success',
-        //     iconPack: 'feather',
-        //     icon:'icon-check'
-        //   });
-        // } else {
-        //   this.$vs.notify({
-        //     title:'Lỗi',
-        //     text: response.data.message,
-        //     position: 'top-right',
-        //     color:'danger',
-        //     iconPack: 'feather',
-        //     icon:'icon-x'
-        //   });
-        // }
+        let response;
+        if (this.data.id === 0) {
+          response = await this.$store.dispatch('schedule/addNewSchedule', {
+            class_room_id: this.data.class_room_id,
+            date: this.data.date,
+            data: this.dataList
+          })
+        } else {
+          // eslint-disable-next-line no-const-assign
+          response = await this.$store.dispatch('schedule/updateMenu', {
+            id: this.data.id,
+            class_room_id: this.data.class_room_id,
+            date: this.data.date,
+            data: this.dataList
+          })
+        }
+
+        if (response.code === 200) {
+          this.isSidebarActiveLocal = false
+          this.$vs.notify({
+            title:'Cập nhật thông tin hành công',
+            text: response.message,
+            position: 'top-right',
+            color:'success',
+            iconPack: 'feather',
+            icon:'icon-check'
+          });
+        } else {
+          this.$vs.notify({
+            title:'Lỗi',
+            text: response.message,
+            position: 'top-right',
+            color:'danger',
+            iconPack: 'feather',
+            icon:'icon-x'
+          });
+        }
       },
       repeatForm () {
         this.dataList.push({
@@ -177,9 +190,6 @@
           location: ""
         })
       },
-      teacherPicker(input) {
-        return input
-      }
     }
   }
 </script>

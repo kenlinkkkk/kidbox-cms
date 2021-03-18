@@ -118,7 +118,6 @@ const actions = {
     let data = {
       ...payload
     }
-    console.log(data)
     let config = {
       method: "POST",
       url: "/cms/infrastructure/update/" + payload.id,

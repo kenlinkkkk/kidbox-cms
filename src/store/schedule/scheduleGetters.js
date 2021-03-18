@@ -1,10 +1,8 @@
 const getters = {
-  getScheduleByDate: state => datePicked => state.schedules.find((item) =>
-    item.date.split('T')[0] === datePicked.toISOString().split('T')[0]
-  ),
   getSchedule: state => {
-    state.schedules
-  }
+    return state.schedules
+  },
+  getScheduleById: state => scheduleId => state.schedules.find((item) => item.id === scheduleId)
 }
 
 export default getters
