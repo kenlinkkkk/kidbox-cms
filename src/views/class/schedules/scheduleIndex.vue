@@ -24,24 +24,35 @@
           class="mr-3" />
       </div>
     </div>
-    <div class="vx-card p-3 mb-4" v-if="inputQuery.schoolId !== '' && inputQuery.classId !== ''">
+    <div class="p-3 mb-4" v-if="inputQuery.schoolId !== '' && inputQuery.classId !== ''">
       <template v-if="scheduleLocal">
         <div class="pl-3 pr-3">
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Lịch học ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>
-            <div class="flex-none" v-if="action.canAction">
-              <vs-button class="small" @click="editSidebarOpen(scheduleLocal.id)">Sửa lịch học</vs-button>
-            </div>
           </div>
-          <div class="pl-3 pr-3 flex flex-grow items-center" v-for="item in menuLocal.menu" :key="item.id">
-            <div>
-              <vs-avatar size="large" :src="item.image_url.path"/>
+          <template>
+            <div class="vx-card p-2 mt-4 flex"  v-for="item in scheduleLocal" :key="item.index">
+              <div class="flex-grow">
+                <ul class="vx-timeline">
+                  <li>
+                    <div class="timeline-icon bg-primary">
+                      <feather-icon icon="CalendarIcon" svgClasses="text-white stroke-current w-5 h-5" />
+                    </div>
+                    <div class="timeline-info">
+                      <p class="font-semibold">{{ item.name }}</p>
+                      <span class="activity-desc"><span class="text-danger">Ghi chú: </span>{{ item.note }}</span>
+                      <p class="activity-desc text-success">Sĩ số: {{ item.total }}</p>
+                      <p class="activity-desc text-danger">Vắng: {{ item.absent }}</p>
+                    </div>
+                    <small class="text-black activity-e-time">Giờ bắt đầu: {{ item.start_time }} - Giờ kết thúc: {{ item.end_time}}</small>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex-none" v-if="action.canAction">
+                <vs-button class="small" @click="editSidebarOpen(item.id)">Sửa lịch học</vs-button>
+              </div>
             </div>
-            <div>
-              <p>{{ item.name }}</p>
-              <p>{{ item.time }}</p>
-            </div>
-          </div>
+          </template>
         </div>
       </template>
       <template v-else>
@@ -53,7 +64,7 @@
         </div>
       </template>
     </div>
-    <div class="vx-card p-3 mb-4" v-else>
+    <div class="p-3 mb-4" v-else>
       <div class="pl-3 pr-3 flex">
         <p class="flex-grow">Vui lòng chọn trường và lớp</p>
       </div>
@@ -179,3 +190,7 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import "@/assets/scss/vuexy/components/vxTimeline.scss";
+</style>

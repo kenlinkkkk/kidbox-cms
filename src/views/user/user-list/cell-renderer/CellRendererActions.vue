@@ -20,7 +20,6 @@ export default {
             */
     },
     confirmDeleteRecord () {
-      console.log(this.params.data)
       this.$vs.dialog({
         type: 'confirm',
         color: 'danger',

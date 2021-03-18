@@ -36,7 +36,7 @@ const actions = {
     let data = {
       ...payload
     }
-    console.log(payload)
+
     let config = {
       method: 'POST',
       url: "/cms/promotion/add",
