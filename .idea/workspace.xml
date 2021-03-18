@@ -21,14 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/infrastructure/infrastructureActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/promotion/promotionAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/promotion/promotionAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleGetters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/schedule/scheduleMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/schedules/ActionSideBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/schedules/ActionSideBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userMutations.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/schedules/scheduleIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/cell-renderer/CellRendererActions.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -186,7 +186,7 @@ export default {
         },
         {
           headerName: 'Phân quyền',
-          field: 'role',
+          field: 'role.role_name',
           filter: true,
           width: 200
         },
@@ -199,7 +199,7 @@ export default {
         },
         {
           headerName: 'Trường',
-          field: 'department',
+          field: 'school.name',
           filter: true,
           width: 225
         },
