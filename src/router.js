@@ -27,7 +27,7 @@ const router = new Router({
             name: 'home',
             component: () => import('./views/Home.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             },
           },
           {
@@ -35,7 +35,7 @@ const router = new Router({
             name: 'profile-index  ',
             component: () => import('./views/user/userProfile.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             },
           },
           {
@@ -43,7 +43,7 @@ const router = new Router({
             name: 'school-index',
             component: () => import('./views/school/School.vue'),
             meta: {
-              rule: 'admin'
+              rule: 'Admin'
             },
           },
           {
@@ -51,7 +51,7 @@ const router = new Router({
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             },
           },
           {
@@ -60,7 +60,7 @@ const router = new Router({
             name: 'subpackage-index',
             component: () => import('./views/payment/subpackage/subPackageIndex.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'Admin'
             },
           },
           {
@@ -69,7 +69,7 @@ const router = new Router({
             name: 'notification-index',
             component: () => import('./views/notification/pushhistory/notificationIndex.vue'),
             meta: {
-              rule: 'admin'
+              rule: 'Admin'
             },
           },
           // {
@@ -83,7 +83,7 @@ const router = new Router({
             name: 'promotion-index',
             component: () => import('./views/payment/promotion/promotionIndex.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'Admin'
             },
           },
           {
@@ -91,7 +91,7 @@ const router = new Router({
             name: 'chargelog-index',
             component: () => import('./views/payment/chargelog/chargeLogIndex.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'Admin'
             },
           },
           {
@@ -103,7 +103,7 @@ const router = new Router({
           path: 'rate/:ruleId',
           component: () => import('./views/rate/rateIndex.vue'),
             meta: {
-              rule: 'admin',
+              rule: 'AdminOrMaster',
               parent: 'rate-index',
               no_scroll: true
             }
@@ -113,7 +113,7 @@ const router = new Router({
             name: 'infrastructure-index',
             redirect: 'infrastructure/all',
             meta: {
-              rule: 'admin',
+              rule: 'MasterOrTeacher',
               no_scroll: true
             }
           },
@@ -122,7 +122,7 @@ const router = new Router({
             name: 'infrastructure-type',
             component: () => import('./views/infrastructure/InfrastructureIndex.vue'),
             meta: {
-              rule: 'admin',
+              rule: 'MasterOrTeacher',
               parent: 'infrastructure-index',
               no_scroll: true
             }
@@ -132,7 +132,7 @@ const router = new Router({
             name: 'class-menu',
             component: () => import('./views/class/menu/menuIndex.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'MasterOrTeacher'
             },
           },
           {
@@ -140,7 +140,7 @@ const router = new Router({
             name: 'class-schedule',
             component: () => import('./views/class/schedules/scheduleIndex.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'MasterOrTeacher'
             },
           },
           {
@@ -148,7 +148,7 @@ const router = new Router({
             name: 'school-post',
             component: () => import('./views/post/postIndex.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             }
           },
           {
@@ -156,7 +156,7 @@ const router = new Router({
             name: 'user-list',
             component: () => import('./views/user/user-list/UserList.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'AdminOrMaster'
             }
           },
           {
@@ -164,7 +164,7 @@ const router = new Router({
             name: 'add-user',
             component: () => import('./views/user/UserAdd.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'AdminOrMaster'
             }
           },
           {
@@ -172,7 +172,7 @@ const router = new Router({
             name: 'user-view',
             component: () => import('./views/user/UserView.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'Any'
             }
           },
           {
@@ -180,7 +180,7 @@ const router = new Router({
             name: 'user-edit',
             component: () => import('./views/user/user-edit/UserEdit.vue'),
             meta: {
-              rule: 'systemAdmin'
+              rule: 'AdminOrMaster'
             }
           }
         ],
@@ -194,7 +194,7 @@ const router = new Router({
             name: 'page-login',
             component: () => import('@/views/pages/Login.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             },
             beforeEnter: (to, from, next) => {
               if (store.getters['auth/Authentication'] === true) {
@@ -210,7 +210,7 @@ const router = new Router({
             name: 'page-error-404',
             component: () => import('@/views/pages/Error404.vue'),
             meta: {
-              rule: 'teacher'
+              rule: 'Any'
             }
           },
         ]
