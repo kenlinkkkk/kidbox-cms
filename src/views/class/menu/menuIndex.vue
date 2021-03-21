@@ -45,11 +45,9 @@
         </div>
       </template>
       <template v-else>
-        <div class="pl-3 pr-3 flex">
-          <p class="flex-grow">Chưa có thông tin thực đơn</p>
-          <div class="flex-none">
-            <vs-button class="small" @click="addNewSidebarOpen" v-if="action.canAction">Thêm mới thực đơn</vs-button>
-          </div>
+        <div class="pl-3 pr-3">
+          <p>Chưa có thông tin thực đơn</p>
+        <menu-item-add/>
         </div>
       </template>
     </div>
@@ -69,12 +67,14 @@
   import moduleClass from '@/store/class/classStore.js'
   import {vi} from 'vuejs-datepicker/src/locale'
   import ActionSideBar from "./ActionSideBar";
+  import MenuItemAdd from "./MenuItemAdd";
 
   export default {
     components: {
       Datepicker,
       'v-select' : vSelect,
-      ActionSideBar
+      ActionSideBar,
+      MenuItemAdd
     },
     data () {
       return {
@@ -170,3 +170,10 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+  .repeater-form {
+    overflow: hidden;
+    transition: .35s height;
+  }
+</style>
