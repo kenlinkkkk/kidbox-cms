@@ -123,7 +123,7 @@
         this.canAction = true
       },
       dateSelected(event) {
-        this.inputQuery.date = event.toISOString().split('T')[0]
+        this.inputQuery.date = event
         if (event.toISOString().split('T')[0] < new Date().toISOString().split('T')[0]) {
           this.action.canAction = false
         } else {
