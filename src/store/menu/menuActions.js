@@ -53,7 +53,7 @@ const actions = {
   async getMenuByDate({ commit }, payload) {
     let data = {
       class_id: payload.classId,
-      date: payload.date.toISOString().split('T')[0]
+      date: payload.date
     }
 
     let config = {
@@ -74,14 +74,31 @@ const actions = {
     let data = {
       ...payload
     }
-
+    let list = []
+    data.submitData.forEach((item) => {
+      if (item.image_url.path === "https://kidbox.vn/media/default/no-image.png") {
+        list.push({
+          name: item.name,
+          time: item.time
+        })
+      } else {
+        list.push({
+          name: item.name,
+          time: item.time,
+          image_url: {
+            path: item.image_url.path.split('https://kidbox.vn/media/')[1],
+            type: item.image_url.type
+          }
+        })
+      }
+    })
     let config = {
       method: "POST",
       url: "/cms/menu/update/" + payload.id,
       headers: {
         'Content-Type': 'application/json',
       },
-      data: data.submitData
+      data: { data: list }
     }
 
     return axiosApiInstance(config)

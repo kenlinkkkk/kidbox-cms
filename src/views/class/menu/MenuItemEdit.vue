@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-for="(item, index)  in menuList" :key="item.id" class="vx-row repeater-form m-2">
+  <div v-if="isActiveEditFormLocal">
+    <div v-for="(item, index)  in menuLocal" :key="item.id" class="vx-row repeater-form m-2">
       <div class="w-1/3 p-2">
         <div class="flex items-start flex-col sm:flex-row">
           <img :src="item.image_url.path" class="mr-8 rounded w-24 h-24 border border-primary" />
@@ -29,7 +29,8 @@
         <vs-button type="border" color="success" icon-pack="feather" icon="icon-plus" @click="actionAddItem">Thêm</vs-button>
       </div>
       <div class="w-1/2 flex flex-row-reverse">
-        <vs-button @click="submitForm">Lưu thông tin</vs-button>
+        <vs-button type="border" color="danger" class="m-2" @click="cancelAction">Hủy</vs-button>
+        <vs-button @click="submitForm" class="m-2">Lưu thông tin</vs-button>
       </div>
     </div>
   </div>
@@ -42,33 +43,26 @@
 
   export default {
     props: {
+      isActiveEditForm: {
+        type: Boolean,
+        required: true
+      },
       data: {
         type: Object,
         default: () => {}
-      },
+      }
     },
     components: {
       flatPickr
     },
     data () {
       return {
-        nextItemId: 1,
-        menuList: [
-          {
-            id: 1,
-            name: "",
-            time: "",
-            image_url: {
-              path: "https://kidbox.vn/media/default/no-image.png",
-              type: "png"
-            }
-          }
-        ],
         configdateTimePicker: {
           enableTime: true,
           enableSeconds: false,
           noCalendar: true
-        }
+        },
+        menuLocal: []
       }
     },
     methods: {
@@ -87,8 +81,8 @@
             data: formData
           }
           axiosApiInstance(config).then((response) => {
-            this.menuList[index].image_url.path = 'https://kidbox.vn/media/' + response.data.data.path;
-            this.menuList[index].image_url.type = response.data.data.type;
+            this.menuLocal[index].image_url.path = 'https://kidbox.vn/media/' + response.data.data.path;
+            this.menuLocal[index].image_url.type = response.data.data.type;
           }).catch((error) => {
             console.log(error)
           })
@@ -99,9 +93,7 @@
         document.getElementById(name).click();
       },
       actionAddItem () {
-        this.nextItemId += 1;
-        this.menuList.push({
-          id: this.nextItemId,
+        this.menuLocal.push({
           name: "",
           time: "",
           image_url: {
@@ -111,16 +103,14 @@
         })
       },
       deleteNode (idNode) {
-        this.menuList.splice(idNode, 1)
+        this.menuLocal.splice(idNode, 1)
       },
       submitForm () {
         let inputData = {
-          class_room_id: this.data.classId,
-          date: this.data.date.toISOString().split('T')[0],
-          data: this.menuList
+          id: this.data.id,
+          submitData: this.menuLocal
         }
-
-        this.$store.dispatch('menu/addMenu', inputData).then((response) => {
+        this.$store.dispatch('menu/updateMenu', inputData).then((response) => {
           if (response.data.code === 200) {
             this.$vs.notify({
               title:'Cập nhật thông tin hành công',
@@ -130,6 +120,8 @@
               iconPack: 'feather',
               icon:'icon-check'
             });
+
+            this.cancelAction();
           } else {
             this.$vs.notify({
               title:'Lỗi',
@@ -140,13 +132,39 @@
               icon:'icon-x'
             });
           }
-          this.$store.dispatch('menu/getMenuByDate', {
-            classId: this.data.classId,
-            date: this.data.date
-          })
         }).catch((error) => {
           console.log(error)
         })
+      },
+      initData () {
+        Object.assign(this.menuLocal, this.data.menu)
+      },
+      cancelAction () {
+        this.$store.dispatch('menu/getMenuByDate', {
+          classId: this.data.class_room.id,
+          date: this.data.date
+        }).then(() => {
+          this.isActiveEditFormLocal = false
+        })
+      }
+    },
+    watch: {
+      isActiveEditForm (val) {
+        if (val) {
+          this.initData();
+        }
+      }
+    },
+    computed: {
+      isActiveEditFormLocal: {
+        get () {
+          return this.isActiveEditForm
+        },
+        set(val) {
+          if (!val) {
+            this.$emit('closeEditForm')
+          }
+        }
       }
     }
   }
