@@ -1,6 +1,5 @@
 <template>
   <div>
-    <action-side-bar :isSidebarActive="addNewSideBar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
     <div class="vx-card p-3 mb-4 flex">
       <div class="flex-1">
         <label>Chọn trường</label>
@@ -29,11 +28,11 @@
         <div class="pl-3 pr-3">
           <div class="pl-3 pr-3 flex">
             <p class="flex-grow">Thực đơn ngày {{ inputQuery.date.toISOString().split('T')[0] }}</p>
-            <div class="flex-none" v-if="action.canAction">
-              <vs-button class="small" @click="editSidebarOpen(menuLocal.id)">Sửa thực đơn</vs-button>
+            <div class="flex-none" v-if="canAction">
+              <vs-button class="small" @click="editMenu(menuLocal.id)">Sửa thực đơn</vs-button>
             </div>
           </div>
-          <div class="pl-3 pr-3 flex flex-grow items-center" v-for="item in menuLocal.menu" :key="item.id">
+          <div class="pl-3 pr-3 flex flex-grow items-center" v-for="item in menuLocal.menu" :key="item.id" v-if="canAction">
             <div>
               <vs-avatar size="large" :src="item.image_url.path"/>
             </div>
@@ -42,12 +41,13 @@
               <p>{{ item.time }}</p>
             </div>
           </div>
+          <menu-item-edit :isActiveEditForm="!canAction" @closeEditForm="editFormAction" :data="menuLocal"/>
         </div>
       </template>
       <template v-else>
         <div class="pl-3 pr-3">
-          <p>Chưa có thông tin thực đơn</p>
-        <menu-item-add/>
+        <p>Thêm mới thông tin thực đơn</p>
+        <menu-item-add :data="inputQuery"/>
         </div>
       </template>
     </div>
@@ -66,15 +66,15 @@
   import moduleSchool from '@/store/school/schoolStore.js'
   import moduleClass from '@/store/class/classStore.js'
   import {vi} from 'vuejs-datepicker/src/locale'
-  import ActionSideBar from "./ActionSideBar";
   import MenuItemAdd from "./MenuItemAdd";
+  import MenuItemEdit from "./MenuItemEdit";
 
   export default {
     components: {
       Datepicker,
       'v-select' : vSelect,
-      ActionSideBar,
-      MenuItemAdd
+      MenuItemAdd,
+      MenuItemEdit
     },
     data () {
       return {
@@ -87,19 +87,15 @@
           },
         },
         inputQuery: {
+          id: 0,
           schoolId: '',
           classId: '',
           date: new Date()
         },
         datePickerCheck: true,
         classPickerCheck: true,
-        action: {
-          name: '',
-          canAction: true,
-          itemToEdit: 0,
-        },
-        addNewSideBar: false,
-        sidebarData: {}
+        canAction: true,
+        viewEditForm: false
       }
     },
     computed: {
@@ -118,39 +114,29 @@
         this.inputQuery.schoolId = event.id
         this.$store.dispatch('class/getClassBySchoolId', {schoolId: this.inputQuery.schoolId});
         this.classPickerCheck = false
+        this.canAction = true
       },
       classSelected(event) {
         this.inputQuery.classId = event.id
         this.$store.dispatch('menu/getMenuByDate', this.inputQuery)
         this.datePickerCheck = false
+        this.canAction = true
       },
       dateSelected(event) {
-        this.inputQuery.date = event
+        this.inputQuery.date = event.toISOString().split('T')[0]
         if (event.toISOString().split('T')[0] < new Date().toISOString().split('T')[0]) {
           this.action.canAction = false
         } else {
-          this.action.canAction = true
+          this.canAction = true
         }
         this.$store.dispatch('menu/getMenuByDate', this.inputQuery)
       },
-      addNewSidebarOpen() {
-        this.sidebarData = {
-          id: 0,
-          class_room_id: this.inputQuery.classId,
-          date: this.inputQuery.date
-        }
-        this.toggleDataSidebar(true)
+      editMenu (id) {
+        this.inputQuery.id = id
+        this.editFormAction(false)
       },
-      editSidebarOpen(id) {
-        this.sidebarData = {
-          id: id,
-          class_room_id: this.inputQuery.classId,
-          date: this.inputQuery.date
-        }
-        this.toggleDataSidebar(true)
-      },
-      toggleDataSidebar(val = false) {
-        this.addNewSideBar = val;
+      editFormAction (val = true) {
+        this.canAction = val
       }
     },
     created() {
