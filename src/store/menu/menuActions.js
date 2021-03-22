@@ -53,7 +53,7 @@ const actions = {
   async getMenuByDate({ commit }, payload) {
     let data = {
       class_id: payload.classId,
-      date: payload.date
+      date: payload.date.toISOString().split('T')[0]
     }
 
     let config = {

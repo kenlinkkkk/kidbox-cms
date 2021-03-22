@@ -48,7 +48,6 @@
         required: true
       },
       data: {
-        type: Object,
         default: () => {}
       }
     },
@@ -142,7 +141,7 @@
       cancelAction () {
         this.$store.dispatch('menu/getMenuByDate', {
           classId: this.data.class_room.id,
-          date: this.data.date
+          date: new Date(this.data.date)
         }).then(() => {
           this.isActiveEditFormLocal = false
         })
