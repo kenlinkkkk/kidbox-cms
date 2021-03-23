@@ -77,7 +77,9 @@ export default {
       },
       data: data
     }
+
     let response = await axiosApiInstance(config)
+
     commit('SET_LIST_USER_ROLE', response.data.data.data)
     return axiosApiInstance(config)
   },
@@ -97,7 +99,9 @@ export default {
 
     return axiosApiInstance(config)
   },
+
   async getListUserByRole({ commit }, payload) {
+
     let data = {
       ...payload
     }
@@ -110,6 +114,7 @@ export default {
       },
       data: data
     }
+
 
     let response = await axiosApiInstance(config)
 
@@ -132,5 +137,34 @@ export default {
     }
     let response = await axiosApiInstance(config)
     return response.data
-  }
+  },
+
+
+  async getUserByClass({ commit }, payload){
+
+    let data = {
+      "class_ids": payload.class_ids,
+      "name": payload.name,
+    }
+    console.log(data)
+    let config = {
+      method: "POST",
+      url: "/cms/users/get-user-by-class",
+      headers: {
+        'Authorization': localStorage.getItem('accessToken'),
+        'Content-Type': 'application/json',
+      },
+      data: data
+    }
+    let response = await axiosApiInstance(config)
+    if(response.status === 200){
+      if(response.data.code === 200) {
+        commit('SET_LIST_PARENTS', response.data.data)
+      }else{
+        commit('SET_LIST_PARENTS', [])
+      }
+    }
+  },
+
+
 }

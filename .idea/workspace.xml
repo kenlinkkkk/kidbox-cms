@@ -16,14 +16,45 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentGetters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentMutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/notification/content/components/contentDetail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/notification/content/notificationContentSidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/menu/menuActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/menu/menuActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/menu/MenuItemEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/MenuItemEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/menu/menuIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeGetters.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeMutations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeStore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/school/schoolAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/school/schoolGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationSidebar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/notification/type/notificationTypeIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/content/notificationContentIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/notification/type/notificationTypeSidebar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/payment/chargelog/chargeLogSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/payment/chargelog/chargeLogSidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +70,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1p3DYBVF9wWpiyNpZ827LxWP0tT" />
@@ -84,7 +120,16 @@
       <workItem from="1615885972563" duration="1232000" />
       <workItem from="1616072615035" duration="1695000" />
       <workItem from="1616377163183" duration="20165000" />
+      <workItem from="1616482615009" duration="2044000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
+      <created>1616483721854</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616483721854</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,7 +140,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -104,7 +161,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="infrastructure" />
-    <option name="LAST_COMMIT_MESSAGE" value="infrastructure" />
+    <MESSAGE value="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="213" key="#Deployment" timestamp="1615521165174">

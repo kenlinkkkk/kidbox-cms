@@ -46,6 +46,7 @@ const router = new Router({
               rule: 'Admin'
             },
           },
+
           {
             path: 'class',
             name: 'class-index',
@@ -72,12 +73,15 @@ const router = new Router({
               rule: 'Admin'
             },
           },
-          // {
-          //
-          //   path: 'notificationType',
-          //   name: 'notification-index',
-          //   component: () => import('./views/notification/type/notificationTypeIndex.vue'),
-          // },
+          {
+
+            path: 'notification-content',
+            name: 'notification-content-index',
+            component: () => import('./views/notification/content/notificationContentIndex.vue'),
+            meta: {
+              rule: 'AdminOrMaster'
+            },
+          },
           {
             path: 'promotion',
             name: 'promotion-index',
