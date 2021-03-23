@@ -1,7 +1,9 @@
 <template>
   <div id="data-list-list-view" class="data-list-container">
 
-    <notification-type-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
+    <notification-content-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
+
+    <content-detail :isSidebarActive="detailSidebar" @closeSidebar="toggleDetailSidebar" :data="sidebarDetailData"/>
 
     <vs-table ref="table" multiple v-model="selected"  search :data="packages">
 
@@ -18,9 +20,12 @@
       </div>
 
       <template slot="thead">
-        <vs-th sort-key="id">ID</vs-th>
-        <vs-th sort-key="name">Tên</vs-th>
-        <vs-th sort-key="status">Trạng thái</vs-th>
+        <vs-th sort-key="name">Tiêu đề</vs-th>
+        <vs-th sort-key="status">Nội dung</vs-th>
+        <vs-th sort-key="status" v-if="$acl.check('admin')">Trường</vs-th>
+        <vs-th sort-key="status" v-if="$acl.check('systemAdmin')">Lớp</vs-th>
+        <vs-th sort-key="status" v-if="$acl.check('systemAdmin')">Phụ huynh</vs-th>
+        <vs-th sort-key="order_status" v-if="$acl.check('admin')">Trạng thái</vs-th>
         <vs-th>Action</vs-th>
       </template>
 
@@ -29,20 +34,36 @@
         <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
 
           <vs-td>
-            <p class="product-id font-medium truncate">{{ tr.id }}</p>
+            <p class="title">{{ tr.title }}</p>
           </vs-td>
 
           <vs-td>
-            <p class="product-type">{{ tr.name  }}</p>
+            <p class="product-content">{{ tr.content  }}</p>
           </vs-td>
 
-          <vs-td>
+          <vs-td v-if="$acl.check('admin')">
+            <div  class="product-schools">{{tr.school.length}} trường
+            </div>
+          </vs-td>
+
+          <vs-td v-if="$acl.check('systemAdmin')">
+            <div class="product-class">{{tr.class_rooms.length}} lớp
+            </div>
+          </vs-td>
+
+          <vs-td v-if="$acl.check('systemAdmin')">
+            <div class="product-child" >{{tr.children.length}} phụ huynh
+            </div>
+          </vs-td>
+
+          <vs-td v-if="$acl.check('admin')">
             <vs-chip :color="getOrderStatusColor(tr.status)" class="product-order-status" >{{getStatus(tr.status)}}</vs-chip>
           </vs-td>
 
 
           <vs-td class="whitespace-no-wrap">
-            <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
+            <feather-icon icon="InfoIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="detailData(tr)"/>
+            <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" class="ml-2" @click.stop="editData(tr)" />
             <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />
           </vs-td>
 
@@ -59,12 +80,14 @@
 </template>
 
 <script>
-  import NotificationTypeSidebar from './notificationTypeSidebar'
-  import moduleNotificationType from '@/store/notificationtype/notificationTypeStore.js'
+  import moduleNotificationContent from '@/store/notificationcontent/notificationcontentStore.js'
+  import NotificationContentSidebar from "./notificationContentSidebar";
+  import ContentDetail from "./components/contentDetail"
 
   export default {
     components: {
-      NotificationTypeSidebar
+      NotificationContentSidebar,
+      ContentDetail
     },
     data () {
       return {
@@ -76,16 +99,18 @@
 
         // Data Sidebar
         addNewDataSidebar: false,
-        sidebarData: {}
+        detailSidebar: false,
+        sidebarData: {},
+        sidebarDetailData: {}
       }
     },
     computed: {
 
       totalPages(){
-        return this.$store.getters["notificationType/getTotalPages"]
+        return this.$store.getters["notificationContent/getTotalPages"]
       },
       packages () {
-        return this.$store.getters["notificationType/getNotificationTypes"]
+        return this.$store.getters["notificationContent/getNotificationContents"]
       },
       // queriedItems () {
       //   return this.$refs.table ? this.$refs.table.queriedResults.length : this.products.length
@@ -93,16 +118,16 @@
     },
     methods: {
       changePage(){
-        this.$store.dispatch('notificationType/getNotificationTypes', {"limit": this.limit, "page": this.currentx});
+        this.$store.dispatch('notificationContent/getAll', {"limit": this.limit, "page": this.currentx});
       },
       addNewData () {
         this.sidebarData = {}
         this.toggleDataSidebar(true)
       },
       deleteData (id) {
-        this.$store.dispatch('notificationType/deactiveNotificationType', id).then((resp) => {
+        this.$store.dispatch('notificationContent/deactivate', id).then((resp) => {
 
-          this.$store.dispatch('notificationType/getNotificationTypes', {"limit": this.limit, "page": this.currentx});
+          this.$store.dispatch('notificationContent/getAll', {"limit": this.limit, "page": this.currentx});
 
           this.$vs.notify({
             title:'Xóa thành công',
@@ -128,6 +153,10 @@
         this.sidebarData = data
         this.toggleDataSidebar(true)
       },
+      detailData (data) {
+        this.sidebarDetailData = data
+        this.toggleDetailSidebar(true)
+      },
       getOrderStatusColor (status) {
         if (status === 0)   return 'warning'
         if (status === 1) return 'success'
@@ -148,14 +177,17 @@
       },
       toggleDataSidebar (val = false) {
         this.addNewDataSidebar = val
+      },
+      toggleDetailSidebar (val = false) {
+        this.detailSidebar = val
       }
     },
     created () {
-      if (!moduleNotificationType.isRegistered) {
-        this.$store.registerModule('notificationType', moduleNotificationType)
-        moduleNotificationType.isRegistered = true
+      if (!moduleNotificationContent.isRegistered) {
+        this.$store.registerModule('notificationContent', moduleNotificationContent)
+        moduleNotificationContent.isRegistered = true
       }
-      this.$store.dispatch('notificationType/getNotificationTypes', {"limit": this.limit, "page": this.currentx})
+      this.$store.dispatch('notificationContent/getAll', {"limit": this.limit, "page": this.currentx})
     },
     mounted () {
       this.isMounted = true

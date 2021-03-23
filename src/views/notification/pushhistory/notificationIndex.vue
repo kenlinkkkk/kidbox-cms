@@ -1,39 +1,35 @@
 <template>
   <div id="data-list-list-view" class="data-list-container">
 
-    <notification-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
     <vs-table ref="table" multiple v-model="selected"  search :data="packages">
 
-      <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">
+<!--      <div slot="header" class="flex flex-wrap-reverse items-center flex-grow justify-between">-->
 
-        <div class="flex flex-wrap-reverse items-center data-list-btn-container">
+<!--        <div class="flex flex-wrap-reverse items-center data-list-btn-container">-->
 
           <!-- ADD NEW -->
-          <div class="btn-add-new p-3 mb-4 mr-4 rounded-lg cursor-pointer flex items-center justify-center text-lg font-medium text-base text-primary border border-solid border-primary" @click="addNewData">
-            <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" />
-            <span class="ml-2 text-base text-primary">Thêm mới</span>
-          </div>
-        </div>
-      </div>
+<!--          <div class="btn-add-new p-3 mb-4 mr-4 rounded-lg cursor-pointer flex items-center justify-center text-lg font-medium text-base text-primary border border-solid border-primary" @click="addNewData">-->
+<!--            <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" />-->
+<!--            <span class="ml-2 text-base text-primary">Thêm mới</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
       <template slot="thead">
-        <vs-th sort-key="id">ID</vs-th>
         <vs-th sort-key="type">Loại thông báo</vs-th>
         <vs-th sort-key="content">Nội dung</vs-th>
-        <vs-th sort-key="user_push">Tài khoản</vs-th>
+        <vs-th sort-key="user_push">Người gửi</vs-th>
+        <vs-th sort-key="user_push">Người nhận</vs-th>
         <vs-th sort-key="push_time">Thời gian push</vs-th>
         <vs-th sort-key="is_push">Trạng thái push</vs-th>
-        <vs-th>Action</vs-th>
+<!--        <vs-th>Action</vs-th>-->
       </template>
 
       <template slot-scope="{data}">
         <tbody>
         <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
 
-          <vs-td>
-            <p class="product-id font-medium truncate">{{ tr.id }}</p>
-          </vs-td>
 
           <vs-td>
             <p class="product-type">{{ tr.type.name  }}</p>
@@ -48,17 +44,21 @@
           </vs-td>
 
           <vs-td>
-            <p class="product-push_time">{{ tr.push_time  }}</p>
+            <p class="product-user_push">{{ tr.receiver.name }}</p>
+          </vs-td>
+
+          <vs-td>
+            <p class="product-push_time">{{ tr.push_time | formatDate }}</p>
           </vs-td>
 
           <vs-td>
             <vs-chip :color="getOrderStatusColor(tr.is_push)" class="product-order-status" >{{getStatus(tr.is_push)}}</vs-chip>
           </vs-td>
 
-          <vs-td class="whitespace-no-wrap">
-            <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />
-            <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />
-          </vs-td>
+<!--          <vs-td class="whitespace-no-wrap">-->
+<!--            <feather-icon icon="EditIcon" svgClasses="w-5 h-5 hover:text-primary stroke-current" @click.stop="editData(tr)" />-->
+<!--            <feather-icon icon="TrashIcon" svgClasses="w-5 h-5 hover:text-danger stroke-current" class="ml-2" @click.stop="deleteData(tr.id)" />-->
+<!--          </vs-td>-->
 
         </vs-tr>
         </tbody>
@@ -73,12 +73,10 @@
 </template>
 
 <script>
-  import NotificationSidebar from './notificationSidebar'
   import moduleNotification from '@/store/notification/notificationStore.js'
 
   export default {
     components: {
-      NotificationSidebar
     },
     data () {
       return {
