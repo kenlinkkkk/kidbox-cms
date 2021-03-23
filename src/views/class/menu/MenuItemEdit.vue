@@ -61,7 +61,7 @@
           enableSeconds: false,
           noCalendar: true
         },
-        menuLocal: []
+        menuLocal: [],
       }
     },
     methods: {

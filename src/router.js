@@ -43,7 +43,7 @@ const router = new Router({
             name: 'school-index',
             component: () => import('./views/school/School.vue'),
             meta: {
-              rule: 'Admin'
+              rule: 'AdminOrMaster'
             },
           },
           {

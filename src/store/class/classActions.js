@@ -1,7 +1,7 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
-  async getClassBySchoolId({commit}, schoolId) {
+  async getClassBySchoolId({ commit }, schoolId) {
     let data = {
       "item_per_page": 20,
       "page": 1
