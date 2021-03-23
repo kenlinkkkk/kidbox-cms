@@ -1,6 +1,6 @@
 const state = () => ({
-  notificationTypes: [],
-  notificationType: null,
+  notificationContents: [],
+  notificationContent: null,
   totalPages: 0
 })
 

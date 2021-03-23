@@ -95,6 +95,11 @@ export default [
         name: "Lịch sử thông báo",
         slug: "notification",
       },
+      {
+        url: "/admin/notification-content",
+        name: "Nội dung thông báo",
+        slug: "notification-content",
+      },
       // {
       //   url: "/admin/notificationType",
       //   name: "Loại thông báo",

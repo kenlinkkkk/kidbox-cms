@@ -3,7 +3,9 @@ const state = () => ({
   userList: [],
   paginate: {
     page : 1
-  }
+  },
+  parents: []
+
 })
 
 export default state

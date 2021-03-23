@@ -50,23 +50,25 @@
 
     <vs-divider></vs-divider>
     <div class="px-6 py-4" v-if="statistical!=null">
-      <star-rating :increment="0.01" :rating="statistical.avg" :read-only="true" :rtl="$vs.rtl" :star-size="20"
-                   class="flex mb-1" v-if="statistical.avg"></star-rating>
-      <div class="flex mb-4">{{statistical.length !== 0 ? statistical.total : 0}} đánh giá</div>
-      <div class="todo__lables-list" v-if="statistical.avg">
-            <span class="todo__label items-center mt-6 cursor-pointer">
-              <div class="flex" style="line-height: 2.5"><star-rating :rating="5" :read-only="true" :rtl="$vs.rtl"
-                                                                      :star-size="20"></star-rating>({{statistical.star5  ? statistical.star5 : 0}})</div>
-              <div class="flex" style="line-height: 2.5"><star-rating :rating="4" :read-only="true" :rtl="$vs.rtl"
-                                                                      :star-size="20"></star-rating> ({{statistical.star4 ? statistical.star4 : 0}})</div>
-              <div class="flex" style="line-height: 2.5"><star-rating :rating="3" :read-only="true" :rtl="$vs.rtl"
-                                                                      :star-size="20"></star-rating> ({{statistical.star3  ? statistical.star3 : 0}})</div>
-              <div class="flex" style="line-height: 2.5"><star-rating :rating="2" :read-only="true" :rtl="$vs.rtl"
-                                                                      :star-size="20"></star-rating> ({{statistical.star2 ? statistical.star2 : 0}})</div>
-              <div class="flex" style="line-height: 2.5"><star-rating :rating="1" :read-only="true" :rtl="$vs.rtl"
-                                                                      :star-size="20"></star-rating> ({{statistical.star1  ? statistical.star1 : 0}})</div>
-            </span>
-      </div>
+      <vue-perfect-scrollbar :is="scrollbarTag" :key="$vs.rtl" :settings="settings" @ps-scroll-y="scrollHanle" class="rule-scroll-area todo-scroll-area">
+        <star-rating :increment="0.01" :rating="statistical.avg" :read-only="true" :rtl="$vs.rtl" :star-size="20"
+                     class="flex mb-1" v-if="statistical.avg"></star-rating>
+        <div class="flex mb-4">{{statistical.length !== 0 ? statistical.total : 0}} đánh giá</div>
+        <div class="todo__lables-list" v-if="statistical.avg">
+              <span class="todo__label items-center mt-6 cursor-pointer">
+                <div class="flex" style="line-height: 2.5"><star-rating :rating="5" :read-only="true" :rtl="$vs.rtl"
+                                                                        :star-size="20"></star-rating>({{statistical.star5  ? statistical.star5 : 0}})</div>
+                <div class="flex" style="line-height: 2.5"><star-rating :rating="4" :read-only="true" :rtl="$vs.rtl"
+                                                                        :star-size="20"></star-rating> ({{statistical.star4 ? statistical.star4 : 0}})</div>
+                <div class="flex" style="line-height: 2.5"><star-rating :rating="3" :read-only="true" :rtl="$vs.rtl"
+                                                                        :star-size="20"></star-rating> ({{statistical.star3  ? statistical.star3 : 0}})</div>
+                <div class="flex" style="line-height: 2.5"><star-rating :rating="2" :read-only="true" :rtl="$vs.rtl"
+                                                                        :star-size="20"></star-rating> ({{statistical.star2 ? statistical.star2 : 0}})</div>
+                <div class="flex" style="line-height: 2.5"><star-rating :rating="1" :read-only="true" :rtl="$vs.rtl"
+                                                                        :star-size="20"></star-rating> ({{statistical.star1  ? statistical.star1 : 0}})</div>
+              </span>
+        </div>
+    </vue-perfect-scrollbar>
     </div>
     <rule-detail :displayPrompt="displayPrompt" :ruleId=ruleDetailId @hiddenDisplayPrompt="hiddenPrompt"
                  v-if="displayPrompt"/>
@@ -174,7 +176,7 @@
 </script>
 <style lang="scss">
   .rule-scroll-area {
-    height: 250px !important;
+    height: 25vh !important;
   }
 
   .text-rule-overflow {

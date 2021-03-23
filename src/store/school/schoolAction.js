@@ -1,10 +1,15 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
-  async getListSchool({ commit }) {
+  async getListSchool({ commit }, payload) {
+    let key_word = ''
+    if (payload.key_word){
+      key_word = payload.key_word
+    }
     let data = {
-      "item_per_page": 20,
-      "page": 1
+      "limit": payload.limit,
+      "page": payload.page,
+      "key_word": key_word
     }
     let config = {
       method: "POST",
@@ -16,7 +21,9 @@ const actions = {
     }
     let response = await axiosApiInstance(config);
     if (response.status === 200) {
-      commit('SET_SCHOOLS_INFO', response.data.data.data);
+      if(response.data.code === 200){
+        commit('SET_SCHOOLS_INFO', response.data.data.data);
+      }
     }
   },
   async updateSchoolInfo(_, payload) {
