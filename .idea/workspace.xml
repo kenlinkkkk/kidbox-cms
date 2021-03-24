@@ -16,45 +16,14 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30eae96-65a6-45af-9d8c-441101438f8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentGetters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentMutations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/notification/content/components/contentDetail.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/notification/content/notificationContentSidebar.vue" afterDir="false" />
+    <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationcontentAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeGetters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeMutations.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/notificationcontent/notificationState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/notificationtype/notificationTypeStore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/school/schoolAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/school/schoolGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/pushhistory/notificationSidebar.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/type/notificationTypeIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/notification/content/notificationContentIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/notification/type/notificationTypeSidebar.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/payment/chargelog/chargeLogSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/payment/chargelog/chargeLogSidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/rate/ruleFilter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +110,7 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="LONG_EDGES_VISIBLE" value="true" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -186,10 +156,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1615428162929" />
-    <state x="987" y="468" width="732" height="699" key="find.popup" timestamp="1616298499387">
-      <screen x="0" y="30" width="2560" height="1410" />
+    <state x="740" y="356" width="549" height="520" key="find.popup" timestamp="1616560706324">
+      <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616040154643" />
+    <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616560706324" />
     <state x="987" y="468" width="732" height="699" key="find.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616298499387" />
     <state x="987" y="468" width="585" height="534" key="find.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1615303167086" />
     <state x="702" y="267" key="run.anything.popup" timestamp="1616406814941">
@@ -197,10 +167,10 @@
     </state>
     <state x="702" y="267" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616406814941" />
     <state x="936" y="348" key="run.anything.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616082829748" />
-    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1616062719875">
+    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1616554549776">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616062719875" />
+    <state x="707" y="266" width="672" height="505" key="search.everywhere.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616554549776" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1614405493253" />
     <state x="943" y="347" width="672" height="678" key="search.everywhere.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1614485900322" />
   </component>

@@ -150,7 +150,7 @@ const router = new Router({
           {
             path: 'post',
             name: 'school-post',
-            component: () => import('./views/post/postIndex.vue'),
+            component: () => import('./views/post/post/PostIndex.vue'),
             meta: {
               rule: 'Any'
             }
