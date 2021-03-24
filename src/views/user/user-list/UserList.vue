@@ -301,19 +301,16 @@ export default {
     }
   },
   created () {
-    // if (!moduleUserManagement.isRegistered) {
-    //   this.$store.registerModule('userManagement', moduleUserManagement)
-    //   moduleUserManagement.isRegistered = true
-    // }
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
 
-    if (this.$acl.check('systemAdmin')) {
+    if (this.$acl.check('Admin')) {
       Object.assign(this.configLoadPage, {
         role_id: [60, 61 ,62, 63, 64]
       })
     } else {
       Object.assign(this.configLoadPage, {
-        role_id: [60, 61, 62, 63]
+        role_id: [60, 61, 62, 63],
+        school_id: this.$store.state.AppActiveUser.schoolId
       })
     }
     this.$store.dispatch('userManagement/getListUserByRole', this.configLoadPage).catch(err => { console.error(err) })

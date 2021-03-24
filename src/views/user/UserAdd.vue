@@ -192,7 +192,7 @@
     created() {
       this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
       this.$store.registerModule('school', moduleSchool);
-      if (this.$acl.check('systemAdmin')) {
+      if (this.$acl.check('Admin')) {
         this.$store.dispatch('school/getListSchool');
       } else {
         this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId })
