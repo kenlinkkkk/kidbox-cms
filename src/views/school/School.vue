@@ -5,7 +5,7 @@
     </div>
     <school-info :displayPrompt="displayPrompt" :schoolId="schoolIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>
     <div class="vx-col w-full md:w-1/3 mb-base inline-flex">
-      <school-add-new />
+      <school-add-new v-if="$acl.check('Admin')"/>
     </div>
   </div>
 </template>
@@ -50,7 +50,11 @@
     },
     created() {
       this.$store.registerModule('school', moduleSchool);
-      this.$store.dispatch('school/getListSchool');
+      if (this.$acl.check('Admin')) {
+        this.$store.dispatch('school/getListSchool');
+      } else if (this.$acl.check('Master')) {
+        this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId });
+      }
     },
     beforeDestroy() {
       this.$store.unregisterModule('school')

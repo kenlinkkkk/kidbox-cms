@@ -1,6 +1,7 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
+
   async getClassBySchoolId({commit}, payload) {
     let name = ''
     if (payload.name){

@@ -19,6 +19,7 @@
   import ClassItem from './components/classItem'
   import ClassInfo from './components/classInfo'
   import ClassAddNew from './components/classAddNew'
+
   export default {
     data() {
       return {
@@ -50,19 +51,12 @@
     },
     created() {
       this.$store.registerModule('class', moduleClass);
-      let schoolId;
-      if (this.$route.query) {
-        schoolId = {
-          schoolId: this.$route.query.c
-        }
+      if (this.$route.query.c) {
+        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c});
       } else {
-        schoolId = {
-          schoolId : this.$store.state.AppActiveUser.schoolId
-        };
+        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$store.state.AppActiveUser.schoolId});
       }
-      if (schoolId.schoolId) {
-        this.$store.dispatch('class/getClassBySchoolId', schoolId);
-      }
+
     },
     beforeDestroy() {
       this.$store.unregisterModule('class');
