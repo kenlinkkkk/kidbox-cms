@@ -1,27 +1,62 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
-  async getClassBySchoolId({ commit }, schoolId) {
+
+  async getClassBySchoolId({commit}, payload) {
+    let name = ''
+    if (payload.name){
+      name = payload.name
+    }
     let data = {
-      "item_per_page": 20,
-      "page": 1
+      "limit": payload.limit,
+      "page": payload.page,
+      "name": name,
+      "status": payload.status
     }
     let config = {
       method: "POST",
-      url: "/cms/class/list/" + schoolId.schoolId,
+      url: "/cms/class/list/" + payload.schoolId,
       headers: {
         'Content-Type': 'application/json',
       },
       data: data
     }
-
     let response = await axiosApiInstance(config)
     if (response.status === 200) {
-      commit('SET_LIST_CLASSES', response.data.data.data);
+      if(response.data.code === 200) {
+        commit('SET_LIST_CLASSES', response.data.data.data);
+      }
     }
-
     return response.data.data.data
   },
+
+
+  async getAllBySchoolId({commit}, payload) {
+    let name = ''
+    if (payload.name){
+      name = payload.name
+    }
+    let data = {
+      "name": name,
+    }
+    let config = {
+      method: "POST",
+      url: "/cms/class/all",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: data
+    }
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if(response.data.code === 200) {
+        commit('SET_CLASSES', response.data.data);
+      }
+    }
+    return response.data.data
+  },
+
+
   async addNewClass(_, payload) {
     let data = {
       ...payload

@@ -8,7 +8,12 @@ const mutations = {
     state.listClasses = listClasses.filter(function (el) {
       return el != null;
     })
+  },
+
+  SET_CLASSES(state, classes){
+    state.listClasses = classes
   }
+
 }
 
 export default mutations

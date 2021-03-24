@@ -21,13 +21,13 @@
       <div class="p-6">
         <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
           <label class="vs-input--label">Trường</label>
-          <v-select v-model="dataSchool" label="name" :options=this.schools class="mt-5 w-full" name="item-school" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
+          <v-select @open="onOpenSchools" @search="searchSchools"  v-model="dataSchool" label="name" :options=this.schools name="item-school" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
           <span class="text-danger text-sm" v-show="errors.has('item-school')">{{ errors.first('item-school') }}</span>
         </div>
 
         <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
           <label class="vs-input--label">Gói cước</label>
-          <v-select v-model="dataPackage" label="name" :options=this.packages class="mt-5 w-full" name="item-package" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
+          <v-select v-model="dataPackage" label="name" :options=this.packages  name="item-package" v-validate="'required'" :dir="$vs.rtl ? 'rtl' : 'ltr'" ></v-select>
           <span class="text-danger text-sm" v-show="errors.has('item-package')">{{ errors.first('item-package') }}</span>
         </div>
 
@@ -48,7 +48,7 @@
 
         <div class="vs-component vs-con-input-label vs-input mt-5 w-full vs-input-primary">
           <label class="vs-input--label">Khuyến mãi</label>
-          <v-select v-model="dataPromotion" label="name" :options=this.promotions class="mt-5 w-full" name="item-promotion" v-validate="'required'"></v-select>
+          <v-select v-model="dataPromotion" label="name" :options=this.promotions  name="item-promotion" v-validate="'required'"></v-select>
           <span class="text-danger text-sm" v-show="errors.has('item-promotion')">{{ errors.first('item-promotion') }}</span>
         </div>
 
@@ -94,7 +94,9 @@
     },
     data () {
       return {
+        searchSchoolKey: null,
         page: 1,
+        limit: 20,
         dataId: null,
         dataSchool: null,
         dataPackage: null,
@@ -157,7 +159,7 @@
       },
       scrollbarTag () { return this.$store.getters.scrollbarTag },
       schools(){
-        return this.$store.getters['school/getSchools'];
+        return this.$store.getters["school/getSchools"]
       },
       promotions(){
         return this.$store.getters["promotion/getPromotions"]
@@ -168,6 +170,18 @@
 
     },
     methods: {
+      onOpenSchools(){
+        if(this.searchSchoolKey === null){
+          this.$store.dispatch('school/getListSchool',{"limit": this.limit, "page": this.page, "key_word": ''});
+          this.searchSchoolKey = ''
+        }
+      },
+      searchSchools(search, loading) {
+        loading(true)
+        this.$store.dispatch('school/getListSchool',{"limit": this.limit, "page": this.page, "key_word": search});
+        this.searchSchoolKey = search
+        loading(false)
+      },
       initValues () {
         if (this.data.id) return
           this.dataId= null
@@ -265,7 +279,7 @@
         this.$store.registerModule('school', moduleSchool)
         moduleSchool.isRegistered = true
       }
-      this.$store.dispatch('school/getListSchool')
+
     },
 
 
