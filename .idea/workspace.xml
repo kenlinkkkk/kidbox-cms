@@ -16,14 +16,23 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:tungnt" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserAdd.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-list/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/filters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/post/postActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/post/postGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/post/postMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/post/postState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/post/post/PostIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/post/post/PostIndex.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +43,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="package.json" />
         <option value="Vue Single File Component" />
       </list>
     </option>
@@ -116,7 +126,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="tungnt" />
                       </list>
                     </value>
                   </entry>

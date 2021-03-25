@@ -87,3 +87,14 @@ Vue.filter('formatDate', function(value) {
     return moment(String(value)).format('DD-MM-YYYY hh:mm:ss')
   }
 });
+
+Vue.filter('timeBefore', function (value) {
+  let today = new Date().toLocaleDateString();
+  let time = new Date(value).toLocaleTimeString();
+  let date = new Date(value).toLocaleDateString();
+  if (today === date) {
+    return time
+  } else  {
+    return date + " lúc " + time;
+  }
+})
