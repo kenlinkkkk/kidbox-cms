@@ -13,7 +13,7 @@
         {{ item.content }}
       </div>
       <div id="mediaPostArea" v-if="item.pictures.length > 0">
-        <media-post :data="item.pictures" />
+        <media-post :data="item.media" />
       </div>
     </vs-card>
   </div>
