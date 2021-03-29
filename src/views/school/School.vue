@@ -40,7 +40,7 @@
         this.schoolIdToEdit = schoolId;
         this.displayPrompt = true;
       },
-        hiddenPrompt() {
+      hiddenPrompt() {
         this.displayPrompt = false;
       }
     },
