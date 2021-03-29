@@ -168,7 +168,7 @@ export default {
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
     this.$store.registerModule('school', moduleSchool);
     if (this.$acl.check('Admin')) {
-      this.$store.dispatch('school/getListSchool');
+      this.$store.dispatch('school/getListSchool', this.configLoadPage);
     } else {
       this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId })
     }
