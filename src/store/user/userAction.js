@@ -84,13 +84,25 @@ export default {
     return axiosApiInstance(config)
   },
   async updateUserInfo(_, payload) {
+    payload
     let data = {
-      ...payload
+      login: payload.login,
+      full_name: payload.full_name,
+      email: payload.email,
+      mobile: payload.phone_number,
+      address: payload.address,
+      school_id: payload.school_id,
+      status: 1,
     }
-
+    if (payload.role) {
+      Object.assign(data, {role: payload.role})
+    }
+    if (payload.class_id) {
+      Object.assign(data, {class_id: payload.class_id})
+    }
     let config = {
       method: 'POST',
-      url: '/cms/users/update/' +  payload.userId,
+      url: '/cms/users/update/' +  payload.user.id,
       headers: {
         'Content-type': 'application/json'
       },
@@ -146,7 +158,6 @@ export default {
       "class_ids": payload.class_ids,
       "name": payload.name,
     }
-    console.log(data)
     let config = {
       method: "POST",
       url: "/cms/users/get-user-by-class",

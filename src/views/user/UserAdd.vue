@@ -19,11 +19,14 @@
       <!-- Content Row -->
       <div class="vx-row">
         <div class="vx-col md:w-1/2 w-full">
-          <vs-input class="w-full mt-4" label="Email" v-model="data_local.email" v-validate="'required|email'" name="username" />
+          <vs-input class="w-full mt-4" label="Tên tài khoản" v-model="data_local.login" v-validate="'required'" name="login" />
+          <span class="text-danger text-sm"  v-show="errors.has('login')">{{ errors.first('login') }}</span>
+
+          <vs-input class="w-full mt-4" label="Email" v-model="data_local.email" v-validate="'required|email'" name="email" />
           <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
 
-          <vs-input class="w-full mt-4" label="Tên" v-model="data_local.name" v-validate="'required'" name="name" />
-          <span class="text-danger text-sm"  v-show="errors.has('name')">{{ errors.first('name') }}</span>
+          <vs-input class="w-full mt-4" label="Tên" v-model="data_local.full_name" v-validate="'required'" name="full_name" />
+          <span class="text-danger text-sm"  v-show="errors.has('name')">{{ errors.first('full_name') }}</span>
 
           <vs-input class="w-full mt-4" label="Số điện thoại" v-model="data_local.mobile" type="text" v-validate="'required'" name="mobile" />
           <span class="text-danger text-sm"  v-show="errors.has('mobile')">{{ errors.first('mobile') }}</span>
@@ -39,7 +42,7 @@
 
           <div class="mt-4">
             <label class="vs-input--label">Trường</label>
-            <v-select :clearable="false" label="name" @input="schoolSelected" :options="optionsSelectSchool" v-validate="'required'" name="school_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <v-select :clearable="false" label="name" @input="schoolSelected" :options="optionsSelectSchool" @search="searchInput" v-validate="'required'" name="school_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
             <span class="text-danger text-sm"  v-show="errors.has('school_id')">{{ errors.first('school_id') }}</span>
           </div>
 
@@ -52,7 +55,7 @@
           <div class="mt-4">
             <label class="vs-input--label">Lớp</label>
             <v-select :disabled="roleCheck" label="name" @input="classSelected" :clearable="false" :options="optionsSelectClass" v-validate="'required'" name="class_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+            <span class="text-danger text-sm"  v-show="errors.has('class_id')">{{ errors.first('class_id') }}</span>
           </div>
         </div>
       </div>
@@ -81,7 +84,8 @@
     data () {
       return {
         data_local: {
-          name: '',
+          login: '',
+          full_name: '',
           email: '',
           mobile: '',
           address: '',
@@ -106,9 +110,16 @@
         return !this.errors.any()
       },
       roles() {
-        let roleList = this.$store.getters['userManagement/getRoles'];
-
-        return roleList
+        if (this.$acl.check('Admin')) {
+          let listRole = [];
+          return this.$store.getters['userManagement/getRoles'](listRole)
+        } else if (this.$acl.check('Master')){
+          let listRole = [64, 60];
+          return this.$store.getters['userManagement/getRoles'](listRole)
+        } else if (this.$acl.check('Teacher')) {
+          let listRole = [64, 60, 61];
+          return this.$store.getters['userManagement/getRoles'](listRole)
+        }
       },
       optionsSelectSchool() {
         return this.$store.getters['school/getSchools']
@@ -183,6 +194,18 @@
       },
       classSelected (event) {
         this.data_local.class_id = event.id
+      },
+      searchInput(input) {
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+        this.timer = setTimeout(() => {
+          if (this.$acl.check('Admin')) {
+            this.configLoadPage.key_word = input;
+            this.$store.dispatch('school/getListSchool', this.configLoadPage);
+          }
+        }, 3000);
       }
     },
     beforeDestroy() {

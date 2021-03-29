@@ -20,23 +20,13 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:tungnt" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/post/postActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/post/postGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/post/postMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/post/postState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/post/postState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/school/schoolAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/school/schoolMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/post/post/components/MediaPost.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/post/post/components/MediaPost.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/post/post/components/MultipleItemPost.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/post/post/components/MultipleItemPost.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/school/School.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/School.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/UserAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +135,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="tungnt" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -249,6 +239,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1615963862659" />
+    <state x="248" y="153" key="MergeDialog" timestamp="1617036637573">
+      <screen x="0" y="30" width="2560" height="1410" />
+    </state>
+    <state x="248" y="153" key="MergeDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1617036637573" />
     <state x="461" y="200" key="SettingsEditor" timestamp="1615428162929">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
@@ -259,6 +253,10 @@
     <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617007495431" />
     <state x="987" y="468" width="732" height="699" key="find.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616298499387" />
     <state x="987" y="468" width="585" height="534" key="find.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1615303167086" />
+    <state x="1060" y="448" key="git4idea.branch.GitSmartOperationDialog" timestamp="1617036615876">
+      <screen x="0" y="30" width="2560" height="1410" />
+    </state>
+    <state x="1060" y="448" key="git4idea.branch.GitSmartOperationDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1617036615876" />
     <state x="702" y="267" key="run.anything.popup" timestamp="1616406814941">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
