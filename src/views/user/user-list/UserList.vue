@@ -1,32 +1,8 @@
 <template>
 
   <div id="page-user-list">
-
-    <vx-card ref="filterCard" title="Bộ lọc" class="user-list-filters mb-8" actionButtons @refresh="resetColFilters" @remove="resetColFilters">
-      <div class="vx-row flex flex-wrap justify-between">
-        <div class="vx-col flex-1">
-          <label class="text-sm opacity-75">Phân quyền</label>
-          <v-select :options="roleOptions" label="label" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="roleFilter" class="mb-4 md:mb-0" />
-        </div>
-        <div class="vx-col flex-1">
-          <label class="text-sm opacity-75">Trạng thái</label>
-          <v-select :options="statusOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="statusFilter" class="mb-4 md:mb-0" />
-        </div>
-<!--        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">-->
-<!--          <label class="text-sm opacity-75">Verified</label>-->
-<!--          <v-select :options="isVerifiedOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="isVerifiedFilter" class="mb-4 sm:mb-0" />-->
-<!--        </div>-->
-<!--        <div class="vx-col md:w-1/4 sm:w-1/2 w-full">-->
-<!--          <label class="text-sm opacity-75">Department</label>-->
-<!--          <v-select :options="departmentOptions" :clearable="false" :dir="$vs.rtl ? 'rtl' : 'ltr'" v-model="departmentFilter" />-->
-<!--        </div>-->
-      </div>
-    </vx-card>
-
     <div class="vx-card p-6">
-
       <div class="flex flex-wrap items-center">
-
         <!-- ITEMS PER PAGE -->
         <div class="flex-grow">
           <vs-dropdown vs-trigger-click class="cursor-pointer">
@@ -167,7 +143,7 @@ export default {
         },
         {
           headerName: 'Tài khoản',
-          field: 'username',
+          field: 'login',
           filter: true,
           width: 210,
           cellRendererFramework: 'CellRendererLink'
@@ -205,7 +181,7 @@ export default {
         },
         {
           headerName: 'Hành động',
-          field: 'transactions',
+          field: 'id',
           width: 150,
           cellRendererFramework: 'CellRendererActions'
         }
@@ -235,7 +211,16 @@ export default {
       return this.$store.getters['userManagement/getListUser'];
     },
     roleOptions() {
-      return this.$store.getters['userManagement/getRoles'];
+      if (this.$acl.check('Admin')) {
+        let listRole = [];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      } else if (this.$acl.check('Master')){
+        let listRole = [64, 60];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      } else if (this.$acl.check('Teacher')) {
+        let listRole = [64, 60, 61];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      }
     },
     paginationPageSize () {
       if (this.gridApi) return this.gridApi.paginationGetPageSize()

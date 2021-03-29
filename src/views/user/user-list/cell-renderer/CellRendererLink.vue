@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center">
     <vs-avatar :src="params.data.avatar.path" class="flex-shrink-0 mr-2" size="30px" @click="$router.push(url)" />
-    <router-link :to="url" @click.stop.prevent class="text-inherit hover:text-primary">{{ params.data.email }}</router-link>
+    <router-link :to="url" @click.stop.prevent class="text-inherit hover:text-primary">{{ params.data.login }}</router-link>
   </div>
 </template>
 
@@ -11,10 +11,6 @@ export default {
   computed: {
     url () {
       return '/admin/user/view/' + this.params.data.id
-
-      // Below line will be for actual product
-      // Currently it's commented due to demo purpose - Above url is for demo purpose
-      // return "/apps/user/user-view/" + this.params.data.id
     }
   }
 }

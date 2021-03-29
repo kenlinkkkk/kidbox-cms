@@ -20,11 +20,11 @@
     <!-- Content Row -->
     <div class="vx-row">
       <div class="vx-col md:w-1/2 w-full">
-        <vs-input class="w-full mt-4" label="Tên tài khoản" v-model="data_local.email" v-validate="'required|alpha_num'" name="username" disabled="true"/>
-        <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
+        <vs-input class="w-full mt-4" label="Tài khoản" v-model="data_local.login" v-validate="'required'" name="login" disabled="true"/>
+        <span class="text-danger text-sm"  v-show="errors.has('login')">{{ errors.first('login') }}</span>
 
-        <vs-input class="w-full mt-4" label="Tên" v-model="data_local.name" v-validate="'required|alpha_spaces'" name="name" />
-        <span class="text-danger text-sm"  v-show="errors.has('name')">{{ errors.first('name') }}</span>
+        <vs-input class="w-full mt-4" label="Tên" v-model="data_local.full_name" v-validate="'required'" name="full_name" />
+        <span class="text-danger text-sm"  v-show="errors.has('full_name')">{{ errors.first('name') }}</span>
 
         <vs-input class="w-full mt-4" label="Email" v-model="data_local.email" type="email" v-validate="'required|email'" name="email" />
         <span class="text-danger text-sm"  v-show="errors.has('email')">{{ errors.first('email') }}</span>
@@ -39,22 +39,22 @@
       <div class="vx-col md:w-1/2 w-full">
 
         <div class="mt-4">
-          <div>
+          <div class="mt-4">
             <label class="vs-input--label">Trường</label>
-            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+            <v-select :clearable="false" label="name" @input="schoolSelected" :options="optionsSelectSchool" v-validate="'required'" v-model="data_local.school_name" name="school_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <span class="text-danger text-sm"  v-show="errors.has('school_id')">{{ errors.first('school_id') }}</span>
           </div>
 
           <div class="mt-4">
             <label class="vs-input--label">Quyền</label>
-            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <v-select :clearable="false" :options="roles" @input="roleSelected" v-validate="'required'" v-model="data_local.user.role_name" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
             <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
           </div>
 
           <div class="mt-4">
             <label class="vs-input--label">Lớp</label>
-            <v-select :clearable="false" :options="roles" label="role_name" v-model="data_local.user" v-validate="'required'" name="role" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-            <span class="text-danger text-sm"  v-show="errors.has('role')">{{ errors.first('role') }}</span>
+            <v-select :disabled="roleCheck" label="name" @input="classSelected" :clearable="false" :options="optionsSelectClass" v-validate="'required'" name="class_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+            <span class="text-danger text-sm"  v-show="errors.has('class_id')">{{ errors.first('class_id') }}</span>
           </div>
         </div>
       </div>
@@ -73,6 +73,8 @@
 <script>
 import vSelect from 'vue-select'
 import axiosApiInstance from "../../../axios";
+import moduleSchool from '@/store/school/schoolStore.js'
+import moduleClass from '@/store/class/classStore.js'
 
 export default {
   components: {
@@ -91,6 +93,7 @@ export default {
         limit: 10,
         page: 1
       },
+      roleCheck: true,
     }
   },
   computed: {
@@ -98,20 +101,30 @@ export default {
       return !this.errors.any()
     },
     roles() {
-      let roleList = this.$store.getters['userManagement/getRoles'];
-
-      return roleList
+      if (this.$acl.check('Admin')) {
+        let listRole = [];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      } else if (this.$acl.check('Master')){
+        let listRole = [64, 60];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      } else if (this.$acl.check('Teacher')) {
+        let listRole = [64, 60, 61];
+        return this.$store.getters['userManagement/getRoles'](listRole)
+      }
     },
+    optionsSelectSchool() {
+      return this.$store.getters['school/getSchools']
+    },
+    optionsSelectClass() {
+      return this.$store.getters['class/getClasses']
+    }
   },
   methods: {
     save_changes () {
       /* eslint-disable */
-      if (!this.validateForm) return
-
-      // Here will go your API call for updating data
-      // You can get data in "this.data_local"
-
-      /* eslint-enable */
+      // if (!this.validateForm) {
+        this.$store.dispatch('userManagement/updateUserInfo', this.data_local)
+      // }
     },
     reset_data () {
       this.$router.go(-1);
@@ -136,10 +149,30 @@ export default {
         this.data_local.avatar.path = path.concat(String(response.data.data.path));
         this.data_local.avatar.type = response.data.data.type;
       }
+    },
+    schoolSelected (event) {
+      this.data_local.school_id = event.id
+      this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.data_local.school_id });
+    },
+    roleSelected (event) {
+      if (event.value === 61) {
+        this.roleCheck = false
+      }
+      this.data_local.role = event.value
+    },
+    classSelected (event) {
+      this.data_local.class_id = event.id
     }
   },
   created() {
     this.$store.dispatch('userManagement/getRoleList', this.configLoadPage).catch(err => { console.error(err) })
+    this.$store.registerModule('school', moduleSchool);
+    if (this.$acl.check('Admin')) {
+      this.$store.dispatch('school/getListSchool');
+    } else {
+      this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId })
+    }
+    this.$store.registerModule('class', moduleClass);
   }
 }
 </script>

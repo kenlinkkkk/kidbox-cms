@@ -11,13 +11,6 @@ export default {
   methods: {
     editRecord () {
       this.$router.push("/admin/user/edit/" + this.params.data.id).catch(() => {})
-
-      /*
-              Below line will be for actual product
-              Currently it's commented due to demo purpose - Above url is for demo purpose
-
-              this.$router.push("/apps/user/user-edit/" + this.params.data.id).catch(() => {})
-            */
     },
     confirmDeleteRecord () {
       this.$vs.dialog({
@@ -30,19 +23,33 @@ export default {
       })
     },
     deleteRecord () {
-      /* Below two lines are just for demo purpose */
-      this.showDeleteSuccess()
-
       /* UnComment below lines for enabling true flow if deleting user */
-      // this.$store.dispatch("userManagement/removeRecord", this.params.data.id)
-      //   .then(()   => { this.showDeleteSuccess() })
-      //   .catch(err => { console.error(err)       })
+      this.$store.dispatch("userManagement/deleteUserById", { userId: this.params.data.id })
+        .then((response)   => {
+          if (response.status === 200) {
+            if (response.data.code === 200) {
+              this.showDeleteSuccess()
+            } else {
+              this.showDeleteFail()
+            }
+          } else {
+            this.showDeleteFail()
+          }
+        })
+        .catch(err => { console.error(err)       })
     },
     showDeleteSuccess () {
       this.$vs.notify({
         color: 'success',
         title: 'Đã vô hiệu hóa',
         text: 'Tài khoản đã được vô hiệu hóa'
+      })
+    },
+    showDeleteFail () {
+      this.$vs.notify({
+        color: 'danger',
+        title: 'Thất bại',
+        text: 'Vô hiệu hóa tài khoản thất bại'
       })
     }
   }
