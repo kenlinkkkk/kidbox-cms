@@ -27,6 +27,27 @@ const getters = {
     })
 
     return posts
+  },
+  getPostDetail: state => {
+    let data = []
+
+    state.postDetail.pictures.forEach((item) => {
+      if (item.type === 'jpg') {
+        data.push({
+          img: item.path
+        })
+      } else if (item.type === 'mp4') {
+        data.push({
+          sources: [{
+            type: 'video/mp4',
+            src: item.path
+          }],
+          poster: item.thumbnail[0]
+        })
+      }
+    })
+
+    return data
   }
 }
 

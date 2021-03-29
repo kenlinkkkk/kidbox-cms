@@ -13,8 +13,9 @@
         {{ item.content }}
       </div>
       <div id="mediaPostArea" v-if="item.pictures.length > 0">
-        <media-post :data="item.media" />
+        <media-post :data="item.media" :itemId="item.id"/>
       </div>
+      <vs-divider />
     </vs-card>
   </div>
 </template>

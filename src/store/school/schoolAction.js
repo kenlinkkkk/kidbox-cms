@@ -2,14 +2,10 @@ import axiosApiInstance from "../../axios";
 
 const actions = {
   async getListSchool({ commit }, payload) {
-    let key_word = ''
-    if (payload.key_word){
-      key_word = payload.key_word
-    }
     let data = {
       "limit": payload.limit,
       "page": payload.page,
-      "key_word": key_word
+      "key_word": payload.key_word
     }
     let config = {
       method: "POST",
