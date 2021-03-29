@@ -1,5 +1,6 @@
 const state = () => ({
-  post: ""
+  posts: [],
+  postDetail: ''
 })
 
 export default state

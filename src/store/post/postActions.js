@@ -1,11 +1,8 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
-  async getListPost(_, payload) {
+  async getListPost({ commit }, payload) {
     let data = {
-      is_hot: 1,
-      school_id: 1,
-      type_id: 1,
       ...payload
     }
 
@@ -18,7 +15,11 @@ const actions = {
       data: data
     }
     let response = await axiosApiInstance(config)
-    console.log(response)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit("SET_LIST_POST", response.data.data.content)
+      }
+    }
     return axiosApiInstance(config)
   },
   async addNewPost(payload) {
@@ -104,7 +105,7 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  async detailPost(payload) {
+  async detailPost({ commit }, payload) {
     let config = {
       method: "POST",
       url: "/cms/posts/" + payload.id,
@@ -112,8 +113,13 @@ const actions = {
         'Content-Type': 'application/json'
       }
     }
-0
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config);
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit("SET_POST_DETAIL", response.data.data)
+      }
+    }
+    return response
   }
 }
 
