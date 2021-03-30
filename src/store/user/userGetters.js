@@ -79,7 +79,16 @@ const getters = {
     })
     return response;
   },
-  getParent: state => parentId => state.parents.find((parent) => parent.id === parentId),
+  getRoleListByCode: state => listCode => {
+    let data = []
+    state.userListRoles.forEach((item) => {
+      if (listCode.includes(item.code)) {
+        data.push((item))
+      }
+    })
+
+    return data
+  }
 
 }
 

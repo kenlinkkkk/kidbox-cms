@@ -6,36 +6,36 @@
       accept-text="Cập nhật"
       cancel-text="Hủy"
       button-cancel="border"
-      @cancel="clearFields"
       @accept="addSchool"
-      @close="clearFields"
       :is-valid="validateForm"
       :active.sync="activePrompt">
       <div>
         <form>
           <vs-tabs alignment="fixed">
             <vs-tab label="Thông tin cơ bản">
-              <div class="vx-col mb-6">
-                <vs-upload action="http://kidbox.vn:8888/api/upload" :headers="headersUpload" :accept="'jpg|png'" automatic fileName="file" limit="1" @on-success="successUpload" />
-              </div>
-              <div class="vx-row mb-6">
-                <div class="vx-col w-full">
-                  <vs-input class="w-full" icon-pack="feather" icon="icon-home" icon-no-border label="Tên trường" v-model="schoolInfo.name"/>
+              <div class="vx-row m-1">
+                <div class="vs-col lg:w-1/3">
+                  <img :src="schoolInfo.logo_url.path" class="mr-8 rounded w-24" v-if="schoolInfo.logo_url.path"/>
+                  <img src="https://kidbox.vn/media/default/no-image.png" class="mr-8 rounded w-24" v-else/>
+                  <div>
+                    <input type="file" class="hidden" ref="update_avatar_input" @change="update_avatar" accept="image/*">
+                    <!-- Toggle comment of below buttons as one for actual flow & currently shown is only for demo -->
+                    <vs-button type="border" class="mr-4" size="small" @click="$refs.update_avatar_input.click()">Thêm ảnh</vs-button>
+                  </div>
+                </div>
+                <div class="vs-col lg:w-2/3">
+                  <vs-input class="w-full" icon-pack="feather" icon="icon-home" icon-no-border label="Tên trường" v-model="schoolInfo.name" placeholder="Mầm non ..."/>
+                  <vs-input class="w-full" icon-pack="feather" icon="icon-map-pin" icon-no-border label="Địa chỉ" v-model="schoolInfo.address" placeholder="Cầu Giấy"/>
                 </div>
               </div>
-              <div class="vx-row mb-6">
-                <div class="vx-col w-full">
-                  <vs-input class="w-full" icon-pack="feather" icon="icon-map-pin" icon-no-border label="Địa chỉ" v-model="schoolInfo.address"/>
+              <div class="vx-row mt-3">
+                <div class="vx-col w-full m-1" v-if="$acl.check('Admin')">
+                  <label class="vs-input--label">Gói</label>
+                  <v-select class="mr-3 w-full" label="name" :options="listSubPackage" v-model="schoolInfo.package_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
                 </div>
-              </div>
-              <div class="vx-row mb-6">
-                <div class="vx-col w-full">
-                  <vs-input class="w-full" icon-pack="feather" icon="icon-mail" icon-no-border label="Địa chỉ email" v-model="schoolInfo.email"/>
-                </div>
-              </div>
-              <div class="vx-row mb-6">
-                <div class="vx-col w-full">
-                  <vs-input class="w-full" icon-pack="feather" icon="icon-phone" icon-no-border label="Số điện thoại" v-model="schoolInfo.phone_number"/>
+                <div class="vx-col w-full m-1">
+                  <vs-input class="w-full mb-3" icon-pack="feather" icon="icon-mail" icon-no-border label="Địa chỉ email" v-model="schoolInfo.email" placeholder="mamnon@gmail.com"/>
+                  <vs-input class="w-full mb-3" icon-pack="feather" icon="icon-phone" icon-no-border label="Số điện thoại" v-model="schoolInfo.phone_number" placeholder="0123456789"/>
                 </div>
               </div>
             </vs-tab>
@@ -81,6 +81,9 @@
 <script>
   import flatPickr from 'vue-flatpickr-component';
   import 'flatpickr/dist/flatpickr.css';
+  import axiosApiInstance from "../../../axios";
+  import vSelect from 'vue-select'
+
   export default {
     data() {
       return {
@@ -92,7 +95,10 @@
           phone_number: '',
           school_master: '',
           package_id: '',
-          logo_url: '',
+          logo_url: {
+            path: '',
+            type: ''
+          },
           start_time: '07:00',
           break_lunch: '11:45',
           start_afternoon: '13:30',
@@ -105,11 +111,16 @@
           enableTime: true,
           time_24hr: true,
           noCalendar: true
+        },
+        configLoadPage: {
+          page: 1,
+          limit: 10,
         }
       }
     },
     components:{
-      flatPickr
+      flatPickr,
+      vSelect
     },
     computed: {
       validateForm() {
@@ -126,13 +137,16 @@
           return false
         }
         return !this.errors.any()
+      },
+      listSubPackage() {
+        return this.$store.getters['subpackage/getPackages']
       }
     },
     methods: {
       async addSchool() {
         this.$store.dispatch('school/createNewSchool', Object.assign({}, this.schoolInfo)).then((resp) => {
           this.clearFields();
-          this.$store.dispatch('school/getListSchool');
+          this.$store.dispatch('school/getListSchool', this.configLoadPage);
           this.$vs.notify({
             title:'Cập nhật thông tin hành công',
             text: resp.data.message,
@@ -141,6 +155,7 @@
             iconPack: 'feather',
             icon:'icon-check'
           });
+          this.$router.go(0)
         }).catch((error) => {
           this.$vs.notify({
             title:'Lỗi',
@@ -152,7 +167,28 @@
           });
         })
       },
-      clearFields() {
+      async update_avatar (input) {
+        let formData = new FormData();
+        if (input.target.files && input.target.files[0]) {
+          let file = input.target.files[0];
+          formData.append('file', file);
+
+          let config = {
+            url: "/api/upload",
+            method: "POST",
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            data: formData
+          }
+
+          let response = await axiosApiInstance(config)
+          let path = "https://kidbox.vn/media/";
+          this.schoolInfo.logo_url.path = path.concat(String(response.data.data.path));
+          this.schoolInfo.logo_url.type = response.data.data.type;
+        }
+      },
+      clearFields () {
         Object.assign(this.schoolInfo, {
           name: '',
           address: '',
@@ -160,18 +196,15 @@
           phone_number: '',
           school_master: '',
           package_id: '',
-          logo_url: '',
+          logo_url: {
+            path: '',
+            type: ''
+          },
           start_time: '07:00',
           break_lunch: '11:45',
           start_afternoon: '13:30',
           end_time: '17:00',
         })
-      },
-      successUpload(event) {
-        let response = JSON.parse(event.target.response)
-        if (response.code === 200) {
-          this.schoolInfo.logo_url = response.data
-        }
       }
     }
   }

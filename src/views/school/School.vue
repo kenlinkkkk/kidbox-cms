@@ -20,11 +20,17 @@
   import SchoolInfo from './components/schoolInfo.vue'
   import SchoolItem from './SchoolItem.vue';
   import SchoolAddNew from './components/schoolAddNew.vue'
+  import moduleSubPackage from '@/store/subpackage/subPackageStore.js'
+
   export default {
     data() {
       return {
         displayPrompt: false,
         schoolIdToEdit: 0,
+        configLoadPage: {
+          page: 1,
+          limit: 10,
+        }
       }
     },
     computed: {
@@ -51,10 +57,15 @@
     created() {
       this.$store.registerModule('school', moduleSchool);
       if (this.$acl.check('Admin')) {
-        this.$store.dispatch('school/getListSchool');
+        this.$store.dispatch('school/getListSchool', this.configLoadPage);
       } else if (this.$acl.check('Master')) {
         this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId });
       }
+      if (!moduleSubPackage.isRegistered) {
+        this.$store.registerModule('subpackage', moduleSubPackage)
+        moduleSubPackage.isRegistered = true
+      }
+      this.$store.dispatch('subpackage/getListSubPackages', this.configLoadPage)
     },
     beforeDestroy() {
       this.$store.unregisterModule('school')

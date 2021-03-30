@@ -24,23 +24,53 @@ const actions = {
   },
   async updateSchoolInfo(_, payload) {
     let data = {
-      ...payload
+      name: payload.name,
+      address: payload.address,
+      email: payload.email,
+      phone_number: payload.phone_number,
+      school_master: payload.school_master,
+      start_time: payload.start_time,
+      break_lunch: payload.break_lunch,
+      start_afternoon: payload.start_afternoon,
+      end_time: payload.end_time
+    }
+
+    if (payload.logoUrl.path) {
+      Object.assign(data, {logo_url: payload.logo_url})
+    }
+    if (payload.package.id) {
+      Object.assign(data, {package_id: payload.package.id })
     }
 
     let config = {
       method: 'POST',
-      url: "cms/core-school/update/" + data.id,
+      url: "cms/core-school/update/" + payload.id,
       headers: {
         'Content-Type': 'application/json',
       },
       data: data
     }
-    let response = await axiosApiInstance(config)
-    return response
+
+    return axiosApiInstance(config)
   },
   async createNewSchool(_, payload) {
     let data = {
-      ...payload
+      name: payload.name,
+      address: payload.address,
+      email: payload.email,
+      phone_number: payload.phone_number,
+      school_master: payload.school_master,
+      start_time: payload.start_time,
+      break_lunch: payload.break_lunch,
+      start_afternoon: payload.start_afternoon,
+      end_time: payload.end_time
+    }
+
+    if (payload.logo_url.path) {
+      Object.assign(data, {logo_url: payload.logo_url})
+    }
+    if (payload.package_id.id) {
+      Object.assign(data, {package_id: payload.package_id.id })
     }
 
     let config = {
