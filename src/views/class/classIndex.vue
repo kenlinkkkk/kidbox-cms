@@ -26,6 +26,11 @@
         displayPrompt: false,
         classIdToEdit: 0,
         classStatus: 1,
+        configLoadPage: {
+          limit: 10,
+          page: 1,
+          default: "f"
+        }
       }
     },
     components: {
@@ -52,11 +57,11 @@
     created() {
       this.$store.registerModule('class', moduleClass);
       if (this.$route.query.c) {
-        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c});
+        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c, ...this.configLoadPage});
       } else {
-        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$store.state.AppActiveUser.schoolId});
+        this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$store.state.AppActiveUser.schoolId, ...this.configLoadPage});
       }
-
+      this.$store.dispatch('userManagement/getRoleList', this.configLoadPage)
     },
     beforeDestroy() {
       this.$store.unregisterModule('class');

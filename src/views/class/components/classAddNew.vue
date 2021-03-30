@@ -57,7 +57,7 @@
     },
     data() {
       return {
-        activePrompt: false,
+        activePrompt: true,
         classInfo: {
           name: '',
           room: '',

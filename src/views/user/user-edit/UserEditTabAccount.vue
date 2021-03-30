@@ -173,6 +173,10 @@ export default {
       this.$store.dispatch('school/getSchoolById', { schoolId: this.$store.state.AppActiveUser.schoolId })
     }
     this.$store.registerModule('class', moduleClass);
+  },
+  beforeDestroy() {
+    this.$store.unregisterModule('school')
+    this.$store.unregisterModule('class')
   }
 }
 </script>

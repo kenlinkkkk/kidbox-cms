@@ -25,12 +25,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78509a7b-442f-42c7-8aa8-8c299b569763" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_29_2021_11_47_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_29_2021_11_47_PM_[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_29_2021_11_47_PM__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_29_2021_11_47_PM__Default_Changelist_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_29_2021_11_50_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+    <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/school/schoolAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/classIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/school/School.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/School.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/school/SchoolItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/SchoolItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/school/components/schoolInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/components/schoolInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,10 +245,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1899" height="352" key="GridCell.Tab.3.right/0.30.1920.1050@0.30.1920.1050" timestamp="1616723997776" />
-    <state x="540" y="290" key="IDE.errors.dialog" timestamp="1615963862659">
+    <state x="540" y="290" key="IDE.errors.dialog" timestamp="1617096300716">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1615963862659" />
+    <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1617096300716" />
     <state x="248" y="153" key="MergeDialog" timestamp="1617036637573">
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
@@ -251,10 +257,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="461" y="200" key="SettingsEditor/0.30.1920.1050@0.30.1920.1050" timestamp="1615428162929" />
-    <state x="740" y="356" width="549" height="520" key="find.popup" timestamp="1617007495431">
+    <state x="740" y="356" width="549" height="520" key="find.popup" timestamp="1617073901627">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617007495431" />
+    <state x="740" y="356" width="549" height="520" key="find.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617073901627" />
     <state x="987" y="468" width="732" height="699" key="find.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616298499387" />
     <state x="987" y="468" width="585" height="534" key="find.popup/0.30.2560.1410@0.30.2560.1410" timestamp="1615303167086" />
     <state x="1060" y="448" key="git4idea.branch.GitSmartOperationDialog" timestamp="1617036615876">
