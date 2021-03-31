@@ -28,15 +28,12 @@
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/school/schoolAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/school/schoolAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/classIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classIndex.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/school/School.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/School.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/school/SchoolItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/SchoolItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/components/classInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classInfo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/school/components/schoolInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/components/schoolInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/user/user-edit/UserEditTabAccount.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

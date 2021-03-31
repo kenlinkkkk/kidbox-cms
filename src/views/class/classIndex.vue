@@ -51,7 +51,11 @@
       },
       getSchoolId() {
         let data = this.$route.params;
-        return Number.parseInt(data.schoolId)
+        if (data.schoolId) {
+          return Number.parseInt(data.schoolId)
+        } else {
+          return this.$store.state.AppActiveUser.schoolId
+        }
       }
     },
     created() {

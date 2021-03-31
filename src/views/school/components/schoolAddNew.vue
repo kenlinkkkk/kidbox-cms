@@ -31,7 +31,7 @@
               <div class="vx-row mt-3">
                 <div class="vx-col w-full m-1" v-if="$acl.check('Admin')">
                   <label class="vs-input--label">Gói</label>
-                  <v-select class="mr-3 w-full" label="name" :options="listSubPackage" v-model="schoolInfo.package_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
+                  <v-select class="mr-3 w-full" label="name" @search="searchInput" :options="listSubPackage" v-model="schoolInfo.package_id" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
                 </div>
                 <div class="vx-col w-full m-1">
                   <vs-input class="w-full mb-3" icon-pack="feather" icon="icon-mail" icon-no-border label="Địa chỉ email" v-model="schoolInfo.email" placeholder="mamnon@gmail.com"/>
@@ -205,6 +205,18 @@
           start_afternoon: '13:30',
           end_time: '17:00',
         })
+      },
+      searchInput(input) {
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+        this.timer = setTimeout(() => {
+          if (this.$acl.check('Admin')) {
+            this.configLoadPage.name = input;
+            this.$store.dispatch('subpackage/getListSubPackages', this.configLoadPage)
+          }
+        }, 3000);
       }
     }
   }

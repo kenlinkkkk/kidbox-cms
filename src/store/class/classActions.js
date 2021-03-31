@@ -27,8 +27,24 @@ const actions = {
   },
   async addNewClass(_, payload) {
     let data = {
-      ...payload
+      name: payload.name,
+      note: payload.note,
+      room: payload.room,
+      school_id: payload.school_id
     }
+
+    if (payload.logo_url.path) {
+      Object.assign(data, {logo_url: {
+          path: payload.logo_url.path.split('https://kidbox.vn/media/')[1],
+          type: payload.logo_url.type
+        }
+      })
+    }
+    let teacher_ids = []
+    payload.teacher_ids.forEach((item) => {
+      teacher_ids.push(item.id)
+    })
+    Object.assign(data, {teacher_ids: teacher_ids})
 
     let config = {
       method: "POST",
@@ -55,8 +71,19 @@ const actions = {
   },
   async updateClassInfo(_, payload) {
     let data = {
-      ...payload.classInfo
+      name: payload.classInfo.name,
+      note: payload.classInfo.note,
+      logo_url: {
+        path: payload.classInfo.logoUrl.path.split('https://kidbox.vn/media/')[1],
+        type: payload.classInfo.logoUrl.type
+      },
+      room: payload.classInfo.room
     }
+    let teacher_ids = []
+    payload.classInfo.teachers.forEach((item) => {
+      teacher_ids.push(item.id)
+    })
+    Object.assign(data, {teacher_ids: teacher_ids})
     let config = {
       method: "POST",
       url: "/cms/class/update/" + payload.classId,

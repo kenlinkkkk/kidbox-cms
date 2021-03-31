@@ -23,8 +23,8 @@
 <!--            END - BOOKMARKS-->
         <vs-spacer />
 
-        <search-bar />
-        <notification-drop-down />
+<!--        <search-bar />-->
+<!--        <notification-drop-down />-->
         <profile-drop-down />
 
       </vs-navbar>
