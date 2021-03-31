@@ -83,7 +83,7 @@ const getters = {
     let data = []
     state.userListRoles.forEach((item) => {
       if (listCode.includes(item.code)) {
-        data.push((item))
+        data.push((item.id))
       }
     })
 
