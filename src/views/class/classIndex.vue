@@ -5,7 +5,7 @@
     </div>
     <class-info :displayPrompt="displayPrompt" :classId="classIdToEdit" @hiddenDisplayPrompt="hiddenPrompt" v-if="displayPrompt"/>
     <div class="vx-col w-full md:w-1/4 mb-base inline-flex">
-      <class-add-new :schoolId="getSchoolId()"/>
+      <class-add-new :schoolId="getSchoolId"/>
     </div>
   </div>
 </template>
@@ -39,6 +39,14 @@
     computed: {
       listClasses() {
         return this.$store.getters['class/getClasses'];
+      },
+      getSchoolId() {
+        let data = this.$route.params;
+        if (data.schoolId) {
+          return Number.parseInt(data.schoolId)
+        } else {
+          return this.$store.state.AppActiveUser.schoolId
+        }
       }
     },
     methods: {
@@ -48,14 +56,6 @@
       },
       hiddenPrompt() {
         this.displayPrompt = false;
-      },
-      getSchoolId() {
-        let data = this.$route.params;
-        if (data.schoolId) {
-          return Number.parseInt(data.schoolId)
-        } else {
-          return this.$store.state.AppActiveUser.schoolId
-        }
       }
     },
     created() {
