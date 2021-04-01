@@ -84,7 +84,6 @@ export default {
     return axiosApiInstance(config)
   },
   async updateUserInfo(_, payload) {
-    payload
     let data = {
       login: payload.login,
       full_name: payload.full_name,
@@ -96,10 +95,20 @@ export default {
     }
     if (payload.role) {
       Object.assign(data, {role: payload.role})
+    } else {
+      Object.assign(data, {role: payload.user.role_id})
     }
     if (payload.class_id) {
       Object.assign(data, {class_id: payload.class_id})
     }
+    if (payload.avatar) {
+      Object.assign(data, {avatar: {
+          path: payload.avatar.path.split('https://kidbox.vn/media/')[1],
+          type: payload.avatar.type
+        }
+      })
+    }
+
     let config = {
       method: 'POST',
       url: '/cms/users/update/' +  payload.user.id,

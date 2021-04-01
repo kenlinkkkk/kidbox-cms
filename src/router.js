@@ -46,11 +46,18 @@ const router = new Router({
               rule: 'AdminOrMaster'
             },
           },
-
           {
             path: 'class',
             name: 'class-index',
             component: () => import('./views/class/classIndex.vue'),
+            meta: {
+              rule: 'Any'
+            },
+          },
+          {
+            path: 'class-new',
+            name: 'class-new-index',
+            component: () => import('./views/class/classNew/ClassIndex.vue'),
             meta: {
               rule: 'Any'
             },

@@ -27,13 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classMutations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/classIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classAddNew.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/components/classInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/school/components/schoolAddNew.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,10 +240,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state width="1899" height="352" key="GridCell.Tab.3.right/0.30.1920.1050@0.30.1920.1050" timestamp="1616723997776" />
-    <state x="540" y="290" key="IDE.errors.dialog" timestamp="1617096300716">
+    <state x="540" y="290" key="IDE.errors.dialog" timestamp="1617180013385">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1617096300716" />
+    <state x="540" y="290" key="IDE.errors.dialog/0.30.1920.1050@0.30.1920.1050" timestamp="1617180013385" />
     <state x="248" y="153" key="MergeDialog" timestamp="1617036637573">
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
@@ -264,10 +262,10 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="1060" y="448" key="git4idea.branch.GitSmartOperationDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1617036615876" />
-    <state x="702" y="267" key="run.anything.popup" timestamp="1616406814941">
+    <state x="702" y="267" key="run.anything.popup" timestamp="1617264995762">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="702" y="267" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1616406814941" />
+    <state x="702" y="267" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617264995762" />
     <state x="936" y="348" key="run.anything.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616082829748" />
     <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1616554549776">
       <screen x="0" y="30" width="1920" height="1050" />
