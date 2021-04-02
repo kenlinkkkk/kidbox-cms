@@ -1,6 +1,7 @@
 import axiosApiInstance from "../../axios";
 
 const actions = {
+  // class info
   async getClassBySchoolId({ commit }, payload) {
     let data = {
       limit: payload.limit,
@@ -105,6 +106,53 @@ const actions = {
     }
 
     return axiosApiInstance(config)
+  },
+
+  // child info
+
+  async getListChildOfClass({ commit }, payload) {
+    let data = {
+      page: payload.page,
+      size: payload.size,
+      school_id: payload.school_id,
+      class_id: Number(payload.class_id)
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/child/list",
+      data: data
+    }
+    let response = await  axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        if (data.page === 1) {
+          commit('SET_LIST_STUDENTS', { action: "SET", data: response.data.data.data})
+        } else {
+          commit('SET_LIST_STUDENTS', { action: "PUSH", data: response.data.data.data})
+        }
+      } else {
+        commit('SET_LIST_STUDENTS', { action: "SET", data: []})
+      }
+    }
+    return axiosApiInstance(config)
+  },
+  async getCheckinInfo({ commit }, payload) {
+    let data = {
+      class_id: payload.class_id,
+      date: new Date().toISOString().split('T')[0]
+    }
+
+    let config = {
+      method: "POST",
+      url: "/cms/checkin/get-check-in-class",
+      data: data
+    }
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      commit('SET_LIST_STUDENTS', { action: "SET", data: response.data.data.data})
+    }
+    return response.data
   }
 }
 

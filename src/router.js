@@ -24,7 +24,7 @@ const router = new Router({
         children: [
           {
             path: '',
-            name: 'home',
+            name: 'dashboard',
             component: () => import('./views/Home.vue'),
             meta: {
               rule: 'Any'
@@ -57,10 +57,19 @@ const router = new Router({
           {
             path: 'class-new',
             name: 'class-new-index',
+            redirect: 'rate/all',
+            meta: {
+              rule: 'MasterOrTeacher'
+            },
+          },
+          {
+            path: 'class-new/:classId',
             component: () => import('./views/class/classNew/ClassIndex.vue'),
             meta: {
-              rule: 'Any'
-            },
+              rule: 'MasterOrTeacher',
+              parent: 'clas-index',
+              no_scroll: true
+            }
           },
           {
 
@@ -210,7 +219,7 @@ const router = new Router({
             beforeEnter: (to, from, next) => {
               if (store.getters['auth/Authentication'] === true) {
                 return next({
-                  name:  'home'
+                  name:  'dashboard'
                 });
               }
               next()

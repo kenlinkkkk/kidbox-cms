@@ -14,6 +14,18 @@ const mutations = {
 
   SET_CLASSES(state, classes){
     state.listClasses = classes
+  },
+
+  SET_LIST_STUDENTS (state, data) {
+    if (data.action === "SET") {
+      state.students = data.data
+    } else if (data.action === "PUSH") {
+      data.data.forEach((item) => {
+        if (item) {
+          state.students.push(item)
+        }
+      })
+    }
   }
 
 }

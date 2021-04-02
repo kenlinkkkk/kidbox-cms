@@ -44,6 +44,7 @@
   import InfrastructureTypeAddNew from "./components/type/InfrastructureTypeAddNew";
   import InfrastructureItem from "./components/infrastructure/InfrastructureItem";
   import InfrastructureDetailPrompt from "./components/infrastructure/InfrastructureDetailPrompt";
+
   export default {
     data() {
       return {
