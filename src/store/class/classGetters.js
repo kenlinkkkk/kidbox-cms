@@ -21,7 +21,11 @@ const getters = {
     })
     return response;
   },
-  getClassById: state => classId => state.listClasses.find((item) => item.id === classId)
+  getClassById: state => classId => state.listClasses.find((item) => item.id === classId),
+  getListStudents: state => {
+    return  state.students
+  },
+  getStudentInfoById: state => studentId => state.students.find((item) => item.child.id === studentId)
 }
 
 export default getters

@@ -28,10 +28,14 @@
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/class/classMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/user/userGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/user/userGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/class/classState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ClassTabs.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,10 +171,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="414" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1616723938838" />
-    <state x="758" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616377598399">
+    <state x="758" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617345600008">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="758" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1616377598399" />
+    <state x="758" y="367" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1617345600008" />
     <state x="1010" y="482" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1615304585982" />
     <state x="740" y="310" key="FileChooserDialogImpl" timestamp="1615950865017">
       <screen x="0" y="30" width="1920" height="1050" />
@@ -262,10 +266,10 @@
       <screen x="0" y="30" width="2560" height="1410" />
     </state>
     <state x="1060" y="448" key="git4idea.branch.GitSmartOperationDialog/0.30.2560.1410@0.30.2560.1410" timestamp="1617036615876" />
-    <state x="702" y="267" key="run.anything.popup" timestamp="1617264995762">
+    <state x="702" y="267" key="run.anything.popup" timestamp="1617347772374">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="702" y="267" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617264995762" />
+    <state x="702" y="267" key="run.anything.popup/0.30.1920.1050@0.30.1920.1050" timestamp="1617347772374" />
     <state x="936" y="348" key="run.anything.popup/0.30.2560.1410/2560.30.1920.1050@0.30.2560.1410" timestamp="1616082829748" />
     <state x="707" y="266" width="672" height="505" key="search.everywhere.popup" timestamp="1616554549776">
       <screen x="0" y="30" width="1920" height="1050" />

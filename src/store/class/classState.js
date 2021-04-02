@@ -1,5 +1,6 @@
 const state = () => ({
-  listClasses: []
+  listClasses: [],
+  students: []
 })
 
 export default state
