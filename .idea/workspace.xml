@@ -27,15 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classMutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classMutations.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ClassTabs.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/infrastructure/InfrastructureIndex.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/post/post/components/MultipleItemPost.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/post/post/components/MultipleItemPost.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +111,8 @@
       <workItem from="1616482615009" duration="2044000" />
       <workItem from="1616723782151" duration="7922000" />
       <workItem from="1616980738615" duration="18872000" />
+      <workItem from="1617380157757" duration="601000" />
+      <workItem from="1617541233812" duration="305000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <created>1616483721854</created>

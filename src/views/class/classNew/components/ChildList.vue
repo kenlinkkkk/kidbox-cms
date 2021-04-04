@@ -20,42 +20,15 @@
             <span>{{ studentDetail.is_checkout === 0 ? 'Checkin' : studentDetail.time_checkout }}</span>
           </vs-chip>
         </div>
-        <div class="badge-noti mr-2" v-if="studentDetail.medicine">
-          <vs-button radius size="small" color="danger" type="filled" icon-pack="feather" icon="icon-plus-square" />
-          <div class="content-noti-badge" />
-        </div>
-        <div class="badge-noti mr-2" v-else>
-          <vs-button radius size="small" color="danger" type="filled" icon-pack="feather" icon="icon-plus-square" disabled="true"/>
+        <div class="badge-noti mr-2">
+          <vs-button radius size="small" color="danger" type="filled" icon-pack="feather" icon="icon-plus-square" @click="medicineNote" :disabled="studentDetail.medicine === null" />
+          <div class="content-noti-badge" v-if="studentDetail.medicine !== null"/>
         </div>
         <vs-button radius size="small" color="rgba(0, 126, 255, 1)" type="filled" icon-pack="feather" icon="icon-list" @click="checkinClick"/>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-  export default {
-    props: {
-      studentId: {
-        type : Number,
-        required: true
-      }
-    },
-    data () {
-      return {
-        studentDetail: this.$store.getters["class/getStudentInfoById"](this.studentId)
-      }
-    },
-    methods: {
-      checkinClick() {
-        console.log(this.studentId)
-      },
-      checkoutClick() {
-        console.log(this.studentId)
-      }
-    }
-  }
-</script>
 
 <style lang="scss" scoped>
   .badge-noti{
@@ -72,3 +45,32 @@
     }
   }
 </style>
+
+<script>
+  export default {
+    props: {
+      studentId: {
+        type : Number,
+        required: true
+      }
+    },
+    data () {
+      return {
+        studentDetail: this.$store.getters["class/getStudentInfoById"](this.studentId)
+      }
+    },
+    methods: {
+      checkinClick() {
+        console.log("Checkin" + this.studentId)
+      },
+      checkoutClick() {
+        console.log("Checkout" + this.studentId)
+      },
+      medicineNote () {
+        console.log("medicine" + this.studentId)
+      }
+    }
+  }
+</script>
+
+
