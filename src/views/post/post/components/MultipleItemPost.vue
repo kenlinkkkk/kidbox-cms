@@ -1,6 +1,6 @@
 <template>
   <div id="contentPost">
-    <vs-card v-for="(item, index) in ListPost" :key="item.id">
+    <vs-card v-for="(item) in ListPost" :key="item.id">
       <div class="flex">
         <vs-avatar size="40px" :src="item.user.image_url.path" :alt="item.user.name" />
         <div>
