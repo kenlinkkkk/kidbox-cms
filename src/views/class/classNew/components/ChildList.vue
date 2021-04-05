@@ -10,23 +10,62 @@
         </div>
       </div>
       <div class="vx-col w-full sm:w-1/2 m-auto flex sm:justify-end">
-        <div>
-          <vs-chip color="success" @click="checkinClick">
-            <vs-avatar icon-pack="feather" icon="icon-check" />
-            <span>{{ studentDetail.is_checkin === 0 ? 'Checkin' : studentDetail.time_checkin }}</span>
-          </vs-chip>
-          <vs-chip color="warning" @click="checkoutClick">
-            <vs-avatar icon-pack="feather" icon="icon-slash" />
-            <span>{{ studentDetail.is_checkout === 0 ? 'Checkin' : studentDetail.time_checkout }}</span>
-          </vs-chip>
-        </div>
-        <div class="badge-noti mr-2">
+        <vs-button
+          color="success"
+          type="filled"
+          size="small"
+          icon-pack="feather"
+          icon="icon-check"
+          class="ml-2 btn-custom__min-width"
+          :disabled="studentDetail.is_checkin !== 0"
+          @click="checkinClick"
+        >
+          {{ studentDetail.is_checkin === 0 ? 'Checkin' : studentDetail.time_checkin }}
+        </vs-button>
+        <vs-button
+          color="warning"
+          type="filled"
+          size="small"
+          icon-pack="feather"
+          icon="icon-slash"
+          class="ml-2 btn-custom__min-width"
+          :disabled="studentDetail.is_checkout !== 0"
+          @click="checkoutClick"
+        >
+          {{ studentDetail.is_checkout === 0 ? 'Checkout' : studentDetail.time_checkout }}
+        </vs-button>
+        <div class="badge-noti ml-2">
           <vs-button radius size="small" color="danger" type="filled" icon-pack="feather" icon="icon-plus-square" @click="medicineNote" :disabled="studentDetail.medicine === null" />
           <div class="content-noti-badge" v-if="studentDetail.medicine !== null"/>
         </div>
-        <vs-button radius size="small" color="rgba(0, 126, 255, 1)" type="filled" icon-pack="feather" icon="icon-list" @click="checkinClick"/>
+        <vs-button radius size="small" color="rgba(0, 126, 255, 1)" type="filled" icon-pack="feather" icon="icon-list" @click="teacherNote()" class="ml-2"/>
       </div>
     </div>
+    <vs-prompt
+      :active.sync="medicinePrompt.showMedicinePrompt"
+      :title="medicinePrompt.title"
+      buttonAccept="false"
+      cancel-color="primary"
+      cancel-text= "Đóng"
+    >
+      <div class="con-exemple-prompt" v-if="studentDetail.medicine !== null">
+        <p>Tình trạng: {{ studentDetail.medicine.health_condition }}</p>
+        <p>Thuốc: {{ studentDetail.medicine.medicine }}</p>
+      </div>
+    </vs-prompt>
+
+    <vs-prompt
+      :active.sync="teacherNotePrompt.active"
+      :title="teacherNotePrompt.title"
+      accept-text="Lưu"
+      @accept="addTeacherNote"
+      cancel-color="primary"
+      cancel-text= "Đóng"
+    >
+      <div class="con-exemple-prompt">
+        <vs-input placeholder="Ghi chú" v-model="teacherNotePrompt.val" class="mt-4 mb-2 w-full" />
+      </div>
+    </vs-prompt>
   </div>
 </template>
 
@@ -44,6 +83,9 @@
       top: -3px;
     }
   }
+  .btn-custom__min-width {
+    min-width: 110px;
+  }
 </style>
 
 <script>
@@ -56,18 +98,122 @@
     },
     data () {
       return {
-        studentDetail: this.$store.getters["class/getStudentInfoById"](this.studentId)
+        medicinePrompt: {
+          showMedicinePrompt: false,
+          title: ''
+        },
+        teacherNotePrompt: {
+          active: false,
+          title: "Ghi chú giáo viên",
+          val: ''
+        },
+      }
+    },
+    computed: {
+      studentDetail () {
+        return this.$store.getters["class/getStudentInfoById"](this.studentId)
       }
     },
     methods: {
       checkinClick() {
-        console.log("Checkin" + this.studentId)
+        let payload = {
+          child_id: this.studentId,
+          date: new Date().toISOString().split('T')[0],
+          is_checkin: 1
+        }
+
+        this.$store.dispatch('class/updateCheckin', payload).then((response) => {
+          if (response.data.code === 200) {
+            this.$vs.notify({
+              title:'Điểm danh thành công',
+              text: response.data.message,
+              position: 'top-right',
+              color:'success',
+              iconPack: 'feather',
+              icon:'icon-check'
+            });
+          } else {
+            this.$vs.notify({
+              title:'Lỗi',
+              text: response.data.message,
+              position: 'top-right',
+              color:'danger',
+              iconPack: 'feather',
+              icon:'icon-x'
+            });
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
       },
       checkoutClick() {
-        console.log("Checkout" + this.studentId)
+        let payload = {
+          child_id: this.studentId,
+          date: new Date().toISOString().split('T')[0],
+          is_checkout: 1
+        }
+
+        this.$store.dispatch('class/updateCheckin', payload).then((response) => {
+          if (response.data.code === 200) {
+            this.$vs.notify({
+              title:'Điểm danh thành công',
+              text: response.data.message,
+              position: 'top-right',
+              color:'success',
+              iconPack: 'feather',
+              icon:'icon-check'
+            });
+          } else {
+            this.$vs.notify({
+              title:'Lỗi',
+              text: response.data.message,
+              position: 'top-right',
+              color:'danger',
+              iconPack: 'feather',
+              icon:'icon-x'
+            });
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
+      },
+      addTeacherNote () {
+        let payload = {
+          child_id: this.studentId,
+          date: new Date().toISOString().split('T')[0],
+          note_of_teacher: this.teacherNotePrompt.val
+        }
+
+        this.$store.dispatch('class/updateCheckin', payload).then((response) => {
+          if (response.data.code === 200) {
+            this.$vs.notify({
+              title:'Điểm danh thành công',
+              text: response.data.message,
+              position: 'top-right',
+              color:'success',
+              iconPack: 'feather',
+              icon:'icon-check'
+            });
+          } else {
+            this.$vs.notify({
+              title:'Lỗi',
+              text: response.data.message,
+              position: 'top-right',
+              color:'danger',
+              iconPack: 'feather',
+              icon:'icon-x'
+            });
+          }
+        }).catch((error) => {
+          console.log(error)
+        })
       },
       medicineNote () {
-        console.log("medicine" + this.studentId)
+        this.medicinePrompt.showMedicinePrompt = true
+        this.medicinePrompt.title = "Nhắc thuốc bé " + this.studentDetail.child.name
+      },
+      teacherNote () {
+        this.teacherNotePrompt.active = true
       }
     }
   }

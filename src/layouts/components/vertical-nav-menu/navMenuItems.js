@@ -46,6 +46,12 @@ export default [
     icon: "CalendarIcon"
   },
   {
+    url: "/admin/checkin",
+    name: "Quản lý điểm danh",
+    slug: "checkin",
+    icon: "CalendarIcon"
+  },
+  {
     url: "/admin/post",
     name: "Quản lý bài viết",
     slug: "post",
