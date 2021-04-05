@@ -55,19 +55,19 @@ const router = new Router({
             },
           },
           {
-            path: 'class-new',
-            name: 'class-new-index',
-            redirect: 'rate/all',
+            path: 'checkin',
+            name: 'checkin-index',
+            redirect: 'checkin/all',
             meta: {
-              rule: 'MasterOrTeacher'
+              rule: 'Teacher'
             },
           },
           {
-            path: 'class-new/:classId',
+            path: 'checkin/:classId',
             component: () => import('./views/class/classNew/ClassIndex.vue'),
             meta: {
-              rule: 'MasterOrTeacher',
-              parent: 'clas-index',
+              rule: 'Teacher',
+              parent: 'checkin-index',
               no_scroll: true
             }
           },

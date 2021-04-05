@@ -5,11 +5,11 @@
                              @ps-scroll-y="scrollHanle" class="rule-scroll-area todo-scroll-area">
         <template v-for="item in classList">
           <div class="vx-row mb-6" :key="'container-' + item.id">
-            <router-link :class="[{'text-primary': classFilter === item.id}, 'ml-4']" :key=item.id
+            <router-link :class="[{'text-primary': Number(classFilter) === item.id}, 'ml-4']" :key=item.id
                          :to="`${baseUrl}/${item.id}`" class="flex justify-between cursor-pointer" tag="span">
               <vs-avatar size="50px" :src="item.logoUrl.path" />
               <span class="text-lg text-rule-overflow mt-2">
-                <p>{{ item.name }}</p>
+                <p :class="[{'text-primary': Number(classFilter) === item.id}]">{{ item.name }}</p>
                 <small>Sĩ số: {{ item.number_of_student }}</small>
               </span>
             </router-link>
@@ -64,6 +64,10 @@
         if (scrollTop + clientHeight >= scrollHeight) {
           this.configLoadPage.page += 1
 
+          if (this.$acl.check('Teacher')) {
+            Object.assign(this.configLoadPage, { id_teacher: this.$store.state.AppActiveUser.uid})
+          }
+
           if (this.$route.query.c) {
             this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c, ...this.configLoadPage});
           } else {
@@ -76,6 +80,10 @@
       VuePerfectScrollbar,
     },
     created() {
+      if (this.$acl.check('Teacher')) {
+        Object.assign(this.configLoadPage, { id_teacher: this.$store.state.AppActiveUser.uid})
+      }
+
       if (this.$route.query.c) {
         this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c, ...this.configLoadPage});
       } else {

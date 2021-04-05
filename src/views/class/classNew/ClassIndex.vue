@@ -86,6 +86,9 @@
         if (scrollTop + clientHeight >= scrollHeight) {
           this.configLoadPage.page += 1
 
+          if (this.$acl.check('Teacher')) {
+            Object.assign(this.configLoadPage, { id_teacher: this.$store.state.AppActiveUser.uid})
+          }
           if (this.$route.query.c) {
             this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c, ...this.configLoadPage});
           } else {
@@ -104,12 +107,16 @@
         if (!value && this.clickNotClose) return
         this.isSidebarActive = value
       },
+      clickStudent() {
+        console.log('click')
+      }
     },
     created() {
       this.setSidebarWidth();
-      if (!moduleClass.isRegistered) {
-        this.$store.registerModule('class', moduleClass);
-        moduleClass.isRegistered = true
+      this.$store.registerModule('class', moduleClass);
+
+      if (this.$acl.check('Teacher')) {
+        Object.assign(this.configLoadPage, { id_teacher: this.$store.state.AppActiveUser.uid})
       }
 
       if (this.$route.query.c) {
@@ -125,6 +132,7 @@
     },
     beforeDestroy () {
       if (!this.wasSidebarOpen) this.$store.commit('TOGGLE_REDUCE_BUTTON', false)
+      this.$store.unregisterModule('class')
     },
     beforeUpdate() {
       this.currFilter = this.$route.params.classId;

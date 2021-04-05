@@ -8,6 +8,7 @@ const actions = {
       page: payload.page,
       default: payload.default
     }
+    if (payload.id_teacher) { Object.assign(data, { id_teacher: payload.id_teacher   }) }
     if (payload.name) { Object.assign(data, { name: payload.name })  }
 
     let config = {
@@ -153,6 +154,16 @@ const actions = {
       commit('SET_LIST_STUDENTS', { action: "SET", data: response.data.data.data})
     }
     return response.data
+  },
+  updateCheckin(_, payload) {
+
+    let config = {
+      method: "POST",
+      url: "/cms/checkin/update",
+      data: payload
+    }
+
+    return axiosApiInstance(config)
   }
 }
 

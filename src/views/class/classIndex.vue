@@ -60,6 +60,10 @@
     },
     created() {
       this.$store.registerModule('class', moduleClass);
+      if (this.$acl.check('Teacher')) {
+        Object.assign(this.configLoadPage, { id_teacher: this.$store.state.AppActiveUser.uid})
+      }
+
       if (this.$route.query.c) {
         this.$store.dispatch('class/getClassBySchoolId', { schoolId: this.$route.query.c, ...this.configLoadPage});
       } else {
