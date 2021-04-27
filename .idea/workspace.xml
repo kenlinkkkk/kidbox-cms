@@ -27,14 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/components/vertical-nav-menu/navMenuItems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/class/classActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/class/classActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/ClassIndex.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/components/ChildList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/classNew/components/ClassList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/classNew/components/ClassList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +113,7 @@
       <workItem from="1616980738615" duration="18872000" />
       <workItem from="1617586140083" duration="241000" />
       <workItem from="1617586412049" duration="9460000" />
+      <workItem from="1619418282901" duration="3242000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <created>1616483721854</created>
