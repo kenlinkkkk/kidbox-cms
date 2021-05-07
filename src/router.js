@@ -55,6 +55,30 @@ const router = new Router({
             },
           },
           {
+            path: 'class/:classId',
+            name: 'class-detail',
+            component: () => import('./views/class/child/ChildList.vue'),
+            meta: {
+              rule: 'Any'
+            },
+          },
+          {
+            path: 'child/edit/:childId',
+            name: 'child-edit',
+            component: () => import('./views/class/child/ChildEdit'),
+            meta: {
+              rule: "Any"
+            }
+          },
+          {
+            path: 'child/view/:childId',
+            name: 'child-view',
+            component: () => import('./views/class/child/ChildDetail'),
+            meta: {
+              rule: "Any"
+            }
+          },
+          {
             path: 'checkin',
             name: 'checkin-index',
             redirect: 'checkin/all',
