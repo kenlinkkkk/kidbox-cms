@@ -88,6 +88,18 @@ Vue.filter('formatDate', function(value) {
   }
 });
 
+Vue.filter('formatLongDateWithoutTime', (value) => {
+  if (value) {
+    return moment(String(value)).format('DD/MM/YYYY')
+  }
+})
+
+Vue.filter('templateDate', (value) => {
+  if (value) {
+    return moment(String(value)).format('MM/YYYY')
+  }
+})
+
 Vue.filter('timeBefore', function (value) {
   let today = new Date().toLocaleDateString();
   let time = new Date(value).toLocaleTimeString();

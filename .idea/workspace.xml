@@ -25,8 +25,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="">
+    <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/filters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/child/childActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/child/childGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childGetters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/child/childMutation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childMutation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/child/childState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childState.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/components/classItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classItem.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,16 +71,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vuexy-63/vuexy-63/vuexy-admin-6.3/vue-version/vuexy-vuesax-deprecated/vuesax-full-package" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/class/child/cell-renderer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\web\js\kidbox-cms\src\views\class\child\cell-renderer" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\reactjs\kidbox-cms\src\views\infrastructure\components\infrastructure" />
       <recent name="D:\reactjs\kidbox-cms\src\views\infrastructure\components\type" />
@@ -114,6 +127,14 @@
       <workItem from="1617586140083" duration="241000" />
       <workItem from="1617586412049" duration="9460000" />
       <workItem from="1619418282901" duration="3242000" />
+      <workItem from="1620119900983" duration="859000" />
+      <workItem from="1620120793816" duration="30000" />
+      <workItem from="1620120836061" duration="68000" />
+      <workItem from="1620120923540" duration="1326000" />
+      <workItem from="1620180750247" duration="631000" />
+      <workItem from="1620267539409" duration="12940000" />
+      <workItem from="1620299206913" duration="707000" />
+      <workItem from="1620350995469" duration="13465000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <created>1616483721854</created>

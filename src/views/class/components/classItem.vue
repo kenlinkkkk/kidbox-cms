@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+    <vs-button class="w-full" @click="openClassDetail">Chi tiết</vs-button>
   </vx-card>
 </template>
 <style lang="scss">
@@ -75,6 +76,9 @@
             icon:'icon-x'
           });
         }
+      },
+      openClassDetail() {
+        this.$router.push('/admin/class/' + this.classId)
       }
     }
   }

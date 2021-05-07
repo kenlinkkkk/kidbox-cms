@@ -44,21 +44,27 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  getChildByIdClass(_, payload) {
+  async getChildByIdClass({ commit }, payload) {
     let data = {
       ...payload
     }
 
     let config = {
       method: "POST",
-      url: "/cms/child/list/",
+      url: "/cms/child/list",
       headers: {
         'Content-Type': 'application/json',
       },
       data: data
     }
-
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit('SET_LIST_CHILD', response.data.data.data)
+        commit('SET_PAGINATE_INFO', response.data.data.total_pages)
+      }
+    }
+    return response.data
   },
   updateChild(_, payload) {
     let data = {
@@ -76,7 +82,7 @@ const actions = {
 
     return axiosApiInstance(config)
   },
-  getChildDetail(_, payload) {
+  async getChildDetail({ commit }, payload) {
     let config = {
       method: "POST",
       url: "/cms/child/" + payload.id,
@@ -84,9 +90,61 @@ const actions = {
         'Content-Type': 'application/json',
       }
     }
-
-    return axiosApiInstance(config)
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit('SET_CHILD_INFO', response.data.data.info)
+      }
+    }
+    return response.data
   },
+
+  // health
+
+  async healthAddNew () {
+
+  },
+
+  async healthDelete () {
+
+  },
+  async healthUpdate () {
+
+  },
+  async healthStatistics ({ commit }, payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/child/heath/heath_statistics",
+      data: payload
+    }
+
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit("SET_HEALTH_DATA", response.data.data)
+      }
+    }
+    return response.data
+  },
+
+  //achievement
+
+  async getAllAchievement ({ commit }, payload) {
+    let config = {
+      method: "POST",
+      url: "/cms/loyal-log/get-all",
+      data: payload
+    }
+
+    let response = await axiosApiInstance(config)
+    if (response.status === 200) {
+      if (response.data.code === 200) {
+        commit("SET_LIST_ACHIEVEMENT", response.data.data)
+      }
+    }
+  }
 }
 
+
 export default actions
+

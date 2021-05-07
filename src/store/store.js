@@ -20,6 +20,7 @@ Vue.use(Vuex)
 
 import authModule from './auth/authStore.js'
 import userModule from './user/userStore.js'
+import childModule from "@/store/child/childStore";
 
 export default new Vuex.Store({
   getters,
@@ -28,7 +29,8 @@ export default new Vuex.Store({
   actions,
   modules: {
     auth: authModule,
-    userManagement: userModule
+    userManagement: userModule,
+    child: childModule
   },
   strict: process.env.NODE_ENV !== 'production'
 })
