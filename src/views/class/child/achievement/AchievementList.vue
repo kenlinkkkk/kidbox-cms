@@ -8,7 +8,7 @@
       <div class="flex">
         <div class="justify-items-center">
           <img :src="item.image_url.path" class="w-14" v-if="item.image_url">
-          <feather-icon v-else icon="AwardIcon" svgClasses="w-12 h-12 text-warning"></feather-icon>
+          <feather-icon v-else icon="AwardIcon" svgClasses="w-16 h-16 m-1 text-warning"></feather-icon>
         </div>
         <div class="ml-2">
           <h5 class="text-success">{{ item.name }}</h5>

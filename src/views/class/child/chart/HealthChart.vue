@@ -31,7 +31,7 @@
     </vx-card>
     <vx-card title="Quá trình phát triển" class="mt-base">
       <vue-apex-charts
-        type="bar"
+        :type="chartType"
         height="450"
         :options="columnChart.chartOptions"
         :series="Series"
@@ -51,6 +51,7 @@ export default {
         child_id: Number.parseInt(this.$route.params.childId),
         year: new Date().getFullYear().toString()
       },
+      chartType: 'bar',
       columnChart: {
         chartOptions: {
           colors: ['#FF7D59', '#2F80ED', '#EA5455', '#FF9F43', '#1E1E1E'],
@@ -74,7 +75,7 @@ export default {
             categories: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
           },
           fill: {
-            opacity: 1
+            opacity: 0.9
 
           },
           tooltip: {

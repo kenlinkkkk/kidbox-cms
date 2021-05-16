@@ -75,7 +75,10 @@ import AchievementList from "@/views/class/child/achievement/AchievementList";
 export default {
   data () {
     return {
-      childInfo: null
+      childInfo: null,
+      components: {
+        HealthChart
+      }
     }
   },
   components: {

@@ -86,7 +86,6 @@
 import { AgGridVue } from 'ag-grid-vue'
 import '@/assets/scss/vuexy/extraComponents/agGridStyleOverride.scss'
 import vSelect from "vue-select";
-import moduleChild from "@/store/child/childStore"
 import CellRendererActions from "@/views/class/child/cell-renderer/CellRendererActions";
 import CellRendererGender from "@/views/class/child/cell-renderer/CellRendererGender";
 import CellRendererPicture from "@/views/class/child/cell-renderer/CellRendererPicture";
@@ -125,7 +124,6 @@ export default {
           headerName: 'Ảnh',
           filter: false,
           width: 100,
-          cellRendererFramework: 'CellRendererPicture'
         },
         {
           headerName: 'Tên',
@@ -143,7 +141,6 @@ export default {
           headerName: 'Ngày sinh',
           filter: true,
           width: 200,
-          cellRendererFramework: 'CellRendererDoB'
         },
         {
           headerName: 'Giới tính',
