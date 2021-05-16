@@ -27,16 +27,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/filters/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childGetters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childGetters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childMutation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childMutation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/child/childState.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childState.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/http/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/axios/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/components/classItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/components/classItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/child/achievement/AchievementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/achievement/AchievementList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/child/chart/HealthChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/chart/HealthChart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\thanh\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.7142.46\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -134,7 +130,14 @@
       <workItem from="1620180750247" duration="631000" />
       <workItem from="1620267539409" duration="12940000" />
       <workItem from="1620299206913" duration="707000" />
-      <workItem from="1620350995469" duration="13465000" />
+      <workItem from="1620350995469" duration="14565000" />
+      <workItem from="1620526065307" duration="2232000" />
+      <workItem from="1620541347882" duration="1268000" />
+      <workItem from="1620612905444" duration="1316000" />
+      <workItem from="1620618928245" duration="4938000" />
+      <workItem from="1620699213332" duration="597000" />
+      <workItem from="1620746392855" duration="36000" />
+      <workItem from="1620921103391" duration="2185000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <created>1616483721854</created>

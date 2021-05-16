@@ -1,8 +1,7 @@
 // axios
 import axios from 'axios'
 import auth from '../src/http/requests/auth/index.js'
-const baseURL = "http://kidbox.vn:8888/"
-// const baseURL = "http://localhost:8001/"
+const baseURL = process.env.VUE_APP_ENVIRONMENT === 'dev' ? process.env.VUE_APP_CMS_LOCAL_BASE_URL : process.env.VUE_APP_CMS_PROD_BASE_URL
 
 const axiosApiInstance = axios.create({
   baseURL: baseURL
