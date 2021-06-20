@@ -26,12 +26,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc3018a3-032a-46bf-a82e-5c5d9f26d799" name="Default Changelist" comment="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/http/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/http/axios/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/child/childActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/child/childActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildEdit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/ChildList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/class/child/achievement/AchievementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/achievement/AchievementList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/class/child/chart/HealthChart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/class/child/chart/HealthChart.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +138,12 @@
       <workItem from="1620699213332" duration="597000" />
       <workItem from="1620746392855" duration="36000" />
       <workItem from="1620921103391" duration="2185000" />
+      <workItem from="1621178890714" duration="901000" />
+      <workItem from="1621655421256" duration="606000" />
+      <workItem from="1623513719263" duration="20000" />
+      <workItem from="1623513767979" duration="8000" />
+      <workItem from="1623513785458" duration="1696000" />
+      <workItem from="1624159807457" duration="7428000" />
     </task>
     <task id="LOCAL-00001" summary="Merge pull request #31 from kenlinkkkk/tungnt&#10;&#10;fix menu">
       <created>1616483721854</created>

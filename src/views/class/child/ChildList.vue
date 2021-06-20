@@ -72,10 +72,9 @@
         :enableRtl="$vs.rtl">
       </ag-grid-vue>
 
-<!--      <vs-pagination-->
-<!--        :total="totalPages"-->
-<!--        v-model="currentPage"-->
-<!--        @input="selectPage"/>-->
+      <vs-pagination
+        :total="totalPages"
+        v-model="currentPage"/>
 
     </div>
   </div>

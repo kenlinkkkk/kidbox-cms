@@ -6,7 +6,14 @@
         <vx-card title="Thông tin cơ bản" class="mt-base">
           <!-- ACTION SLOT -->
           <template slot="actions">
-            <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+            <vs-dropdown class="button-height" vs-trigger-click>
+              <a class="flex self-start" href="#">
+                <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+              </a>
+              <vs-dropdown-menu>
+                <vs-dropdown-item @click="displayInfoPrompt">Cập nhật thông tin</vs-dropdown-item>
+              </vs-dropdown-menu>
+            </vs-dropdown>
           </template>
           <div class="flex">
             <div>
@@ -54,7 +61,14 @@
         <vx-card title="Thành tích" class="mt-base">
           <!-- ACTION SLOT -->
           <template slot="actions">
-            <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+            <vs-dropdown class="button-height" vs-trigger-click>
+              <a class="flex self-start" href="#">
+                <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+              </a>
+              <vs-dropdown-menu>
+                <vs-dropdown-item @click="displayAchievementPrompt">Cập nhật thông tin</vs-dropdown-item>
+              </vs-dropdown-menu>
+            </vs-dropdown>
           </template>
           <div class="flex">
             <achievement-list />
@@ -65,25 +79,53 @@
         <health-chart />
       </div>
     </div>
+    <child-edit
+      v-if="displayInfoPrompt"
+      :childId="Number.parseInt(this.$route.params.childId)"
+      :childInfoPrompt="activeInfoPrompt"
+      @hiddenInfoPrompt="hiddenInfoPrompt"/>
+    <achievement-add
+      v-if="displayAchievementPrompt"
+      :childId="Number.parseInt(this.$route.params.childId)"
+      :childAchievementPrompt="activeAchievementPrompt"
+      @hiddenAchievementPrompt="hiddenAchievementPrompt"/>
   </div>
 </template>
 
 <script>
 import HealthChart from "@/views/class/child/chart/HealthChart";
 import AchievementList from "@/views/class/child/achievement/AchievementList";
+import ChildEdit from "@/views/class/child/ChildEdit";
+import AchievementAdd from "@/views/class/child/achievement/AchievementAdd";
 
 export default {
   data () {
     return {
       childInfo: null,
-      components: {
-        HealthChart
-      }
+      childInfoId: null,
+      activeInfoPrompt: false,
+      activeAchievementPrompt: false,
     }
   },
   components: {
+    ChildEdit,
     HealthChart,
-    AchievementList
+    AchievementList,
+    AchievementAdd
+  },
+  methods: {
+    displayInfoPrompt () {
+      this.activeInfoPrompt = true;
+    },
+    hiddenInfoPrompt () {
+      this.activeInfoPrompt = false;
+    },
+    displayAchievementPrompt () {
+      this.activeAchievementPrompt = true
+    },
+    hiddenAchievementPrompt () {
+      this.activeAchievementPrompt = false
+    }
   },
   computed: {
   },

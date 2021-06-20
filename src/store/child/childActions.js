@@ -101,8 +101,14 @@ const actions = {
 
   // health
 
-  async healthAddNew () {
+  async healthAddNew (_, payload) {
+    let config = {
+      method: 'POST',
+      url: '/cms/child/heath/add_new',
+      data: payload
+    }
 
+    return axiosApiInstance(config)
   },
 
   async healthDelete () {
@@ -142,6 +148,26 @@ const actions = {
         commit("SET_LIST_ACHIEVEMENT", response.data.data)
       }
     }
+  },
+  async getListLoyal () {
+    let config = {
+      method: 'POST',
+      url: '/cms/loyal-log/get-achievement',
+    }
+
+    let response = await  axiosApiInstance(config)
+    if (response.status === 200) {
+      return response.data.data
+    }
+  },
+  async achievementAdd(_, payload) {
+    let config = {
+      method: 'POST',
+      url: '/cms/loyal-log/add-new',
+      data: payload
+    }
+
+    return axiosApiInstance(config)
   }
 }
 

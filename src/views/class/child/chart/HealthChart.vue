@@ -2,7 +2,14 @@
   <div>
     <vx-card title="Thể chất" class="mt-base">
       <template slot="actions">
-        <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+        <vs-dropdown class="button-height" vs-trigger-click>
+          <a class="flex self-start" href="#">
+            <feather-icon icon="MoreHorizontalIcon"></feather-icon>
+          </a>
+          <vs-dropdown-menu>
+            <vs-dropdown-item @click="displayHealthPrompt">Cập nhật thông tin</vs-dropdown-item>
+          </vs-dropdown-menu>
+        </vs-dropdown>
       </template>
       <div class="flex" v-if="Physical">
         <vx-card title="Cân nặng" class="m-base">
@@ -37,11 +44,16 @@
         :series="Series"
       ></vue-apex-charts>
     </vx-card>
+    <health-update
+      :childId="configLoadData.child_id"
+      :childHealthPrompt="activeHealthPrompt"
+      @hiddenHealthPrompt="hiddenHealthPrompt"/>
   </div>
 </template>
 
 <script>
 import VueApexCharts from 'vue-apexcharts'
+import HealthUpdate from "@/views/class/child/chart/HealthUpdate";
 
 export default {
   name: "HealthChart",
@@ -51,7 +63,7 @@ export default {
         child_id: Number.parseInt(this.$route.params.childId),
         year: new Date().getFullYear().toString()
       },
-      chartType: 'bar',
+      activeHealthPrompt: false,
       columnChart: {
         chartOptions: {
           colors: ['#FF7D59', '#2F80ED', '#EA5455', '#FF9F43', '#1E1E1E'],
@@ -70,7 +82,6 @@ export default {
             width: 2,
             colors: ['transparent']
           },
-
           xaxis: {
             categories: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
           },
@@ -90,7 +101,16 @@ export default {
     }
   },
   components: {
-    VueApexCharts
+    VueApexCharts,
+    HealthUpdate
+  },
+  methods: {
+    displayHealthPrompt () {
+      this.activeHealthPrompt = true;
+    },
+    hiddenHealthPrompt () {
+      this.activeHealthPrompt = false;
+    },
   },
   computed: {
     Series () {
@@ -100,6 +120,9 @@ export default {
     },
     Physical () {
       return this.$store.getters['child/getPhysical']
+    },
+    chartType () {
+      return 'bar'
     }
   },
   created() {
